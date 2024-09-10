@@ -6,7 +6,7 @@ public class Ticker : MonoBehaviour
 {
     public float tickTime;
 
-    public float tickerTimer;
+     float tickerTimer;
 
     public delegate void TickAction();
     public static event TickAction OnTickAction;
