@@ -1,3 +1,3 @@
 ## pest control 
 :ant: :ant: :ant: :beetle: :beetle: :beetle:
-Make the bugs meed god 
+Make the bugs meet god 
