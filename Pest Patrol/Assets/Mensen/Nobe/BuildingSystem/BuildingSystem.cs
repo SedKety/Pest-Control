@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BuildingSystem : MonoBehaviour
 {
     public bool buildMode = false;
     public GameObject selectedTower;
     public Transform currentBuildingTower;
+    public GameObject currentlySelectedTower;
     public int groundLayer;
+    public List<GameObject> towers = new();
     public void Update()
     {
         if (buildMode & selectedTower & currentBuildingTower)
@@ -18,10 +25,48 @@ public class BuildingSystem : MonoBehaviour
     }
     public void UpdateTowerPosition()
     {
+        selectedTower.GetComponent<BoxCollider>().enabled = false;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (selectedTower & Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
             currentBuildingTower.position = hit.point;
+        }
+        Physics.Raycast(ray, out RaycastHit layer, Mathf.Infinity);
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        {
+            PlaceTower(currentBuildingTower.position, selectedTower);
+        }
+        if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject())
+        {
+            DeleteTower(currentBuildingTower.position, selectedTower);
+        }
+    }
+
+    public void PlaceTower(Vector3 pos, GameObject tower)
+    {
+        Collider[] colliders = Physics.OverlapBox(pos, tower.GetComponent<BoxCollider>().size / 2);
+        if (colliders.Length <= 2)
+        {
+            Debug.Log("place me daddy");
+            GameObject g = Instantiate(tower, pos, Quaternion.identity);
+            g.GetComponent<BoxCollider>().enabled = true;
+            towers.Add(g);
+            selectedTower = null;
+        }
+        else
+        {
+            Debug.Log("im stuck daddy :3");
+        }
+    }
+    public void DeleteTower(Vector3 pos, GameObject tower)
+    {
+        Collider[] colliders = Physics.OverlapBox(pos, tower.GetComponent<BoxCollider>().size / 2);
+        foreach (Collider col in colliders)
+        {
+            if (col.gameObject.layer != groundLayer)
+            {
+                Destroy(col.gameObject);
+            }
         }
     }
     public void SwitchTower(GameObject tower)
@@ -31,6 +76,10 @@ public class BuildingSystem : MonoBehaviour
         {
             Destroy(currentBuildingTower.gameObject);
         }
+        if (currentlySelectedTower == selectedTower)
+        {
+            currentlySelectedTower = null;
+        }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
@@ -39,6 +88,7 @@ public class BuildingSystem : MonoBehaviour
                currentBuildingTower = Instantiate(tower, hit.point, Quaternion.identity).transform;
             }
         }
+        currentlySelectedTower = selectedTower;
     }
     [ContextMenu("EnterBuildMode")]
     public void EnterBuildMode()
@@ -50,5 +100,20 @@ public class BuildingSystem : MonoBehaviour
     {
         buildMode = false;
         Destroy(currentBuildingTower.gameObject);
+    }
+
+    public async void ClearTowers(GameObject clearButton)
+    {
+        Debug.Log("daddys replacing me :((");
+        string text = clearButton.GetComponentInChildren<TMP_Text>().text;
+        clearButton.GetComponent<Button>().interactable = false;
+        clearButton.GetComponentInChildren<TMP_Text>().text = "Busy";
+        foreach (var tower in towers)
+        {
+            Destroy(tower);
+            await Task.Delay(1);
+        }
+        clearButton.GetComponent<Button>().interactable = true;
+        clearButton.GetComponentInChildren<TMP_Text>().text = text;
     }
 }

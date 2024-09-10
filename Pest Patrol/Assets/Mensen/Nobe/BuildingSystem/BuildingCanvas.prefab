@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 8212233905663938133}
   - component: {fileID: 3861420820111028297}
   - component: {fileID: 4287928171158049015}
+  - component: {fileID: 4656459928550299661}
   m_Layer: 5
   m_Name: SelectBuilding
   m_TagString: Untagged
@@ -479,6 +480,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &4656459928550299661
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5908276149891628169}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6448800185528532460
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,4 +745,6 @@ MonoBehaviour:
   selectedTower: {fileID: 6061811992781688895, guid: 9132ac1cd633b7941b1598a5a125c781,
     type: 3}
   currentBuildingTower: {fileID: 0}
+  currentlySelectedTower: {fileID: 0}
   groundLayer: 3
+  towers: []
