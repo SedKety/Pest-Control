@@ -31,7 +31,6 @@ public class BuildingSystem : MonoBehaviour
         {
             currentBuildingTower.position = new Vector3(Mathf.RoundToInt(hit.point.x), hit.point.y, Mathf.RoundToInt(hit.point.z));
         }
-        Physics.Raycast(ray, out RaycastHit layer, Mathf.Infinity);
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             PlaceTower(currentBuildingTower.position, selectedTower);
@@ -55,7 +54,7 @@ public class BuildingSystem : MonoBehaviour
     }
     public void DeleteTower(Vector3 pos, GameObject tower)
     {
-        Collider[] colliders = Physics.OverlapBox(pos, tower.GetComponent<BoxCollider>().size / 2);
+        Collider[] colliders = Physics.OverlapBox(pos, tower.GetComponent<BoxCollider>().size / 2.5f);
         foreach (Collider col in colliders)
         {
             if (col.gameObject.layer != groundLayer)
@@ -76,12 +75,9 @@ public class BuildingSystem : MonoBehaviour
             currentlySelectedTower = null;
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity) && hit.collider.gameObject.layer == groundLayer)
         {
-            if (hit.collider.gameObject.layer == groundLayer)
-            {
-               currentBuildingTower = Instantiate(tower, hit.point, Quaternion.identity).transform;
-            }
+            currentBuildingTower = Instantiate(tower, hit.point, Quaternion.identity).transform;
         }
         currentlySelectedTower = selectedTower;
     }
