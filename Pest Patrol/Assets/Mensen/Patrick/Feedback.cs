@@ -14,24 +14,33 @@ namespace Lumpn.Discord{
         public GameObject text;
         private bool goodOrBad;
         public GameObject feedbackName;
+        public bool hasSent = false;
         public void Bool(bool b)
         {
             goodOrBad = b;
         }
         public void Button()
         {
-            data.webhookName = feedbackName.GetComponent<TMP_InputField>().text;
-            webhook = data.CreateWebhook();
-            StartCoroutine(SendFeedback());
+            if (!hasSent)
+            {
+                data.webhookName = feedbackName.GetComponent<TMP_InputField>().text;
+                webhook = data.CreateWebhook();
+                StartCoroutine(SendFeedback());
+            }
+            else
+            {
+                text.GetComponent<TMP_InputField>().text = "Je kan maar 1x feedback sturen";
+            }
         }
         public IEnumerator SendFeedback()
         {
+            hasSent = true;
             StartCoroutine(webhook.Send(text.GetComponent<TMP_InputField>().text));
             yield return new WaitForSeconds(1);
             switch (goodOrBad)
             {
-                case true: StartCoroutine(webhook.Send("Goed")); break;
-                case false: StartCoroutine(webhook.Send("Niet Goed")); break;
+                case true: StartCoroutine(webhook.Send("Positief")); break;
+                case false: StartCoroutine(webhook.Send("Negatief")); break;
             }
         }
     }
