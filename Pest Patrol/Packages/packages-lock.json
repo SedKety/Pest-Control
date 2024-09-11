@@ -161,7 +161,7 @@
       "url": "https://packages.unity.com"
     },
     "de.lumpn.unity-discord": {
-      "version": "file:C:/Users/Patrick K/Documents/UnityWebhook",
+      "version": "file:C:/Users/nobem/Downloads/unity-discord-main/unity-discord-main",
       "depth": 0,
       "source": "local",
       "dependencies": {
