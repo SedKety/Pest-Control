@@ -41,21 +41,16 @@ public class BuildingSystem : MonoBehaviour
             DeleteTower(currentBuildingTower.position, selectedTower);
         }
     }
-
+    
     public void PlaceTower(Vector3 pos, GameObject tower)
     {
         Collider[] colliders = Physics.OverlapBox(pos, tower.GetComponent<BoxCollider>().size / 2);
-        if (colliders.Length <= 2)
+        if (colliders.Length <= 1)
         {
-            Debug.Log("place me daddy");
             GameObject g = Instantiate(tower, pos, Quaternion.identity);
             g.GetComponent<BoxCollider>().enabled = true;
             towers.Add(g);
-            selectedTower = null;
-        }
-        else
-        {
-            Debug.Log("im stuck daddy :3");
+            Destroy(currentBuildingTower.gameObject);
         }
     }
     public void DeleteTower(Vector3 pos, GameObject tower)
@@ -104,7 +99,6 @@ public class BuildingSystem : MonoBehaviour
 
     public async void ClearTowers(GameObject clearButton)
     {
-        Debug.Log("daddys replacing me :((");
         string text = clearButton.GetComponentInChildren<TMP_Text>().text;
         clearButton.GetComponent<Button>().interactable = false;
         clearButton.GetComponentInChildren<TMP_Text>().text = "Busy";
