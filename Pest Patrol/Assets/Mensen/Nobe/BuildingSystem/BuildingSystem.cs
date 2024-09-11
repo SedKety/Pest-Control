@@ -29,7 +29,7 @@ public class BuildingSystem : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (selectedTower & Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
-            currentBuildingTower.position = hit.point;
+            currentBuildingTower.position = new Vector3(Mathf.RoundToInt(hit.point.x), hit.point.y, Mathf.RoundToInt(hit.point.z));
         }
         Physics.Raycast(ray, out RaycastHit layer, Mathf.Infinity);
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
@@ -44,7 +44,7 @@ public class BuildingSystem : MonoBehaviour
     
     public void PlaceTower(Vector3 pos, GameObject tower)
     {
-        Collider[] colliders = Physics.OverlapBox(pos, tower.GetComponent<BoxCollider>().size / 2);
+        Collider[] colliders = Physics.OverlapBox(pos, tower.GetComponent<BoxCollider>().size / 2.5f);
         if (colliders.Length <= 1)
         {
             GameObject g = Instantiate(tower, pos, Quaternion.identity);

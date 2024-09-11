@@ -39,8 +39,8 @@ namespace Lumpn.Discord{
             yield return new WaitForSeconds(1);
             switch (goodOrBad)
             {
-                case true: StartCoroutine(webhook.Send("Positief")); break;
-                case false: StartCoroutine(webhook.Send("Negatief")); break;
+                case true: StartCoroutine(webhook.Send(":thumbsup:")); break;
+                case false: StartCoroutine(webhook.Send(":thumbsdown:")); break;
             }
         }
     }
