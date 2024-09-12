@@ -35,11 +35,11 @@ public class WaveSystem : MonoBehaviour
     [ContextMenu("StartNewWave")]
     public void StartNewWave()
     {
+        StopCoroutine(SpawnEnemyGroups());
         wave++;
         wavePoints = 0;
-        float middleMan = startingWavePoints * wavePointsModifier;
-        wavePoints = (int)middleMan;
-        wavePointsModifier *= 1.2f;
+        int middleMan = startingWavePoints * wave;
+        wavePoints = middleMan;
         StartCoroutine(GenerateNewWave());
     }
     public IEnumerator GenerateNewWave()
@@ -61,8 +61,6 @@ public class WaveSystem : MonoBehaviour
     public WaveGroups SelectGroup()
     {
         var selectedGroup = availableGroups[Random.Range(0, availableGroups.Count)];
-        print(wavePoints);
-        print(selectedGroup.wavePointCost);
         wavePoints -= selectedGroup.wavePointCost;
         return selectedGroup;
     }
@@ -84,7 +82,6 @@ public class WaveSystem : MonoBehaviour
     {
         foreach (WaveGroups groups in currentWaveGroups)
         {
-            print(groups.groupName);
             foreach (GameObject enemy in groups.enemyGO)
             {
                 GameManager.instance.enemies.Add(Instantiate(enemy, enemySpawnPos.position, enemySpawnPos.rotation).GetComponent<Enemy>());

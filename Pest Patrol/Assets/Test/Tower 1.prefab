@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8557271551184771756}
   - component: {fileID: 6109312402063381510}
   - component: {fileID: 2311005117159145916}
+  - component: {fileID: -6103217634612148481}
   m_Layer: 2
   m_Name: Tower 1
   m_TagString: Untagged
@@ -105,3 +106,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6103217634612148481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6061811992781688895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14f61d7cc2359a4eb41ef3aa4b89d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerPointCost: 0
+  typeToTarget: 0
+  typeOfTower: 0
+  baseDamage: 0
+  baseAttackSpeed: 0
+  baseReloadSpeed: 0
+  basePointsGenerated: 1
+  timeBetweenPoints: 2
+  currentDamage: 0
+  currentAttackSpeed: 0
+  currentReloadSpeed: 0

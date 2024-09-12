@@ -161,15 +161,14 @@
       "url": "https://packages.unity.com"
     },
     "de.lumpn.unity-discord": {
-      "version": "https://github.com/lumpn/unity-discord.git",
+      "version": "file:C:/Users/nobem/Downloads/unity-discord-main/unity-discord-main",
       "depth": 0,
-      "source": "git",
+      "source": "local",
       "dependencies": {
         "com.unity.ext.nunit": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0",
         "com.unity.modules.unitywebrequest": "1.0.0"
-      },
-      "hash": "6f3ba531d37efde16732b56a7f36fbfc0a7a9fa2"
+      }
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

@@ -121,7 +121,7 @@ MonoBehaviour:
   health: 2
   damage: 1
   type: 1
-  canMove: 0
-  moveSpeed: 2
+  cantMove: 0
+  moveSpeed: 15
   minDistance: 0.1
   pointsDropped: 2

@@ -10,22 +10,24 @@ public class GameManager : MonoBehaviour
     //globally accessed variables
     public List<Transform> wayPoints = new List<Transform>();
     public List<Enemy> enemies = new List<Enemy>();
-    public int points;
-    public float pMultiplier = 1;
+    public static int points;
+    public static float pMultiplier = 1;
     public int health;
 
     public UnityEvent gameOver;
+    public UnityEvent gameWon;
 
     public void Awake()
     {
         instance = this;
     }
 
-    public void AddPoints(int addedPoints)
+    public static void AddPoints(int addedPoints)
     {
         var pointsToAdd = addedPoints * pMultiplier;
         points += (int)pointsToAdd;
-        print("Points");
+        print("Points added" + pointsToAdd);
+        print("Total Points" + points);
     }
     public void TakeDamage(int damageTaken)
     {
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour
             gameOver.Invoke();
         }
     }
+
+
     public async Task StunAllEnemies(float timeInSeconds)
     {
         foreach (Enemy enemy in enemies)

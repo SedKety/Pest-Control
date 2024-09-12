@@ -50,7 +50,7 @@ MonoBehaviour:
   damage: 1
   type: 1
   cantMove: 0
-  moveSpeed: 0.5
+  moveSpeed: 15
   minDistance: 0.1
   pointsDropped: 2
 --- !u!23 &5189129914680429895
