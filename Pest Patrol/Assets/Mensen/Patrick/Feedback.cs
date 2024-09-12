@@ -10,7 +10,7 @@ namespace Lumpn.Discord{
     public class Feedback : MonoBehaviour
     {
         public WebhookData data;
-        private Webhook webhook;
+        public Webhook webhook;
         public GameObject text;
         private bool goodOrBad;
         public GameObject feedbackName;
