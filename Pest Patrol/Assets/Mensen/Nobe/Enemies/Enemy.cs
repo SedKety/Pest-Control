@@ -22,6 +22,12 @@ public abstract class Enemy : MonoBehaviour
 
     //miscelaneous variables
     public int pointsDropped;
+
+    public virtual void Start()
+    {
+        var middleMan = health * GameManager.enemyHealthMultiplier;
+        health = (int)middleMan;
+    }
     public virtual void Update()
     {
         MoveTowardsWaypoint();
@@ -49,7 +55,7 @@ public abstract class Enemy : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            GameManager.instance.DestroyEnemy(this);
+            GameManager.instance.RegisterEnemyDeath(this);
         }
     }
 }

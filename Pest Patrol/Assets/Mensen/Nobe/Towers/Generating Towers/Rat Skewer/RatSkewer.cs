@@ -5,7 +5,7 @@ using UnityEngine;
 public class RatSkewer : Tower
 {
 
-    public void Start()
+    protected override void Start()
     {
         StartCoroutine(GeneratePoints());
     }

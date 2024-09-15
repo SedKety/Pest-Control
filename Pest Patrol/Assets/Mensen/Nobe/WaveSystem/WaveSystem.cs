@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 [System.Serializable]
 public struct WaveGroups
@@ -20,6 +21,10 @@ public class WaveSystem : MonoBehaviour
     public int startingWavePoints;
     public float wavePointsModifier;
 
+
+    // miscelaneus variable
+    public float enemyHealthMultiplierIncrease;
+
     //Wave Enemy Variables
     public List<WaveGroups> enemyGroups;
 
@@ -36,6 +41,8 @@ public class WaveSystem : MonoBehaviour
     public void StartNewWave()
     {
         StopCoroutine(SpawnEnemyGroups());
+        currentWaveGroups.Clear();
+        GameManager.enemyHealthMultiplier += enemyHealthMultiplierIncrease;
         wave++;
         wavePoints = 0;
         int middleMan = startingWavePoints * wave;
@@ -84,7 +91,7 @@ public class WaveSystem : MonoBehaviour
         {
             foreach (GameObject enemy in groups.enemyGO)
             {
-                GameManager.instance.enemies.Add(Instantiate(enemy, enemySpawnPos.position, enemySpawnPos.rotation).GetComponent<Enemy>());
+                GameManager.instance.enemies.Add(Instantiate(enemy, enemySpawnPos.position, enemySpawnPos.rotation));
                 yield return new WaitForSeconds(groups.timeBetweenEnemy);
             }
             yield return new WaitForSeconds(groups.timeBetweenGroup);
