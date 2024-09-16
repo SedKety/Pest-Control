@@ -2,31 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
 
 public class BuildingSystem : MonoBehaviour
 {
     public bool buildMode = false;
-    public GameObject selectedTower;
+    public TowerSO selectedTower;
     public Transform currentBuildingTower;
-    public GameObject currentlySelectedTower;
+    public TowerSO currentlySelectedTower;
     public int groundLayer;
     public List<GameObject> towers = new();
     public float y;
     public GameObject ground;
-
-
-    private void Start()
-    {
-        
-    }
 
     public void Update()
     {
@@ -37,7 +28,7 @@ public class BuildingSystem : MonoBehaviour
     }
     public void UpdateTowerPosition()
     {
-        selectedTower.GetComponentInChildren<BoxCollider>().enabled = false;
+        currentBuildingTower.GetComponentInChildren<BoxCollider>().enabled = false;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (selectedTower & Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
@@ -57,12 +48,12 @@ public class BuildingSystem : MonoBehaviour
             Debug.Log("manhandle me daddy :3");
         }
     }
-    public void PlaceTower(Vector3 pos, GameObject tower)
+    public void PlaceTower(Vector3 pos, TowerSO tower)
     {
-        List<Collider> colliders = Physics.OverlapBox(pos, tower.GetComponentInChildren<BoxCollider>().size / 2.5f).ToList();
+        List<Collider> colliders = Physics.OverlapBox(pos, currentBuildingTower.GetComponentInChildren<BoxCollider>().size / 2.5f).ToList();
         if (colliders.Count <= 1)
         {
-            GameObject g = Instantiate(tower, pos, currentBuildingTower.rotation);
+            GameObject g = Instantiate(tower.towerToPlaceGO, pos, currentBuildingTower.rotation);
             g.GetComponentInChildren<BoxCollider>().enabled = true;
             towers.Add(g);
             Destroy(currentBuildingTower.gameObject);
@@ -72,9 +63,9 @@ public class BuildingSystem : MonoBehaviour
             Debug.Log(colliders.Count);
         }
     }
-    public void DeleteTower(Vector3 pos, GameObject tower)
+    public void DeleteTower(Vector3 pos, TowerSO tower)
     {
-        Collider[] colliders = Physics.OverlapBox(pos, tower.GetComponentInChildren<BoxCollider>().size / 2.5f);
+        Collider[] colliders = Physics.OverlapBox(pos, currentBuildingTower.GetComponentInChildren<BoxCollider>().size / 2.5f);
         foreach (Collider col in colliders)
         {
             if (col.gameObject.layer != groundLayer)
@@ -83,7 +74,7 @@ public class BuildingSystem : MonoBehaviour
             }
         }
     }
-    public void SwitchTower(GameObject tower)
+    public void SwitchTower(TowerSO tower)
     {
         selectedTower = tower;
         if (currentBuildingTower)
@@ -98,7 +89,7 @@ public class BuildingSystem : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity) && hit.collider.gameObject.layer == groundLayer)
         {
-            currentBuildingTower = Instantiate(tower, hit.point, Quaternion.identity).transform;
+            currentBuildingTower = Instantiate(tower.towerGhostGO.transform, hit.point, Quaternion.identity);
         }
         currentlySelectedTower = selectedTower;
     }
