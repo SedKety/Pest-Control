@@ -37,12 +37,12 @@ public abstract class Enemy : MonoBehaviour
     {
         if (cantMove) return;
         var step = moveSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.wayPoints[currentWaypoint].position, step);
-        var distance = Vector3.Distance(transform.position, GameManager.instance.wayPoints[currentWaypoint].position);
+        transform.position = Vector3.MoveTowards(transform.position, GameManager.wayPoints[currentWaypoint].position, step);
+        var distance = Vector3.Distance(transform.position, GameManager.wayPoints[currentWaypoint].position);
         if (distance < minDistance)
         {
             currentWaypoint++;
-            if (currentWaypoint >= GameManager.instance.wayPoints.Count)
+            if (currentWaypoint >= GameManager.wayPoints.Count)
             {
                 GameManager.instance.TakeDamage(damage);
                 Destroy(gameObject);
@@ -56,6 +56,7 @@ public abstract class Enemy : MonoBehaviour
         if (health <= 0)
         {
             GameManager.AddPoints(pointsDropped);
+            GameManager.enemies.Remove(gameObject);
             Destroy(gameObject);
         }
     }

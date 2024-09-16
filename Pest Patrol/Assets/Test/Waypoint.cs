@@ -6,6 +6,6 @@ public class Waypoint : MonoBehaviour
 {
     public void Start()
     {
-        GameManager.instance.wayPoints.Add(gameObject.transform);
+        GameManager.wayPoints.Add(gameObject.transform);
     }
 }

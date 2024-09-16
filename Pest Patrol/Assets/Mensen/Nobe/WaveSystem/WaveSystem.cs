@@ -14,7 +14,7 @@ public struct WaveGroups
 public class WaveSystem : MonoBehaviour
 {
     public static WaveSystem instance;
-    public int wave;
+    public static int wave;
 
     //WavePoint variables
     private int wavePoints;
@@ -35,6 +35,18 @@ public class WaveSystem : MonoBehaviour
     public void Awake()
     {
         instance = this;
+    }
+    public void Start()
+    {
+        Ticker.OnTickAction += OnTick;
+    }
+
+    public void OnTick()
+    {
+        if (GameManager.enemies.Count == 0)
+        {
+            StartNewWave();
+        }
     }
 
     [ContextMenu("StartNewWave")]
@@ -91,7 +103,7 @@ public class WaveSystem : MonoBehaviour
         {
             foreach (GameObject enemy in groups.enemyGO)
             {
-                GameManager.instance.enemies.Add(Instantiate(enemy, enemySpawnPos.position, enemySpawnPos.rotation));
+                GameManager.enemies.Add(Instantiate(enemy, enemySpawnPos.position, enemySpawnPos.rotation));
                 yield return new WaitForSeconds(groups.timeBetweenEnemy);
             }
             yield return new WaitForSeconds(groups.timeBetweenGroup);

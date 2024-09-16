@@ -7,8 +7,11 @@ public class Projectile : MonoBehaviour
     public int tickLifeTime;
     protected int currentTickCount;
     public int movementSpeed;
-
     public GameObject enemyGO;
+    [HideInInspector]
+    public int projectileDamage;
+
+    public float hitDistance;
     protected virtual void Start()
     {
         Ticker.OnTickAction += OnTick;

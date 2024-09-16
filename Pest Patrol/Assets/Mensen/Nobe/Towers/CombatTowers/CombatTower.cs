@@ -27,7 +27,7 @@ public abstract class CombatTower : Tower
     {
         if (currentDetectedEnemyGO) { return; }
         var distance = 0f;
-        foreach (GameObject enemy in GameManager.instance.enemies)
+        foreach (GameObject enemy in GameManager.enemies)
         {
             if (enemy != null)
             {

@@ -11,7 +11,6 @@ public class Crossbow : CombatTower
     protected override void Start()
     {
         Ticker.OnTickAction += OnTick;
-        print("Placed Crossbow");
         originalCrossbowPadRotation = crossbowPad.rotation;
         originalCrossbowRotation = crossbow.rotation;
     }
@@ -42,7 +41,6 @@ public class Crossbow : CombatTower
     {
         crossbowPad.rotation = originalCrossbowPadRotation;
         crossbow.rotation = originalCrossbowRotation;
-
     }
 
     protected override void AimAtEnemy()
@@ -67,40 +65,25 @@ public class Crossbow : CombatTower
             Ticker.OnTickAction -= EnemyDistanceCheck;
         }
     }
+
     protected override IEnumerator TryAttackEnemy()
     {
         if (currentDetectedEnemyGO == null || onReloadTime)
         {
             yield return null;
-            yield break;  
+            yield break;
         }
         onReloadTime = true;
+        AimAtEnemy();
 
-        Instantiate(projectileGO, shootPoint.position, shootPoint.rotation);
-
-        if (currentDetectedEnemyGO != null)
-        {
-            StartCoroutine(DamageEnemy(currentDetectedEnemyGO.GetComponent<Enemy>()));
-        }
+        Projectile arrow = Instantiate(projectileGO, shootPoint.position, shootPoint.rotation).GetComponent<Projectile>();
+        arrow.enemyGO = currentDetectedEnemyGO;
+        arrow.projectileDamage = baseDamage;
 
         var middleMan = baseReloadSpeed * TowerManager.globalTowerReloadSpeedMultiplier;
         yield return new WaitForSeconds(middleMan);
         onReloadTime = false;
 
-        if (currentDetectedEnemyGO != null)
-        {
-            StartCoroutine(TryAttackEnemy());
-        }
-
-        yield return null;
-    }
-    protected IEnumerator DamageEnemy(Enemy enemy)
-    {
-        if(enemy == null) {  yield return null; }   
-        yield return new WaitForSeconds(timeToAttackEnemy);
-        if (enemy == null) { yield return null; }
-        var middleman = baseDamage * TowerManager.globalTowerDamageMultiplier;
-        enemy.OnHit((int)middleman);
         yield return null;
     }
 }
