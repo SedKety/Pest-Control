@@ -1,10 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Lumpn.Discord{
     public class Feedback : MonoBehaviour
