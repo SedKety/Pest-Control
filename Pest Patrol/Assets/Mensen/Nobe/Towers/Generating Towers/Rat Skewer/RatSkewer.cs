@@ -2,22 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RatSkewer : Tower
+public class RatSkewer : GeneratingTower
 {
-
-    protected override void Start()
+    protected override void OnTick()
     {
-        StartCoroutine(GeneratePoints());
-    }
-    public IEnumerator GeneratePoints()
-    {
-        yield return new WaitForSeconds(timeBetweenPoints);
-        GameManager.AddPoints(basePointsGenerated);
-        StartCoroutine(GeneratePoints());
+        
     }
 
-    public void OnDestroy()
+    protected override void Update()
     {
-        StopCoroutine(GeneratePoints());
+        
     }
 }

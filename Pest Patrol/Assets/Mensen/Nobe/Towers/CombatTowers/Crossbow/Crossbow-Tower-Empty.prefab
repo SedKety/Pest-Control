@@ -46,20 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a3712a14b85da48bac11452122a458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPointCost: 0
   typeToTarget: 2
   typeOfTower: 1
   canShoot: 1
-  baseDamage: 0
-  baseAttackSpeed: 0
-  baseReloadSpeed: 0
+  baseDamage: 5
+  baseReloadSpeed: 1
   detectionRange: 5
-  currentDetectedEnemy: {fileID: 0}
-  basePointsGenerated: 0
-  timeBetweenPoints: 0
-  currentDamage: 0
-  currentAttackSpeed: 0
-  currentReloadSpeed: 0
+  currentDetectedEnemyGO: {fileID: 0}
+  shootPoint: {fileID: 1546755451076507328}
+  projectileGO: {fileID: 4083638275970873234, guid: f1078b032f6107d469f4d05b474e52ca,
+    type: 3}
+  timeToAttackEnemy: 1
   crossbowPad: {fileID: 7964642595798633768}
   crossbow: {fileID: 6742050679198878751}
 --- !u!65 &8917803774829504285
@@ -82,7 +79,7 @@ BoxCollider:
   m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 3, y: 3, z: 3}
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &3696152759023143467
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +110,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.41223145, z: -0.30090332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1546755451076507328}
   m_Father: {fileID: 2602531753707838891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5047601950710502147
@@ -144,7 +142,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a25d5c6e1f802e54485470a456fb0dab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -228,7 +226,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d5fec037b8e1fd54c8d71877c638476b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -312,7 +310,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d5fec037b8e1fd54c8d71877c638476b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -334,6 +332,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7937724556581918900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1546755451076507328}
+  m_Layer: 0
+  m_Name: Shootpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1546755451076507328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7937724556581918900}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.128}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6742050679198878751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8694241026440028128
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +390,7 @@ Transform:
   m_GameObject: {fileID: 8694241026440028128}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -396,7 +425,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b8fb2e5c214cff24ea0d68f6c3673b94, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

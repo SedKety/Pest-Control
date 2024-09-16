@@ -37,11 +37,4 @@ public class GameManager : MonoBehaviour
             gameOver.Invoke();
         }
     }
-
-    public void RegisterEnemyDeath(Enemy enemy)
-    {
-        AddPoints(enemy.pointsDropped);
-        enemies.Remove(enemy.gameObject);
-        Destroy(enemy.gameObject);
-    }
 }
