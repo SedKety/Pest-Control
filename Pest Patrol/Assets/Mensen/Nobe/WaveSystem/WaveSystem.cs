@@ -32,6 +32,8 @@ public class WaveSystem : MonoBehaviour
     public List<WaveGroups> currentWaveGroups;
 
     public Transform enemySpawnPos;
+
+    public bool canStartSpawningWaves;
     public void Awake()
     {
         instance = this;
@@ -43,7 +45,7 @@ public class WaveSystem : MonoBehaviour
 
     public void OnTick()
     {
-        if (GameManager.enemies.Count == 0)
+        if (GameManager.enemies.Count == 0 & canStartSpawningWaves)
         {
             StartNewWave();
         }

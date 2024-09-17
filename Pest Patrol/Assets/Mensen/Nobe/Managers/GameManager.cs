@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
-
+public enum GamePhase
+{
+    mapBuildPhase,
+    wavePhase,
+    winPhase,
+}
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -23,11 +28,16 @@ public class GameManager : MonoBehaviour
     public UnityEvent gameOver;
     public UnityEvent gameWon;
 
+    public static GamePhase gamePhase;
+
     public void Awake()
     {
         instance = this;
     }
+    public void OnTick()
+    {
 
+    }
     public static void AddPoints(int addedPoints)
     {
         var pointsToAdd = addedPoints * pMultiplier;
@@ -40,5 +50,12 @@ public class GameManager : MonoBehaviour
         {
             gameOver.Invoke();
         }
+    }
+    [ContextMenu("EnterWavePhase")]
+    public void EnterWavePhase()
+    {
+        gamePhase = GamePhase.wavePhase;
+        WaveSystem.instance.canStartSpawningWaves = true;   
+        BuildingSystem.Instance.EnterTowerPhase();
     }
 }

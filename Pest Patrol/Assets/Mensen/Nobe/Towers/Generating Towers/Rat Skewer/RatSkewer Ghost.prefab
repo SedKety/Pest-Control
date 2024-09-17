@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1106090720778490762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -114,9 +114,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4112404305039614516}
-  - component: {fileID: 486496153893801978}
+  - component: {fileID: 9131179852640270824}
   m_Layer: 0
-  m_Name: RatSkewer
+  m_Name: RatSkewer Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,20 +138,24 @@ Transform:
   - {fileID: 1734448960229407046}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &486496153893801978
-MonoBehaviour:
+--- !u!65 &9131179852640270824
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8185070648664195820}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b14f61d7cc2359a4eb41ef3aa4b89d4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typeToTarget: 0
-  typeOfTower: 0
-  canShoot: 1
-  basePointsGenerated: 10
-  timeBetweenPoints: 5
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

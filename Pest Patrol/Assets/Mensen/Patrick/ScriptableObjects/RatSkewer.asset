@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a0db6f1afdee9488fbd2c106dc675e, type: 3}
-  m_Name: TileLong
+  m_Name: RatSkewer
   m_EditorClassIdentifier: 
-  towerGhostGO: {fileID: 2663382408003767023, guid: 225af40af8e79844eac97db48d045aa9,
+  towerGhostGO: {fileID: 8185070648664195820, guid: b614b0808ac90474f81c57b6b00860ab,
     type: 3}
-  towerToPlaceGO: {fileID: 2663382408003767023, guid: 3cff00e4da5cdad47ace2c5ad6ebbc64,
+  towerToPlaceGO: {fileID: 8185070648664195820, guid: e2aeb2f9b4b4dbc49977ecb315feabba,
     type: 3}
   towerSprite: {fileID: 0}
   towerBuildPointCost: 0

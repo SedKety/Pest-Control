@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a0db6f1afdee9488fbd2c106dc675e, type: 3}
   m_Name: TileCorner
   m_EditorClassIdentifier: 
-  towerGhostGO: {fileID: 2960423030292822927, guid: 607d51b0d3dd1964b9be5f430d2a2534,
+  towerGhostGO: {fileID: 2960423030292822927, guid: 030a6c370e394754fa52890b0585c497,
     type: 3}
   towerToPlaceGO: {fileID: 2960423030292822927, guid: 607d51b0d3dd1964b9be5f430d2a2534,
     type: 3}

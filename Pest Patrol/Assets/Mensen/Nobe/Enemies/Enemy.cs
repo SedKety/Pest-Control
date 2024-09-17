@@ -55,13 +55,12 @@ public abstract class Enemy : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            GameManager.AddPoints(pointsDropped);
-            GameManager.enemies.Remove(gameObject);
             Destroy(gameObject);
         }
     }
     protected virtual void OnDestroy()
     {
-
+        GameManager.AddPoints(pointsDropped);
+        GameManager.enemies.Remove(gameObject);
     }
 }
