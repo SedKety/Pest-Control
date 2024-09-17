@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Lumpn.Discord{
     public class Feedback : MonoBehaviour
@@ -11,14 +12,12 @@ namespace Lumpn.Discord{
         private bool goodOrBad;
         public GameObject feedbackName;
         public bool hasSent = false;
-        public void Bool(bool b)
-        {
-            goodOrBad = b;
-        }
+
         public void Button()
         {
             if (!hasSent)
             {
+                goodOrBad = FindAnyObjectByType<Toggle>().isOn;
                 data.webhookName = feedbackName.GetComponent<TMP_InputField>().text;
                 webhook = data.CreateWebhook();
                 StartCoroutine(SendFeedback());

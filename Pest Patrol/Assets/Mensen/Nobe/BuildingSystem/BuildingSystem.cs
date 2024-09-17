@@ -11,17 +11,15 @@ using UnityEngine.UI;
 public class BuildingSystem : MonoBehaviour
 {
     public bool buildMode = false;
-    public TowerSO selectedTower;
+    public TowerSO selectedTowerSO;
     public Transform currentBuildingTower;
-    public TowerSO currentlySelectedTower;
+    public TowerSO currentlySelectedTowerSO;
     public int groundLayer;
-    public List<GameObject> towers = new();
+    public List<GameObject> towersGO = new();
     public float y;
-    public GameObject ground;
-
     public void Update()
     {
-        if (buildMode && selectedTower && currentBuildingTower)
+        if (buildMode && selectedTowerSO && currentBuildingTower)
         {
             UpdateTowerPosition();
         }
@@ -30,17 +28,17 @@ public class BuildingSystem : MonoBehaviour
     {
         currentBuildingTower.GetComponentInChildren<BoxCollider>().enabled = false;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (selectedTower & Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        if (selectedTowerSO & Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
             currentBuildingTower.position = new Vector3(Mathf.RoundToInt(hit.point.x), y, Mathf.RoundToInt(hit.point.z));
         }
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            PlaceTower(currentBuildingTower.position, selectedTower);
+            PlaceTower(currentBuildingTower.position, selectedTowerSO);
         }
         if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject())
         {
-            DeleteTower(currentBuildingTower.position, selectedTower);
+            DeleteTower(currentBuildingTower.position, selectedTowerSO);
         }
         if (Input.GetButtonDown("RotateTower") && !EventSystem.current.IsPointerOverGameObject())
         {
@@ -55,7 +53,7 @@ public class BuildingSystem : MonoBehaviour
         {
             GameObject g = Instantiate(tower.towerToPlaceGO, pos, currentBuildingTower.rotation);
             g.GetComponentInChildren<BoxCollider>().enabled = true;
-            towers.Add(g);
+            towersGO.Add(g);
             Destroy(currentBuildingTower.gameObject);
         }
         else
@@ -76,22 +74,22 @@ public class BuildingSystem : MonoBehaviour
     }
     public void SwitchTower(TowerSO tower)
     {
-        selectedTower = tower;
+        selectedTowerSO = tower;
         if (currentBuildingTower)
         {
             Destroy(currentBuildingTower.gameObject);
         }
-        if (currentlySelectedTower == selectedTower)
+        if (currentlySelectedTowerSO == selectedTowerSO)
         {
             currentBuildingTower = null;
-            currentlySelectedTower = null;
+            currentlySelectedTowerSO = null;
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity) && hit.collider.gameObject.layer == groundLayer)
         {
             currentBuildingTower = Instantiate(tower.towerGhostGO.transform, hit.point, Quaternion.identity);
         }
-        currentlySelectedTower = selectedTower;
+        currentlySelectedTowerSO = selectedTowerSO;
     }
     [ContextMenu("EnterBuildMode")]
     public void EnterBuildMode()
@@ -112,22 +110,12 @@ public class BuildingSystem : MonoBehaviour
         string text = clearButton.GetComponentInChildren<TMP_Text>().text;
         clearButton.GetComponent<Button>().interactable = false;
         clearButton.GetComponentInChildren<TMP_Text>().text = "Busy";
-        foreach (var tower in towers)
+        foreach (var tower in towersGO)
         {
             Destroy(tower);
             await Task.Delay(1);
         }
         clearButton.GetComponent<Button>().interactable = true;
         clearButton.GetComponentInChildren<TMP_Text>().text = text;
-    }
-
-    static int RoundTo(float num, float size)
-    {
-        int roundedUp = Mathf.CeilToInt(num);
-        if (roundedUp % size != 0)
-        {
-            roundedUp += 1;
-        }
-        return roundedUp;
     }
 }

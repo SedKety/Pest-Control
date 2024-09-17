@@ -14,14 +14,14 @@ public class Rat : MonoBehaviour
     }
     private void Update()
     {
-        if (!hasHit) transform.Translate(Vector3.forward * Time.deltaTime * 15);
+        if (!hasHit) transform.Translate((Vector3.forward * Time.deltaTime) * 15);
         else HasHit();
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer != 3)
         {
-            GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(1, 10), Random.Range(1, 10), Random.Range(1, 10) * 3), ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(10, 20), Random.Range(10, 20), Random.Range(10, 20) * 3), ForceMode.Impulse);
         }
     }
 
