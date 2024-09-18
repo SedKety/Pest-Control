@@ -5,7 +5,6 @@ public enum EnemyType
 {
     flying,
     walking,
-    tank
 }
 public abstract class Enemy : MonoBehaviour
 {

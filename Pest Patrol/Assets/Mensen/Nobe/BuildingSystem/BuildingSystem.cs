@@ -75,7 +75,7 @@ public class BuildingSystem : MonoBehaviour
         {
             for (int i = 0; i < pathTile.wayPoints.Length; i++)
             {
-                wayPoints.Add(pathTile.wayPoints[i]);  // Corrected to use [i]
+                wayPoints.Add(pathTile.wayPoints[i]); 
                 print(wayPoints.Count);
             }
         }

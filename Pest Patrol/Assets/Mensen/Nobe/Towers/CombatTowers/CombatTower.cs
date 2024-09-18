@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -27,10 +28,8 @@ public abstract class CombatTower : Tower
     {
         if (currentDetectedEnemyGO) { return; }
         var distance = 0f;
-        foreach (GameObject enemy in GameManager.enemies)
+        foreach (GameObject enemy in GameManager.enemies.Where(e => e != null))
         {
-            if (enemy != null)
-            {
                 distance = Vector3.Distance(transform.position, enemy.transform.position);
                 if (distance <= detectionRange)
                 {
@@ -38,7 +37,6 @@ public abstract class CombatTower : Tower
                     Ticker.OnTickAction += EnemyDistanceCheck;
                     break;
                 }
-            }
         }
     }
 
