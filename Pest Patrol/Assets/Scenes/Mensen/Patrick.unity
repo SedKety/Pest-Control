@@ -1830,6 +1830,36 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -35.529663
       objectReference: {fileID: 0}
+    - target: {fileID: 6488302775709716814, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_IsOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488302775709716814, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488302775709716814, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488302775709716814, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488302775709716814, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488302775709716814, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6737765921085484101, guid: ce0b195734d3997488442eee5c740200,
         type: 3}
       propertyPath: m_AnchoredPosition.x

@@ -21,7 +21,7 @@ public class Rat : MonoBehaviour
     {
         if (collision.gameObject.layer != 3)
         {
-            GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(10, 20), Random.Range(10, 20), Random.Range(10, 20) * 3), ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), Random.Range(-20, 20) * 3), ForceMode.Impulse);
         }
     }
 

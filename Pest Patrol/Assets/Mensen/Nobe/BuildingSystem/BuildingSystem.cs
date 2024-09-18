@@ -17,7 +17,7 @@ public class BuildingSystem : MonoBehaviour
     public int groundLayer;
     public List<GameObject> towersGO = new();
     public float y;
-
+    public bool tileBuildingMode;
     public GameObject pathPhaseGO, towerPhaseGO;
 
 
@@ -50,12 +50,29 @@ public class BuildingSystem : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (selectedTowerSO & Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
-            currentBuildingTower.position = new Vector3(Mathf.RoundToInt(hit.point.x), y, Mathf.RoundToInt(hit.point.z));
+            if (tileBuildingMode)
+            {
+                if (towersGO.Count != 0)
+                {
+                    for (int i = 0; i < towersGO.Count; i++)
+                    {
+
+                    }
+                }
+                else
+                {
+                    currentBuildingTower.position = new Vector3(Mathf.RoundToInt(hit.point.x), y, Mathf.RoundToInt(hit.point.z));
+                }
+            }
+            else
+            {
+                currentBuildingTower.position = new Vector3(Mathf.RoundToInt(hit.point.x), y, Mathf.RoundToInt(hit.point.z));
+            }
         }
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-           PlaceTower(currentBuildingTower.position, selectedTowerSO);
-            
+            PlaceTower(currentBuildingTower.position, selectedTowerSO);
+
         }
         if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject())
         {
@@ -73,9 +90,11 @@ public class BuildingSystem : MonoBehaviour
         PathTile pathTile = placedGO.GetComponent<PathTile>();
         if (pathTile != null && pathTile.wayPoints != null && pathTile.wayPoints.Length > 0)
         {
-            for (int i = 0; i < pathTile.wayPoints.Length; i++)
+            Transform[] waypointsToAdd = pathTile.shouldFlipWayPoints ? pathTile.wayPoints.Reverse().ToArray() : pathTile.wayPoints;
+
+            for (int i = 0; i < waypointsToAdd.Length; i++)
             {
-                wayPoints.Add(pathTile.wayPoints[i]); 
+                wayPoints.Add(waypointsToAdd[i]);
                 print(wayPoints.Count);
             }
         }
@@ -126,12 +145,21 @@ public class BuildingSystem : MonoBehaviour
         }
         currentlySelectedTowerSO = selectedTowerSO;
     }
+    static public GameObject FindGameObjectWithLayer(int layer)
+    {
+        var arrayGO = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+        GameObject go = null;
+        for (int i = 0; i < arrayGO.Length; i++)
+        {
+            if (arrayGO[i].layer == layer) { go = arrayGO[i]; }
+        }
+        return go;
+    }
     [ContextMenu("EnterBuildMode")]
     public void EnterBuildMode()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity);
-        y = hit.point.y;
+        GameObject go = FindGameObjectWithLayer(3);
+        y = go.transform.position.y;
     }
     [ContextMenu("ExitBuildMode")]
     public void ExitBuildMode()
