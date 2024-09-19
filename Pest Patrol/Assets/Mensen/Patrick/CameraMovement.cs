@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public float minCameraDistance, maxCameraDistance;
+    public float cameraDistance;
     public float horizontalLimit, verticalLimit;
     public float speed;
 
@@ -17,10 +18,10 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
-
+        cameraDistance = (-Input.mouseScrollDelta.y * Time.deltaTime * speed * 10);
         float hor = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         float vert = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        Vector3 movement = new Vector3(hor, 0, vert);
+        Vector3 movement = new Vector3(hor, cameraDistance, vert);
 
         Camera.main.transform.Translate(movement, Space.World);
 

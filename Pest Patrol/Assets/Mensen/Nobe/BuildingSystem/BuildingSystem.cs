@@ -19,6 +19,7 @@ public class BuildingSystem : MonoBehaviour
     public float y;
     public bool tileBuildingMode;
     public GameObject pathPhaseGO, towerPhaseGO;
+    public float minDistance;
 
 
     private static List<Transform> wayPoints = new();
@@ -52,17 +53,23 @@ public class BuildingSystem : MonoBehaviour
         {
             if (tileBuildingMode)
             {
+                currentBuildingTower.position = new Vector3(Mathf.RoundToInt(hit.point.x), y, Mathf.RoundToInt(hit.point.z));
                 if (towersGO.Count != 0)
                 {
-                    for (int i = 0; i < towersGO.Count; i++)
+                    List<PathTile> list = FindObjectsByType<PathTile>(FindObjectsSortMode.None).ToList();
+                    for (int i = 0; i < list.Count; i++)
                     {
-
+                        for (int x = 0; x < list[i].snapPoints.Count; x++)
+                        {
+                            if (Vector3.Distance(list[i].snapPoints[x].position, currentBuildingTower.position) < minDistance)
+                            {
+                                currentBuildingTower.position = list[i].snapPoints[x].position;
+                                minDistance = Vector3.Distance(list[i].snapPoints[x].position, currentBuildingTower.position);
+                            }
+                        }
                     }
                 }
-                else
-                {
-                    currentBuildingTower.position = new Vector3(Mathf.RoundToInt(hit.point.x), y, Mathf.RoundToInt(hit.point.z));
-                }
+                minDistance = 5;
             }
             else
             {
@@ -178,5 +185,15 @@ public class BuildingSystem : MonoBehaviour
         }
         clearButton.GetComponent<Button>().interactable = true;
         clearButton.GetComponentInChildren<TMP_Text>().text = text;
+    }
+    public void SwitchModes()
+    {
+        tileBuildingMode = false;
+        if (currentBuildingTower)
+        {
+            Destroy(currentBuildingTower.gameObject);
+            currentBuildingTower = null;
+            currentlySelectedTowerSO = null;
+        }
     }
 }

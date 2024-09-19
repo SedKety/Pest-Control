@@ -6,9 +6,13 @@ using UnityEngine;
 public class Rat : MonoBehaviour
 {
     private Vector3 originalPos;
-    private bool hasHit;
+    private Quaternion originalRot;
+    private bool hasHit = false;
+    public bool isRat;
+    public bool isCar;
     private void Start()
     {
+        originalRot = transform.rotation;
         originalPos = transform.position;
         Return();
     }
@@ -16,6 +20,15 @@ public class Rat : MonoBehaviour
     {
         if (!hasHit) transform.Translate((Vector3.forward * Time.deltaTime) * 15);
         else HasHit();
+
+        if (isRat)
+        {
+            transform.Rotate(0, 50, 0);
+            if (isCar)
+            {
+                StopRotating();
+            }
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -24,6 +37,7 @@ public class Rat : MonoBehaviour
             GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), Random.Range(-20, 20) * 3), ForceMode.Impulse);
         }
     }
+
 
     async void Return()
     {
@@ -35,7 +49,16 @@ public class Rat : MonoBehaviour
 
     async void HasHit()
     {
+        isRat = true;
         await Task.Delay(1000);
         hasHit = false;
+
+    }
+
+    async void StopRotating()
+    {
+        await Task.Delay(1000);
+        isRat = false;
+        transform.rotation = originalRot;
     }
 }

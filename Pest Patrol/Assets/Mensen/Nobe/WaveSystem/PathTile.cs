@@ -6,4 +6,5 @@ public class PathTile : MonoBehaviour
 {
     public bool shouldFlipWayPoints;
     public Transform[] wayPoints;
+    public List<Transform> snapPoints;
 }

@@ -1513,8 +1513,10 @@ MonoBehaviour:
   groundLayer: 3
   towersGO: []
   y: 260
+  tileBuildingMode: 0
   pathPhaseGO: {fileID: 3896965580826619202}
   towerPhaseGO: {fileID: 5908276149891628169}
+  minDistance: 5
 --- !u!1 &6562386782141837190
 GameObject:
   m_ObjectHideFlags: 0
