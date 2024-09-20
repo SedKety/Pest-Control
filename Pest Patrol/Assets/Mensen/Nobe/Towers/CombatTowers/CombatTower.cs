@@ -28,15 +28,15 @@ public abstract class CombatTower : Tower
     {
         if (currentDetectedEnemyGO) { return; }
         var distance = 0f;
-        foreach (GameObject enemy in GameManager.enemies.Where(e => e != null))
+        foreach (GameObject enemy in GameManager.enemies.Where(enemy => enemy != null))
         {
-                distance = Vector3.Distance(transform.position, enemy.transform.position);
-                if (distance <= detectionRange)
-                {
-                    currentDetectedEnemyGO = enemy;
-                    Ticker.OnTickAction += EnemyDistanceCheck;
-                    break;
-                }
+            distance = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distance <= detectionRange)
+            {
+                currentDetectedEnemyGO = enemy;
+                Ticker.OnTickAction += EnemyDistanceCheck;
+                break;
+            }
         }
     }
 

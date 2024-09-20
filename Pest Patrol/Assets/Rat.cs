@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class Rat : MonoBehaviour
+public class Ratter : MonoBehaviour
 {
     private Vector3 originalPos;
     private Quaternion originalRot;

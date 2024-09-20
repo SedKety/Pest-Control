@@ -101,16 +101,22 @@ public class WaveSystem : MonoBehaviour
 
     public IEnumerator SpawnEnemyGroups()
     {
-        foreach (WaveGroups groups in currentWaveGroups)
+        List<WaveGroups> groups = new List<WaveGroups>();
+        foreach (WaveGroups group in currentWaveGroups)
         {
-            foreach (GameObject enemy in groups.enemyGO)
-            {
-                GameManager.enemies.Add(Instantiate(enemy, enemySpawnPos.position, enemySpawnPos.rotation));
-                yield return new WaitForSeconds(groups.timeBetweenEnemy);
-            }
-            yield return new WaitForSeconds(groups.timeBetweenGroup);
+            groups.Add(group);
         }
         currentWaveGroups.Clear();
+        for (int i = 0; i  < groups.Count; i++) 
+        {
+            foreach (GameObject enemy in groups[i].enemyGO)
+            {
+                GameManager.enemies.Add(Instantiate(enemy, enemySpawnPos.position, enemySpawnPos.rotation));
+                yield return new WaitForSeconds(groups[i].timeBetweenEnemy);
+            }
+            yield return new WaitForSeconds(groups[i].timeBetweenGroup);
+        }
+        groups.Clear();
         yield return null;
     }
 }
