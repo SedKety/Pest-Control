@@ -71,6 +71,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1072011394666706949}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 59d8947bbf8581047834fd9d5a1ceca0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 329966589033327597}
   m_SourcePrefab: {fileID: 100100000, guid: 59d8947bbf8581047834fd9d5a1ceca0, type: 3}
 --- !u!1 &2663382408003767023 stripped
 GameObject:
@@ -97,5 +101,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 2, y: 1, z: 4}
-  m_Center: {x: 0, y: 0.6, z: 0}
+  m_Size: {x: 2, y: 1, z: 4.6614156}
+  m_Center: {x: 0, y: 0.6, z: -0.08397412}
+--- !u!114 &329966589033327597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2663382408003767023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7631cb4f08eae6443958571b1d371359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldFlipWayPoints: 0
+  wayPoints: []
+  snapPoints: []
+  tileSize: 4

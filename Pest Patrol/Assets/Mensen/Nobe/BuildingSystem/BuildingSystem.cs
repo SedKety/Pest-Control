@@ -20,6 +20,7 @@ public class BuildingSystem : MonoBehaviour
     public bool tileBuildingMode;
     public GameObject pathPhaseGO, towerPhaseGO;
     public float minDistance;
+    public bool isPlacingTower;
 
 
     private static List<Transform> wayPoints = new();
@@ -49,48 +50,41 @@ public class BuildingSystem : MonoBehaviour
     {
         currentBuildingTower.GetComponentInChildren<BoxCollider>().enabled = false;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (selectedTowerSO & Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+
+        if (selectedTowerSO && Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
+            Vector3 targetPosition;
+
             if (tileBuildingMode)
             {
-                currentBuildingTower.position = new Vector3(Mathf.RoundToInt(hit.point.x), y, Mathf.RoundToInt(hit.point.z));
-                if (towersGO.Count != 0)
-                {
-                    List<PathTile> list = FindObjectsByType<PathTile>(FindObjectsSortMode.None).ToList();
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        for (int x = 0; x < list[i].snapPoints.Count; x++)
-                        {
-                            if (Vector3.Distance(list[i].snapPoints[x].position, currentBuildingTower.position) < minDistance)
-                            {
-                                currentBuildingTower.position = list[i].snapPoints[x].position;
-                                minDistance = Vector3.Distance(list[i].snapPoints[x].position, currentBuildingTower.position);
-                            }
-                        }
-                    }
-                }
-                minDistance = 5;
+                targetPosition = new Vector3(
+                    Mathf.RoundToInt(hit.point.x),
+                    y,
+                    Mathf.RoundToInt(hit.point.z));
+                currentBuildingTower.position = targetPosition;
             }
             else
             {
-                currentBuildingTower.position = new Vector3(Mathf.RoundToInt(hit.point.x), y, Mathf.RoundToInt(hit.point.z));
+                currentBuildingTower.position = hit.point;
+            }
+
+            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            {
+                PlaceTower(currentBuildingTower.position, selectedTowerSO);
+            }
+
+            if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject())
+            {
+                DeleteTower(currentBuildingTower.position, selectedTowerSO);
+            }
+
+            if (Input.GetButtonDown("RotateTower") && !EventSystem.current.IsPointerOverGameObject())
+            {
+                currentBuildingTower.Rotate(0, 90, 0);
             }
         }
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-        {
-            PlaceTower(currentBuildingTower.position, selectedTowerSO);
-
-        }
-        if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject())
-        {
-            DeleteTower(currentBuildingTower.position, selectedTowerSO);
-        }
-        if (Input.GetButtonDown("RotateTower") && !EventSystem.current.IsPointerOverGameObject())
-        {
-            currentBuildingTower.Rotate(0, 90, 0);
-            Debug.Log("manhandle me daddy :3");
-        }
     }
+
 
     public void CheckForPath(GameObject placedGO)
     {
@@ -108,23 +102,39 @@ public class BuildingSystem : MonoBehaviour
     }
     public void PlaceTower(Vector3 pos, TowerSO tower)
     {
-        List<Collider> colliders = Physics.OverlapBox(pos, currentBuildingTower.GetComponentInChildren<BoxCollider>().size / 2.5f).ToList();
-        if (colliders.Count <= 1)
+        isPlacingTower = true;
+        Collider[] colliders = Physics.OverlapBox(pos, currentBuildingTower.GetComponent<BoxCollider>().size * 0.75f);
+        int amountOfColliders = colliders.Count(col => col.gameObject.layer != groundLayer || col.transform.parent == col.transform);;
+        if (amountOfColliders == 1)
         {
             GameObject GO = Instantiate(tower.towerToPlaceGO, pos, currentBuildingTower.rotation);
             GO.GetComponentInChildren<BoxCollider>().enabled = true;
             towersGO.Add(GO);
             CheckForPath(GO);
             Destroy(currentBuildingTower.gameObject);
+
         }
         else
         {
-            Debug.Log(colliders.Count);
+            if (towersGO.Count == 0)
+            {
+                GameObject GO = Instantiate(tower.towerToPlaceGO, pos, currentBuildingTower.rotation);
+                GO.GetComponentInChildren<BoxCollider>().enabled = true;
+                towersGO.Add(GO);
+                CheckForPath(GO);
+                Destroy(currentBuildingTower.gameObject);
+            }
+            else
+            {
+                Debug.Log("Position is in tower or is not connected to path");
+                Debug.Log(amountOfColliders);
+            }
         }
+        isPlacingTower = false;
     }
     public void DeleteTower(Vector3 pos, TowerSO tower)
     {
-        Collider[] colliders = Physics.OverlapBox(pos, currentBuildingTower.GetComponentInChildren<BoxCollider>().size / 2.5f);
+        Collider[] colliders = Physics.OverlapBox(pos, currentBuildingTower.GetComponent<BoxCollider>().size * 0.75f);
         foreach (Collider col in colliders)
         {
             if (col.gameObject.layer != groundLayer)
@@ -152,21 +162,17 @@ public class BuildingSystem : MonoBehaviour
         }
         currentlySelectedTowerSO = selectedTowerSO;
     }
-    static public GameObject FindGameObjectWithLayer(int layer)
+    public GameObject FindGameObjectWithLayer(int layer)
     {
         var arrayGO = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
-        GameObject go = null;
-        for (int i = 0; i < arrayGO.Length; i++)
-        {
-            if (arrayGO[i].layer == layer) { go = arrayGO[i]; }
-        }
+        var go = arrayGO.First(obj => obj.layer == layer);
         return go;
     }
     [ContextMenu("EnterBuildMode")]
     public void EnterBuildMode()
     {
         GameObject go = FindGameObjectWithLayer(3);
-        y = go.transform.position.y;
+        y = go.transform.position.y + 0.5f;
     }
     [ContextMenu("ExitBuildMode")]
     public void ExitBuildMode()

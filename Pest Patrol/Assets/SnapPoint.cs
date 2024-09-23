@@ -6,7 +6,7 @@ public class SnapPoint : MonoBehaviour
 {
     void Start()
     {
-        Collider[] col = Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size / 2.5f);
+        Collider[] col = Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size * 0.5f);
         if (col.Length > 2)
         {
             transform.parent.GetComponent<PathTile>().snapPoints.Remove(gameObject.transform);
