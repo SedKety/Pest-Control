@@ -23,6 +23,8 @@ public class WaveSystem : MonoBehaviour
 
 
     // miscelaneus variable
+    // miscellaneous
+    // wtf is a miscelaneus nobe
     public float enemyHealthMultiplierIncrease;
 
     //Wave Enemy Variables

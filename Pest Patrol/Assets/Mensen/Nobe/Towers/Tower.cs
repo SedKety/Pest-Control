@@ -21,6 +21,7 @@ public abstract class Tower : MonoBehaviour
     public TargettingType typeToTarget;
     public TowerType typeOfTower;
     public bool canShoot = true;
+    public GameObject canvas;
 
     protected abstract void Start();
     protected abstract void Update();

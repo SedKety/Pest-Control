@@ -9,15 +9,19 @@ namespace Lumpn.Discord{
         public WebhookData data;
         public Webhook webhook;
         public GameObject text;
-        private bool goodOrBad;
+        private int face;
         public GameObject feedbackName;
         public bool hasSent = false;
 
+
+        public void Review(int i)
+        {
+            face = i;
+        }
         public void Button()
         {
             if (!hasSent)
             {
-                goodOrBad = FindAnyObjectByType<Toggle>().isOn;
                 data.webhookName = feedbackName.GetComponent<TMP_InputField>().text;
                 webhook = data.CreateWebhook();
                 StartCoroutine(SendFeedback());
@@ -29,13 +33,16 @@ namespace Lumpn.Discord{
         }
         public IEnumerator SendFeedback()
         {
+            if (face == 0) StopCoroutine(SendFeedback());
             hasSent = true;
             StartCoroutine(webhook.Send(text.GetComponent<TMP_InputField>().text));
             yield return new WaitForSeconds(1);
-            switch (goodOrBad)
+            switch (face)
             {
-                case true: StartCoroutine(webhook.Send(":thumbsup:")); break;
-                case false: StartCoroutine(webhook.Send(":thumbsdown:")); break;
+                case 1: StartCoroutine(webhook.Send(":smiley:")); break;
+                case 2: StartCoroutine(webhook.Send("<:face:1287754864499359916>")); break;
+                case 3: StartCoroutine(webhook.Send(":sob:")); break;
+                default: Debug.Log("No review selected."); break;
             }
         }
     }
