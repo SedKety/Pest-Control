@@ -32,7 +32,6 @@ public class Crossbow : CombatTower
         else if (currentDetectedEnemyGO != null)
         {
             StartCoroutine(TryAttackEnemy());
-
         }
     }
     #endregion

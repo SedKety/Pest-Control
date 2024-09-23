@@ -4,202 +4,332 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+public enum BuildState
+{
+    TileBuild,
+    TowerBuild,
+}
+
 public class BuildingSystem : MonoBehaviour
 {
-    public static BuildingSystem Instance;
+    public static BuildingSystem Instance { get; private set; }
+
     public TowerSO selectedTowerSO;
     public Transform currentBuildingTower;
-    public TowerSO currentlySelectedTowerSO;
-    public int groundLayer;
-    public List<GameObject> towersGO = new();
-    public float y;
-    public bool tileBuildingMode;
+    public LayerMask groundLayer;
     public GameObject pathPhaseGO, towerPhaseGO;
-    public float minDistance;
-    public bool isPlacingTower;
+    public float placementHeightOffset = 0.5f;
+    public float minDistance = 1f;
+    public bool tileBuildingMode;
+    public BuildState state;
 
-
+    public List<GameObject> towersGO = new();
     private static List<Transform> wayPoints = new();
 
-    public void Awake()
+    private bool isPlacingTower;
+
+    public Material validMaterial;  
+    public Material invalidMaterial; 
+
+    private void Awake()
     {
         Instance = this;
     }
-    public void Update()
-    {
-        if (selectedTowerSO && currentBuildingTower)
-        {
-            UpdateTowerPosition();
-        }
-    }
+
     [ContextMenu("EnterTowerPhase")]
     public void EnterTowerPhase()
     {
+        state = BuildState.TowerBuild;
         pathPhaseGO.SetActive(false);
         towerPhaseGO.SetActive(true);
-        for (int i = 0; i < wayPoints.Count; i++)
-        {
-            GameManager.wayPoints.Add(wayPoints[i]);
-        }
+
+        GameManager.wayPoints.AddRange(wayPoints);
     }
-    public void UpdateTowerPosition()
+
+    public void SwitchTower(TowerSO newTowerSO)
     {
-        currentBuildingTower.GetComponentInChildren<BoxCollider>().enabled = false;
+        if (newTowerSO == null)
+        {
+            Debug.LogError("Selected TowerSO is null.");
+            return;
+        }
+
+        if (newTowerSO == selectedTowerSO)
+        {
+            DestroyCurrentTowerPreview();
+            selectedTowerSO = null;
+            return;
+        }
+
+        selectedTowerSO = newTowerSO;
+        DestroyCurrentTowerPreview();
+
+        CreateTowerGhostAtMousePosition();
+    }
+
+    private void CreateTowerGhostAtMousePosition()
+    {
+        if (selectedTowerSO == null)
+        {
+            Debug.LogError("selectedTowerSO is null.");
+            return;
+        }
+
+        if (selectedTowerSO.towerGhostGO == null)
+        {
+            Debug.LogError("Selected tower does not have a valid towerGhostGO.");
+            return;
+        }
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (selectedTowerSO && Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
-            Vector3 targetPosition;
-
-            if (tileBuildingMode)
-            {
-                targetPosition = new Vector3(
-                    Mathf.RoundToInt(hit.point.x),
-                    y,
-                    Mathf.RoundToInt(hit.point.z));
-                currentBuildingTower.position = targetPosition;
-            }
-            else
-            {
-                currentBuildingTower.position = hit.point;
-            }
-
-            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-            {
-                PlaceTower(currentBuildingTower.position, selectedTowerSO);
-            }
-
-            if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject())
-            {
-                DeleteTower(currentBuildingTower.position, selectedTowerSO);
-            }
-
-            if (Input.GetButtonDown("RotateTower") && !EventSystem.current.IsPointerOverGameObject())
-            {
-                currentBuildingTower.Rotate(0, 90, 0);
-            }
-        }
-    }
-
-
-    public void CheckForPath(GameObject placedGO)
-    {
-        PathTile pathTile = placedGO.GetComponent<PathTile>();
-        if (pathTile != null && pathTile.wayPoints != null && pathTile.wayPoints.Length > 0)
-        {
-            Transform[] waypointsToAdd = pathTile.shouldFlipWayPoints ? pathTile.wayPoints.Reverse().ToArray() : pathTile.wayPoints;
-
-            for (int i = 0; i < waypointsToAdd.Length; i++)
-            {
-                wayPoints.Add(waypointsToAdd[i]);
-                print(wayPoints.Count);
-            }
-        }
-    }
-    public void PlaceTower(Vector3 pos, TowerSO tower)
-    {
-        isPlacingTower = true;
-        Collider[] colliders = Physics.OverlapBox(pos, currentBuildingTower.GetComponent<BoxCollider>().size * 0.75f);
-        int amountOfColliders = colliders.Count(col => col.gameObject.layer != groundLayer || col.transform.parent == col.transform);;
-        if (amountOfColliders == 1)
-        {
-            GameObject GO = Instantiate(tower.towerToPlaceGO, pos, currentBuildingTower.rotation);
-            GO.GetComponentInChildren<BoxCollider>().enabled = true;
-            towersGO.Add(GO);
-            CheckForPath(GO);
-            Destroy(currentBuildingTower.gameObject);
-
+            currentBuildingTower = Instantiate(selectedTowerSO.towerGhostGO, hit.point, Quaternion.identity).transform;
         }
         else
         {
-            if (towersGO.Count == 0)
+            Debug.LogWarning("Raycast did not hit the ground layer.");
+        }
+    }
+
+    private void DestroyCurrentTowerPreview()
+    {
+        if (currentBuildingTower != null)
+        {
+            Destroy(currentBuildingTower.gameObject);
+            currentBuildingTower = null;
+        }
+    }
+
+    public void PlaceTower(Vector3 position, TowerSO tower)
+    {
+        Ray ray = new Ray(position + Vector3.up * 5, Vector3.down); 
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        {
+            if (((1 << hit.collider.gameObject.layer) & groundLayer.value) != 0)
             {
-                GameObject GO = Instantiate(tower.towerToPlaceGO, pos, currentBuildingTower.rotation);
-                GO.GetComponentInChildren<BoxCollider>().enabled = true;
-                towersGO.Add(GO);
-                CheckForPath(GO);
-                Destroy(currentBuildingTower.gameObject);
+                if (isPlacingTower || !IsValidTowerPosition(position)) return;
+
+                isPlacingTower = true;
+
+                GameObject newTower = Instantiate(tower.towerToPlaceGO, position, currentBuildingTower.rotation);
+                newTower.GetComponentInChildren<BoxCollider>().enabled = true;
+                if(state == BuildState.TowerBuild)
+                {
+                    towersGO.Add(newTower);
+                }
+                DestroyCurrentTowerPreview();
+
+                isPlacingTower = false;
             }
             else
             {
-                Debug.Log("Position is in tower or is not connected to path");
-                Debug.Log(amountOfColliders);
+                Debug.LogWarning("Invalid placement: The object beneath the tower is not ground.");
             }
         }
-        isPlacingTower = false;
+        else
+        {
+            Debug.LogWarning("Invalid placement: Raycast did not hit any object.");
+        }
     }
-    public void DeleteTower(Vector3 pos, TowerSO tower)
+
+    public LayerMask LayerHit(RaycastHit hit)
     {
-        Collider[] colliders = Physics.OverlapBox(pos, currentBuildingTower.GetComponent<BoxCollider>().size * 0.75f);
+        return hit.collider.gameObject.layer;  
+    }
+
+    public void DeleteTower(Vector3 position)
+    {
+        Collider[] colliders = Physics.OverlapBox(position, currentBuildingTower.GetComponent<BoxCollider>().size * 0.75f);
         foreach (Collider col in colliders)
         {
             if (col.gameObject.layer != groundLayer)
             {
                 Destroy(col.gameObject);
+                towersGO.Remove(col.gameObject);
             }
         }
     }
-    public void SwitchTower(TowerSO tower)
+
+    private void Update()
     {
-        selectedTowerSO = tower;
-        if (currentBuildingTower)
+        if (currentBuildingTower == null || selectedTowerSO == null) return;
+
+        if (state == BuildState.TowerBuild)
         {
-            Destroy(currentBuildingTower.gameObject);
+            UpdateTowerPosition(); 
         }
-        if (currentlySelectedTowerSO == selectedTowerSO)
+        else if (state == BuildState.TileBuild)
         {
-            currentBuildingTower = null;
-            currentlySelectedTowerSO = null;
+            UpdatePathPosition(); 
         }
+    }
+
+    private void UpdateTowerPosition()
+    {
+        if (state != BuildState.TowerBuild) return;
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity) && hit.collider.gameObject.layer == groundLayer)
+
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
-            currentBuildingTower = Instantiate(tower.towerGhostGO.transform, hit.point, Quaternion.identity);
+            Vector3 targetPosition = hit.point;
+
+            currentBuildingTower.position = targetPosition;
+
+            if (IsValidTowerPosition(targetPosition) && IsGroundBeneath(targetPosition))
+            {
+                SetTowerMaterial(validMaterial);  
+            }
+            else
+            {
+                SetTowerMaterial(invalidMaterial);  
+            }
+
+            HandlePlacementInput(targetPosition);
         }
-        currentlySelectedTowerSO = selectedTowerSO;
     }
-    public GameObject FindGameObjectWithLayer(int layer)
+    private bool IsGroundBeneath(Vector3 position)
     {
-        var arrayGO = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
-        var go = arrayGO.First(obj => obj.layer == layer);
-        return go;
+        Ray ray = new Ray(position + Vector3.up * 5, Vector3.down);
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        {
+            return ((1 << hit.collider.gameObject.layer) & groundLayer.value) != 0;
+        }
+        return false;
     }
+
+    private bool IsValidTowerPosition(Vector3 position)
+    {
+        Collider[] colliders = Physics.OverlapBox(position, currentBuildingTower.GetComponent<BoxCollider>().size * 0.75f);
+        int blockingColliders = colliders.Count(c => c.gameObject.layer != groundLayer);
+
+        if (blockingColliders > selectedTowerSO.allowedOverlaps)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void SetTowerMaterial(Material material)
+    {
+        if (currentBuildingTower != null)
+        {
+            Renderer[] renderers = currentBuildingTower.GetComponentsInChildren<Renderer>();
+            foreach (var renderer in renderers)
+            {
+                renderer.material = material;
+            }
+        }
+    }
+
+    private void UpdatePathPosition()
+    {
+        if (state != BuildState.TileBuild)
+        {
+            return;
+        }
+
+        currentBuildingTower.GetComponentInChildren<BoxCollider>().enabled = false;
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            var pathTile = hit.collider.GetComponent<IPathTileInterface>();
+            if (pathTile != null)
+            {
+                SnapToTile(pathTile); 
+                SetTowerMaterial(validMaterial); 
+            }
+            else
+            {
+                SetTowerMaterial(invalidMaterial); 
+            }
+        }
+        else
+        {
+            SetTowerMaterial(invalidMaterial); 
+        }
+    }
+
+    private void SnapToTile(IPathTileInterface tile)
+    {
+        if (state == BuildState.TileBuild) 
+        {
+            Transform snapPoint = tile.GetSnapPoint();
+            currentBuildingTower.position = snapPoint.position;
+            currentBuildingTower.rotation = snapPoint.rotation;
+
+            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            {
+                PlaceTower(currentBuildingTower.position, selectedTowerSO);
+            }
+        }
+    }
+
+    private void HandlePlacementInput(Vector3 targetPosition)
+    {
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        {
+            PlaceTower(targetPosition, selectedTowerSO);
+        }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            DeleteTower(targetPosition);
+        }
+        else if (Input.GetButtonDown("RotateTower"))
+        {
+            RotateTowerPreview();
+        }
+    }
+
+    private void RotateTowerPreview()
+    {
+        if (currentBuildingTower != null)
+        {
+            currentBuildingTower.Rotate(0, 90, 0);
+        }
+    }
+
     [ContextMenu("EnterBuildMode")]
     public void EnterBuildMode()
     {
-        GameObject go = FindGameObjectWithLayer(3);
-        y = go.transform.position.y + 0.5f;
+        GameObject referenceObject = FindGameObjectWithLayer(groundLayer);
+        placementHeightOffset = referenceObject.transform.position.y + 0.5f;
     }
+
     [ContextMenu("ExitBuildMode")]
     public void ExitBuildMode()
     {
-        Destroy(currentBuildingTower.gameObject);
+        DestroyCurrentTowerPreview();
     }
+
     public async void ClearTowers(GameObject clearButton)
     {
-        string text = clearButton.GetComponentInChildren<TMP_Text>().text;
+        var buttonText = clearButton.GetComponentInChildren<TMP_Text>();
+        buttonText.text = "Clearing...";
+
         clearButton.GetComponent<Button>().interactable = false;
-        clearButton.GetComponentInChildren<TMP_Text>().text = "Busy";
         foreach (var tower in towersGO)
         {
             Destroy(tower);
             await Task.Delay(1);
         }
+
+        towersGO.Clear();
+        buttonText.text = "Clear";
         clearButton.GetComponent<Button>().interactable = true;
-        clearButton.GetComponentInChildren<TMP_Text>().text = text;
     }
-    public void SwitchModes()
+
+    private GameObject FindGameObjectWithLayer(int layer)
     {
-        tileBuildingMode = false;
-        if (currentBuildingTower)
-        {
-            Destroy(currentBuildingTower.gameObject);
-            currentBuildingTower = null;
-            currentlySelectedTowerSO = null;
-        }
+        return FindObjectsOfType<GameObject>().FirstOrDefault(obj => obj.layer == layer);
     }
 }

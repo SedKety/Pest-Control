@@ -11,6 +11,7 @@ public struct WaveGroups
     public float timeBetweenEnemy;
     public float timeBetweenGroup;
 }
+
 public class WaveSystem : MonoBehaviour
 {
     public static WaveSystem instance;
@@ -57,12 +58,17 @@ public class WaveSystem : MonoBehaviour
     public void StartNewWave()
     {
         StopCoroutine(SpawnEnemyGroups());
+
         currentWaveGroups.Clear();
+
+
         GameManager.enemyHealthMultiplier += enemyHealthMultiplierIncrease;
+
         wave++;
         wavePoints = 0;
         int middleMan = startingWavePoints * wave;
         wavePoints = middleMan;
+
         StartCoroutine(GenerateNewWave());
     }
     public IEnumerator GenerateNewWave()

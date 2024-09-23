@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnapPoint : MonoBehaviour
+public class SnapPoint : MonoBehaviour, IPathTileInterface
 {
-    void Start()
+    public Transform snapPoint;
+
+    public Transform GetSnapPoint()
     {
-        Collider[] col = Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size * 0.5f);
-        if (col.Length > 2)
-        {
-            transform.parent.GetComponent<PathTile>().snapPoints.Remove(gameObject.transform);
-            Destroy(gameObject);
-        }
+        return snapPoint;
     }
 }

@@ -18,3 +18,4 @@ MonoBehaviour:
     type: 3}
   towerSprite: {fileID: 21300000, guid: 6c85b5ea3925d4524a953206ce34f816, type: 3}
   towerBuildPointCost: 0
+  allowedOverlaps: 1

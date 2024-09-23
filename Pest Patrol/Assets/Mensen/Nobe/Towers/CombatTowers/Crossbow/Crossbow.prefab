@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5326163201230968960}
   - component: {fileID: 3044840096642424323}
   - component: {fileID: 2153960971063825971}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 3055540585980998911}
   - component: {fileID: 2919970804259548157}
   - component: {fileID: 6899382094931318833}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 1125714869181096262}
   - component: {fileID: 9194821100059364659}
   - component: {fileID: 8862912849232500103}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 194840864776612796}
   - component: {fileID: 672689801587595841}
   - component: {fileID: 2109477140779859307}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 7644335595950883108}
   - component: {fileID: 3679864138233290495}
   - component: {fileID: 486648309669528082}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 1210026265643032122}
   - component: {fileID: 477699654683140875}
   - component: {fileID: 8837247082691303804}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 5255544806967331168}
   - component: {fileID: 5433287824996610263}
   - component: {fileID: 5880724841684637581}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Button (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 9219360189587652070}
   - component: {fileID: 7493529156487608063}
   - component: {fileID: 5513441996165364467}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,7 +886,7 @@ GameObject:
   - component: {fileID: 8795064507355645305}
   - component: {fileID: 2571862442077814879}
   - component: {fileID: 6663341486630639913}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Button (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1035,7 @@ GameObject:
   - component: {fileID: 4911906637525356203}
   - component: {fileID: 8657951446665008580}
   - component: {fileID: 5161754246258636335}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1266,7 +1266,7 @@ GameObject:
   - component: {fileID: 6084040292198139265}
   - component: {fileID: 1369475963543435229}
   - component: {fileID: 3309611122953150393}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1487,7 +1487,7 @@ GameObject:
   - component: {fileID: 5695071733233780063}
   - component: {fileID: 8195203569763576003}
   - component: {fileID: 1002527657997251336}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1736,10 +1736,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2535913286885662139}
     m_Modifications:
+    - target: {fileID: 1743155146979764712, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3193659334717160770, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3293608079465152753, guid: dd451b523afb900479f9ed07adf4abe8,
         type: 3}
       propertyPath: m_Name
       value: TowerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293608079465152753, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3293608079465152753, guid: dd451b523afb900479f9ed07adf4abe8,
         type: 3}
@@ -1857,6 +1872,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 695315d059c5a44a3ac75d6ff2b303f7,
         type: 3}
+    - target: {fileID: 4272218169191262981, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4848212093535113278, guid: dd451b523afb900479f9ed07adf4abe8,
         type: 3}
       propertyPath: m_AnchorMax.x

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     //globally accessed variables
     public static List<Transform> wayPoints = new List<Transform>();
+    public List<Transform> wavePoints = new List<Transform>();
     public static List<GameObject> enemies = new List<GameObject>();
     public static int points;
     public static float pMultiplier = 1;
@@ -30,13 +31,23 @@ public class GameManager : MonoBehaviour
 
     public static GamePhase gamePhase;
 
+    public static int tickCount;
+
     public void Awake()
     {
         instance = this;
     }
+    public void Start()
+    {
+        Ticker.OnTickAction += OnTick;
+    }
     public void OnTick()
     {
-
+        tickCount++;
+    }
+    public void Update()
+    {
+        wavePoints = wayPoints;
     }
     public static void AddPoints(int addedPoints)
     {
@@ -55,7 +66,7 @@ public class GameManager : MonoBehaviour
     public void EnterWavePhase()
     {
         gamePhase = GamePhase.wavePhase;
-        WaveSystem.instance.canStartSpawningWaves = true;   
+        WaveSystem.instance.canStartSpawningWaves = true;
         BuildingSystem.Instance.EnterTowerPhase();
     }
 }

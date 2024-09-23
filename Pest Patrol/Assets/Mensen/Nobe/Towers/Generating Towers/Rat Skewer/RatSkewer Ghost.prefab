@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 640614230542642794}
   - component: {fileID: 2996847997841859549}
   - component: {fileID: 5952002064093120720}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RatSkewerPlaceHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4112404305039614516}
   - component: {fileID: 9131179852640270824}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RatSkewer Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}

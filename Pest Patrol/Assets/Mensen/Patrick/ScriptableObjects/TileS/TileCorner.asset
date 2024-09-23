@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a0db6f1afdee9488fbd2c106dc675e, type: 3}
+  m_Name: TileCorner
+  m_EditorClassIdentifier: 
+  towerGhostGO: {fileID: 2960423030292822927, guid: 030a6c370e394754fa52890b0585c497,
+    type: 3}
+  towerToPlaceGO: {fileID: 2960423030292822927, guid: 607d51b0d3dd1964b9be5f430d2a2534,
+    type: 3}
+  towerSprite: {fileID: 0}
+  towerBuildPointCost: 0
+  allowedOverlaps: 1
