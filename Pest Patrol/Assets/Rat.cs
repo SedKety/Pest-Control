@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -60,5 +62,14 @@ public class Ratter : MonoBehaviour
         await Task.Delay(1000);
         isRat = false;
         transform.rotation = originalRot;
+    }
+
+    void OnApplicationQuit()
+    {
+        #if UNITY_EDITOR
+            var constructor = SynchronizationContext.Current.GetType().GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new System.Type[] { typeof(int) }, null);
+            var newContext = constructor.Invoke(new object[] { Thread.CurrentThread.ManagedThreadId });
+            SynchronizationContext.SetSynchronizationContext(newContext as SynchronizationContext);
+        #endif
     }
 }
