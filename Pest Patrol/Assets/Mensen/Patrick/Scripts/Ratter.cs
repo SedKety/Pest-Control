@@ -12,6 +12,8 @@ public class Ratter : MonoBehaviour
     private bool hasHit = false;
     public bool isRat;
     public bool isCar;
+
+    public float rotationSpeed;
     private void Start()
     {
         originalRot = transform.rotation;
@@ -31,7 +33,7 @@ public class Ratter : MonoBehaviour
 
         if (isRat)
         {
-            transform.Rotate(0, 5000 * Time.deltaTime , 0);
+            transform.Rotate(0, rotationSpeed * Time.deltaTime , 0);
             if (isCar)
             {
                 StopRotating();
@@ -49,7 +51,9 @@ public class Ratter : MonoBehaviour
     async void Return()
     {
         await Task.Delay(3000);
+        if (!gameObject) { return; }
         await Task.Delay(Random.Range(0, 3000));
+        if (!gameObject) { return; }
         transform.position = originalPos;
         Return();
     }

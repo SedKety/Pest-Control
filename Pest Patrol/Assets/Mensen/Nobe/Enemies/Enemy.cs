@@ -26,6 +26,7 @@ public abstract class Enemy : MonoBehaviour
 
 
     public bool isDead;
+
     public virtual void Start()
     {
         var middleMan = health * GameManager.enemyHealthMultiplier;
@@ -36,7 +37,6 @@ public abstract class Enemy : MonoBehaviour
     {
         MoveTowardsWaypoint();
     }
-
     public virtual void MoveTowardsWaypoint()
     {
         if (cantMove) return;
@@ -73,10 +73,7 @@ public abstract class Enemy : MonoBehaviour
     {
         CheckIfAtEnd();
         if(isDead) return;
-        Vector3 waypointPos = GameManager.wayPoints[currentWaypoint].position;
-        Vector3 direction = new(waypointPos.x, transform.position.y, waypointPos.z);
-
-        transform.LookAt(direction);
+        transform.LookAt(GameManager.wayPoints[currentWaypoint].position);
     }
     public virtual void OnHit(int damage)
     {

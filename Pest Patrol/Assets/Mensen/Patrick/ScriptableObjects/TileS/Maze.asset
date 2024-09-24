@@ -15,5 +15,5 @@ MonoBehaviour:
   towerGhostGO: {fileID: 0}
   towerToPlaceGO: {fileID: 0}
   towerSprite: {fileID: 0}
-  towerBuildPointCost: 0
-  allowedOverlaps: 0
+  towerBuildPointCost: 15
+  allowedOverlaps: 2

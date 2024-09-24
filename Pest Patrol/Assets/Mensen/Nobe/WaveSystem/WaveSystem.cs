@@ -22,25 +22,35 @@ public class WaveSystem : MonoBehaviour
     public int startingWavePoints;
     public float wavePointsModifier;
 
-
-    // miscelaneus variable
-    // miscellaneous
-    // wtf is a miscelaneus nobe
+    // Miscellaneous variables
     public float enemyHealthMultiplierIncrease;
 
     //Wave Enemy Variables
     public List<WaveGroups> enemyGroups;
-
     public List<WaveGroups> availableGroups;
     public List<WaveGroups> currentWaveGroups;
 
     public Transform enemySpawnPos;
-
     public bool canStartSpawningWaves;
+
+    private int tickCounter;
+    private Coroutine currentWaveCoroutine;
+
+    public bool isWaveSpawning = false;
+
     public void Awake()
     {
-        instance = this;
+        if (instance != null)
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+        }
+        else
+        {
+            instance = this;
+        }
     }
+
     public void Start()
     {
         Ticker.OnTickAction += OnTick;
@@ -48,7 +58,7 @@ public class WaveSystem : MonoBehaviour
 
     public void OnTick()
     {
-        if (GameManager.enemies.Count == 0 & canStartSpawningWaves)
+        if (GameManager.enemies.Count == 0 && canStartSpawningWaves && !isWaveSpawning)
         {
             StartNewWave();
         }
@@ -57,33 +67,38 @@ public class WaveSystem : MonoBehaviour
     [ContextMenu("StartNewWave")]
     public void StartNewWave()
     {
-        StopCoroutine(SpawnEnemyGroups());
+        if (currentWaveCoroutine != null)
+        {
+            StopCoroutine(currentWaveCoroutine);
+        }
 
         currentWaveGroups.Clear();
-
 
         GameManager.enemyHealthMultiplier += enemyHealthMultiplierIncrease;
 
         wave++;
+        GameManager.instance.OnWaveChange();
         wavePoints = 0;
         int middleMan = startingWavePoints * wave;
         wavePoints = middleMan;
 
-        StartCoroutine(GenerateNewWave());
+        isWaveSpawning = true; 
+        currentWaveCoroutine = StartCoroutine(GenerateNewWave());
     }
+
     public IEnumerator GenerateNewWave()
     {
         SelectAvailableGroups();
 
         var maxTries = 10 * wave;
-        while (wavePoints > 0 & maxTries >= 0)
+        while (wavePoints > 0 && maxTries >= 0)
         {
-            maxTries++;
+            maxTries--;
             currentWaveGroups.Add(SelectGroup());
             SelectAvailableGroups();
         }
 
-        StartCoroutine(SpawnEnemyGroups());
+        currentWaveCoroutine = StartCoroutine(SpawnEnemyGroups());
         yield return null;
     }
 
@@ -106,7 +121,6 @@ public class WaveSystem : MonoBehaviour
         }
     }
 
-
     public IEnumerator SpawnEnemyGroups()
     {
         List<WaveGroups> groups = new List<WaveGroups>();
@@ -114,17 +128,23 @@ public class WaveSystem : MonoBehaviour
         {
             groups.Add(group);
         }
+
         currentWaveGroups.Clear();
-        for (int i = 0; i  < groups.Count; i++) 
+        for (int i = 0; i < groups.Count; i++)
         {
             foreach (GameObject enemy in groups[i].enemyGO)
             {
-                GameManager.enemies.Add(Instantiate(enemy, enemySpawnPos.position, enemySpawnPos.rotation));
+                GameObject e = Instantiate(enemy, enemySpawnPos.position, enemySpawnPos.rotation);
+                GameManager.enemies.Add(e);
+                e.name += wave;
                 yield return new WaitForSeconds(groups[i].timeBetweenEnemy);
             }
             yield return new WaitForSeconds(groups[i].timeBetweenGroup);
         }
+
         groups.Clear();
         yield return null;
+
+        isWaveSpawning = false;
     }
 }

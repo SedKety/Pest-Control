@@ -14,13 +14,13 @@ public class Arrow : Projectile
         for (int i = 0; i < GameManager.enemies.Count; i++)
         {
             var distance = Vector3.Distance(transform.position, GameManager.enemies[i].transform.position);
-            if (distance <= hitDistance)
+            if (distance <= hitDistance & enemyGO)
             {
                 var middleman = projectileDamage * TowerManager.globalTowerDamageMultiplier;
                 enemyGO.GetComponent<Enemy>().OnHit((int)middleman);
                 Ticker.OnTickAction -= OnTick;
                 pierceCount++;
-                if (pierceCount >= pierceAmount)
+                if (pierceCount > pierceAmount)
                 {
                     Destroy(gameObject);
                 }

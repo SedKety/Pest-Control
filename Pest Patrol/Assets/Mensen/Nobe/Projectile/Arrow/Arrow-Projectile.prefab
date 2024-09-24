@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tickLifeTime: 8
-  movementSpeed: 10
+  movementSpeed: 20
   enemyGO: {fileID: 0}
   projectileDamage: 0
   pierceAmount: 1
-  hitDistance: 0.25
+  hitDistance: 0.2

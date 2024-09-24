@@ -34,8 +34,9 @@ public class BuildingSystem : MonoBehaviour
     private bool isPlacingTower;
 
     public Material validMaterial;  
-    public Material invalidMaterial; 
+    public Material invalidMaterial;
 
+    private List<Vector3> spotsToDrawGizmo;
     private void Awake()
     {
         Instance = this;
@@ -49,27 +50,35 @@ public class BuildingSystem : MonoBehaviour
         towerPhaseGO.SetActive(true);
 
         GameManager.wayPoints.AddRange(wayPoints);
+        DestroyCurrentTowerPreview();
     }
 
     public void SwitchTower(TowerSO newTowerSO)
     {
-        if (newTowerSO == null)
+        if(GameManager.points >= newTowerSO.towerBuildPointCost)
         {
-            Debug.LogError("Selected TowerSO is null.");
-            return;
-        }
+            if (newTowerSO == null)
+            {
+                Debug.LogError("Selected TowerSO is null.");
+                return;
+            }
 
-        if (newTowerSO == selectedTowerSO)
-        {
+            if (newTowerSO == selectedTowerSO)
+            {
+                DestroyCurrentTowerPreview();
+                selectedTowerSO = null;
+                return;
+            }
+
+            selectedTowerSO = newTowerSO;
             DestroyCurrentTowerPreview();
-            selectedTowerSO = null;
-            return;
+
+            CreateTowerGhostAtMousePosition();
         }
-
-        selectedTowerSO = newTowerSO;
-        DestroyCurrentTowerPreview();
-
-        CreateTowerGhostAtMousePosition();
+        else
+        {
+            print("Too poor");
+        }
     }
 
     private void CreateTowerGhostAtMousePosition()
@@ -109,23 +118,24 @@ public class BuildingSystem : MonoBehaviour
 
     public void PlaceTower(Vector3 position, TowerSO tower)
     {
-        Ray ray = new Ray(position + Vector3.up * 5, Vector3.down); 
+        Vector3 posToAdd = new(0, 0, -3);
+        Ray ray = new Ray(currentBuildingTower.GetComponent<Renderer>().bounds.center + new Vector3(0, 15, 0), Vector3.down);
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
+            Debug.DrawLine(hit.point + new Vector3(0, 10, 0), hit.point, Color.black, 100);
             if (((1 << hit.collider.gameObject.layer) & groundLayer.value) != 0)
             {
-                if (isPlacingTower || !IsValidTowerPosition(position)) return;
-
+                if (isPlacingTower || !IsValidTowerPosition()) return;
+                if (GameManager.points < selectedTowerSO.towerBuildPointCost) return;
                 isPlacingTower = true;
-
-                GameObject newTower = Instantiate(tower.towerToPlaceGO, position, currentBuildingTower.rotation);
-                newTower.GetComponentInChildren<BoxCollider>().enabled = true;
+                GameManager.AddPoints(-selectedTowerSO.towerBuildPointCost);
+                GameObject newTower = Instantiate(tower.towerToPlaceGO, position, currentBuildingTower.transform.rotation);
                 if(state == BuildState.TowerBuild)
                 {
                     towersGO.Add(newTower);
                 }
                 DestroyCurrentTowerPreview();
-
+                selectedTowerSO = null;
                 isPlacingTower = false;
             }
             else
@@ -137,6 +147,19 @@ public class BuildingSystem : MonoBehaviour
         {
             Debug.LogWarning("Invalid placement: Raycast did not hit any object.");
         }
+    }
+    private bool IsValidTowerPosition()
+    {
+        Vector3 center = currentBuildingTower.GetComponent<BoxCollider>().bounds.center;
+        Vector3 halfExtents = currentBuildingTower.GetComponent<BoxCollider>().bounds.extents;
+        Collider[] colliders = Physics.OverlapBox(center, halfExtents);
+        colliders = colliders.Where(c => c.transform != currentBuildingTower.transform && !currentBuildingTower.transform.IsChildOf(c.transform)).ToArray();
+        int blockingColliders = colliders.Count(c => c.gameObject.layer != groundLayer & c.gameObject.transform != transform);
+        if (blockingColliders > selectedTowerSO.allowedOverlaps)
+        {
+            return false;
+        }
+        return true;
     }
 
     public LayerMask LayerHit(RaycastHit hit)
@@ -183,7 +206,7 @@ public class BuildingSystem : MonoBehaviour
 
             currentBuildingTower.position = targetPosition;
 
-            if (IsValidTowerPosition(targetPosition) && IsGroundBeneath(targetPosition))
+            if (IsValidTowerPosition() && IsGroundBeneath(targetPosition))
             {
                 SetTowerMaterial(validMaterial);  
             }
@@ -205,19 +228,6 @@ public class BuildingSystem : MonoBehaviour
         return false;
     }
 
-    private bool IsValidTowerPosition(Vector3 position)
-    {
-        Collider[] colliders = Physics.OverlapBox(position, currentBuildingTower.GetComponent<BoxCollider>().size * 0.75f);
-        int blockingColliders = colliders.Count(c => c.gameObject.layer != groundLayer);
-
-        if (blockingColliders > selectedTowerSO.allowedOverlaps)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
     private void SetTowerMaterial(Material material)
     {
         if (currentBuildingTower != null)
@@ -237,7 +247,7 @@ public class BuildingSystem : MonoBehaviour
             return;
         }
 
-        currentBuildingTower.GetComponentInChildren<BoxCollider>().enabled = false;
+        currentBuildingTower.GetComponent<BoxCollider>().enabled = false;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
@@ -269,7 +279,10 @@ public class BuildingSystem : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
-                PlaceTower(currentBuildingTower.position, selectedTowerSO);
+                if(currentBuildingTower & selectedTowerSO)
+                {
+                    PlaceTower(currentBuildingTower.position, selectedTowerSO);
+                }
             }
         }
     }

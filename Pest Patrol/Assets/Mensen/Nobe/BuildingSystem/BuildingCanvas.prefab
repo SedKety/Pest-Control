@@ -1790,8 +1790,8 @@ MonoBehaviour:
   tileBuildingMode: 0
   state: 0
   towersGO: []
-  validMaterial: {fileID: 0}
-  invalidMaterial: {fileID: 0}
+  validMaterial: {fileID: 2100000, guid: eda53f7c1bf946441ba2cc215d71e13f, type: 2}
+  invalidMaterial: {fileID: 2100000, guid: 86deec03b9240334c8af75035e5f82ea, type: 2}
 --- !u!1 &6562386782141837190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,7 +1857,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Straight-long
+  m_text: Bridge circle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1939,7 +1939,7 @@ GameObject:
   - component: {fileID: 1766316243501719871}
   - component: {fileID: 3290824868796978491}
   m_Layer: 5
-  m_Name: Straight-long
+  m_Name: Bridge circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2052,7 +2052,7 @@ MonoBehaviour:
         m_MethodName: SwitchTower
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: cd7c86b32a2922a46924151dcd6db558,
+          m_ObjectArgument: {fileID: 11400000, guid: 140b845a736f2674ba71bfd6b7af465b,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: TowerSO, Assembly-CSharp
           m_IntArgument: 0

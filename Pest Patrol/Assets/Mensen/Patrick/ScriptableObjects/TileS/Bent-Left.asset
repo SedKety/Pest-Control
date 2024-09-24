@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a0db6f1afdee9488fbd2c106dc675e, type: 3}
-  m_Name: Bent-Right
+  m_Name: Bent-Left
   m_EditorClassIdentifier: 
-  towerGhostGO: {fileID: 0}
-  towerToPlaceGO: {fileID: 0}
+  towerGhostGO: {fileID: 3754250375362502354, guid: c1f98f6a663c73344a9379ceddf2a8a2,
+    type: 3}
+  towerToPlaceGO: {fileID: 3754250375362502354, guid: 242c4fc079f9a164a883eb49f6464003,
+    type: 3}
   towerSprite: {fileID: 0}
-  towerBuildPointCost: 0
-  allowedOverlaps: 0
+  towerBuildPointCost: 5
+  allowedOverlaps: 2

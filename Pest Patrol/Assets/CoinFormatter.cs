@@ -24,7 +24,6 @@ public class CoinFormatter : MonoBehaviour
     }
     public void FormatCoins()
     {
-        Debug.Log("format me daddy");
         string coins = GameManager.points.ToString();
         float decimals = Mathf.Log10(float.Parse(coins));
         string moneyAsText = coins;

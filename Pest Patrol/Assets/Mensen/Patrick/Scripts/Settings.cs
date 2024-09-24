@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class Settings : MonoBehaviour
     private double currentRefRate;
     public int currentResolutionIndex = 0;
     public string currentRes;
+
+    public void EnterGame()
+    {
+        SceneManager.LoadScene(1);
+    }
     private void Start()
     {
         SetAudio(PlayerPrefs.GetFloat("volume"));

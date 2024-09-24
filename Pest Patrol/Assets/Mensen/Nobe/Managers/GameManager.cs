@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 public enum GamePhase
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     public static List<Transform> wayPoints = new List<Transform>();
     public List<Transform> wavePoints = new List<Transform>();
     public static List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> enemieTest = new List<GameObject>();
     public static long points;
     public static float pMultiplier = 1;
     public static float enemyHealthMultiplier = 1;
@@ -23,7 +25,7 @@ public class GameManager : MonoBehaviour
     public static bool GameHasStarted;
 
     public int health;
-
+    public int startingPoints;
     public int maxWave;
 
     public UnityEvent gameOver;
@@ -33,30 +35,50 @@ public class GameManager : MonoBehaviour
 
     public static int tickCount;
 
+    public TextMeshProUGUI pointDisplay;
+
+
+    public GameObject waypointFlag, endPointFlag;
     public void Awake()
     {
-        instance = this;
+        if (instance != null)
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
+    public void OnWaveChange()
+    {
+        print(WaveSystem.wave);
+        if (WaveSystem.wave > maxWave)
+        {
+            gameWon.Invoke();
+        }
     }
     public void Start()
     {
         Ticker.OnTickAction += OnTick;
+        AddPoints(startingPoints);
     }
     public void OnTick()
     {
         tickCount++;
+        pointDisplay.text = points.ToString();
     }
     public void Update()
     {
         wavePoints = wayPoints;
+        enemieTest = enemies;
     }
     public static void AddPoints(long addedPoints)
     {
         var pointsToAdd = addedPoints * pMultiplier;
         points += (int)pointsToAdd;
-    }
-    public static void RemovePoints(long removedPoints)
-    {
-        points -= (long)removedPoints;
     }
     public void TakeDamage(int damageTaken)
     {
@@ -72,5 +94,17 @@ public class GameManager : MonoBehaviour
         gamePhase = GamePhase.wavePhase;
         WaveSystem.instance.canStartSpawningWaves = true;
         BuildingSystem.Instance.EnterTowerPhase();
+        AddPoints(startingPoints);
+        for (int i = 0; i < wayPoints.Count; i++)
+        {
+            if (wayPoints.Count > i + 1)
+            {
+                Instantiate(waypointFlag, wayPoints[i].position, Quaternion.identity);
+            }
+            else if (wayPoints.Count <= i + 1)
+            {
+                Instantiate(endPointFlag, wayPoints[i].position, Quaternion.identity);
+            }
+        }
     }
 }
