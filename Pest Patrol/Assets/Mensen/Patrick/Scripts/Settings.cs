@@ -13,8 +13,10 @@ public class Settings : MonoBehaviour
     public string currentRes;
     private void Start()
     {
-        AudioListener.volume = PlayerPrefs.GetFloat("volume");
-        Application.targetFrameRate = PlayerPrefs.GetInt("fps");
+        SetAudio(PlayerPrefs.GetFloat("volume"));
+        SetFPS(PlayerPrefs.GetInt("fps").ToString());
+        SetMoveSpeed(PlayerPrefs.GetFloat("moveSpeed").ToString());
+        SetSensitivity(PlayerPrefs.GetFloat("sens").ToString());
         foreach (var v in resolutionDropdown)
         {
             v.ClearOptions();
@@ -81,5 +83,26 @@ public class Settings : MonoBehaviour
         if (int.Parse(value) <= 0) Application.targetFrameRate = -1;
         else Application.targetFrameRate = int.Parse(value);
         PlayerPrefs.SetInt("fps", int.Parse(value));
+    }
+
+    public void SetSensitivity(string value)
+    {
+        try
+        {
+            if (float.Parse(value) <= 0) CameraController.Instance.UpdateMouseSens(float.Parse(value));
+            else CameraController.Instance.UpdateMouseSens(float.Parse(value));
+        }
+        catch { Debug.Log("No camera controller present."); }
+        PlayerPrefs.SetFloat("sens", float.Parse(value));
+    }
+    public void SetMoveSpeed(string value)
+    {
+        try
+        {
+            if (float.Parse(value) <= 0) CameraController.Instance.moveSpeed = 1;
+            else CameraController.Instance.moveSpeed = float.Parse(value);
+        }
+        catch { Debug.Log("No camera controller present"); }
+        PlayerPrefs.SetFloat("moveSpeed", float.Parse(value));
     }
 }

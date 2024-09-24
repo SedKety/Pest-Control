@@ -32,7 +32,7 @@ public class CoinFormatter : MonoBehaviour
         {
             moneyAsText = (float.Parse(coins) / 1000).ToString("F") + "K";
         }
-        if (decimals >= 6 && decimals <= 9)
+        if (decimals >= 6)
         {
             moneyAsText = (float.Parse(coins) / 1000000).ToString("F") + "M";
         }

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ButtonScript : MonoBehaviour
 {
     public GameObject mainMenu, settings, credits;
-    public Scene gameScene;
+
     public void Quit()
     {
         Application.Quit();
@@ -16,9 +16,9 @@ public class ButtonScript : MonoBehaviour
         settings.SetActive(true);
         mainMenu.SetActive(false);
     }
-    public void Play()
+    public void SwitchScene(int index)
     {
-        SceneManager.LoadScene(gameScene.buildIndex);
+        SceneManager.LoadScene(index);
     }
 
     public void Credits()
