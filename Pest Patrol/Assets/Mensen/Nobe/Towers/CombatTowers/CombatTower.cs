@@ -33,13 +33,22 @@ public abstract class CombatTower : Tower
             distance = Vector3.Distance(transform.position, enemy.transform.position);
             if (distance <= detectionRange)
             {
-                currentDetectedEnemyGO = enemy;
-                Ticker.OnTickAction += EnemyDistanceCheck;
-                break;
+                if(enemy.GetComponent<Enemy>().type == typeToTarget || typeToTarget == EnemyType.all)
+                {
+                    currentDetectedEnemyGO = enemy;
+                    Ticker.OnTickAction += EnemyDistanceCheck;
+                    break;
+                }
             }
         }
     }
+    protected virtual IEnumerator Reload()
+    {
 
+        var middleMan = baseReloadSpeed * TowerManager.globalTowerReloadSpeedMultiplier;
+        yield return new WaitForSeconds(middleMan);
+        onReloadTime = false;
+    }
     protected virtual void AimAtEnemy()
     {
 

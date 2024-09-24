@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a0db6f1afdee9488fbd2c106dc675e, type: 3}
-  m_Name: TileCorner
+  m_Name: Cannonball
   m_EditorClassIdentifier: 
-  towerGhostGO: {fileID: 2960423030292822927, guid: 030a6c370e394754fa52890b0585c497,
+  towerGhostGO: {fileID: 4847965871782055177, guid: 0531a2ae49dba914fa82513841ef1b6b,
     type: 3}
-  towerToPlaceGO: {fileID: 2960423030292822927, guid: 607d51b0d3dd1964b9be5f430d2a2534,
+  towerToPlaceGO: {fileID: 4847965871782055177, guid: cea7b02e5f21aef40982aac9b5e29502,
     type: 3}
   towerSprite: {fileID: 0}
   towerBuildPointCost: 0

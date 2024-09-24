@@ -280,10 +280,6 @@ public class BuildingSystem : MonoBehaviour
         {
             PlaceTower(targetPosition, selectedTowerSO);
         }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            DeleteTower(targetPosition);
-        }
         else if (Input.GetButtonDown("RotateTower"))
         {
             RotateTowerPreview();

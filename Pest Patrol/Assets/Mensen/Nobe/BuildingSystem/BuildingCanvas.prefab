@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 3929922085761033531}
   - component: {fileID: 693207823512238448}
   m_Layer: 5
-  m_Name: Straight-Short
+  m_Name: Bent-Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,7 +528,7 @@ MonoBehaviour:
         m_MethodName: SwitchTower
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 0770e6f3c34db94428531668b0fd9dfa,
+          m_ObjectArgument: {fileID: 11400000, guid: df97d65b7b7472549a60d2a9cf251ead,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: TowerSO, Assembly-CSharp
           m_IntArgument: 0
@@ -1096,7 +1096,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Straight-Short
+  m_text: 'Bent-Right
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1778,7 +1780,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedTowerSO: {fileID: 0}
   currentBuildingTower: {fileID: 0}
-  groundLayer: 3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   pathPhaseGO: {fileID: 3896965580826619202}
   towerPhaseGO: {fileID: 5908276149891628169}
   placementHeightOffset: 0.5
@@ -1786,6 +1790,8 @@ MonoBehaviour:
   tileBuildingMode: 0
   state: 0
   towersGO: []
+  validMaterial: {fileID: 0}
+  invalidMaterial: {fileID: 0}
 --- !u!1 &6562386782141837190
 GameObject:
   m_ObjectHideFlags: 0

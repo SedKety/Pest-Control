@@ -10,6 +10,8 @@ public class Projectile : MonoBehaviour
     public GameObject enemyGO;
     [HideInInspector]
     public int projectileDamage;
+    public int pierceAmount;
+    protected int pierceCount;
 
     public float hitDistance;
     protected virtual void Start()

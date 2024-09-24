@@ -78,11 +78,7 @@ public class Crossbow : CombatTower
         Projectile arrow = Instantiate(projectileGO, shootPoint.position, shootPoint.rotation).GetComponent<Projectile>();
         arrow.enemyGO = currentDetectedEnemyGO;
         arrow.projectileDamage = baseDamage;
-
-        var middleMan = baseReloadSpeed * TowerManager.globalTowerReloadSpeedMultiplier;
-        yield return new WaitForSeconds(middleMan);
-        onReloadTime = false;
-
+        StartCoroutine(Reload());
         yield return null;
     }
 }

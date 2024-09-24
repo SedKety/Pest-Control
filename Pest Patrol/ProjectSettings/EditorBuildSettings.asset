@@ -11,4 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mensen/Patrick.unity
     guid: 6016d617fed435642a372ed69fce1dcd
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 0d736b8414903de47837bc07588cac04,
+      type: 2}

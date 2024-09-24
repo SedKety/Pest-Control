@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a0db6f1afdee9488fbd2c106dc675e, type: 3}
-  m_Name: S-Bocht
+  m_Name: Maze
   m_EditorClassIdentifier: 
-  towerGhostGO: {fileID: 8543066560825178823, guid: f5f619e14b783aa44bcc79727d0cece1,
-    type: 3}
-  towerToPlaceGO: {fileID: 8543066560825178823, guid: 0ffa5b0907de07245b794fa7931f59b9,
-    type: 3}
+  towerGhostGO: {fileID: 0}
+  towerToPlaceGO: {fileID: 0}
   towerSprite: {fileID: 0}
   towerBuildPointCost: 0
-  allowedOverlaps: 2
+  allowedOverlaps: 0

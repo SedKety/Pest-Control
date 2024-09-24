@@ -6,6 +6,7 @@ public enum EnemyType
 {
     flying,
     walking,
+    all,
 }
 public abstract class Enemy : MonoBehaviour
 {
@@ -42,12 +43,19 @@ public abstract class Enemy : MonoBehaviour
         CheckIfAtEnd();
         var step = moveSpeed * Time.deltaTime;
         if (transform == null) { return; }
-        transform.position = Vector3.MoveTowards(transform.position, GameManager.wayPoints[currentWaypoint].position, step);
-        var distance = Vector3.Distance(transform.position, GameManager.wayPoints[currentWaypoint].position);
-        if (distance < minDistance)
+        if (GameManager.wayPoints[currentWaypoint])
         {
-            currentWaypoint++;
-            FaceWaypoint();
+            transform.position = Vector3.MoveTowards(transform.position, GameManager.wayPoints[currentWaypoint].position, step);
+            var distance = Vector3.Distance(transform.position, GameManager.wayPoints[currentWaypoint].position);
+            if (distance < minDistance)
+            {
+                currentWaypoint++;
+                FaceWaypoint();
+                CheckIfAtEnd();
+            }
+        }
+        else if (!GameManager.wayPoints[currentWaypoint])
+        {
             CheckIfAtEnd();
         }
     }

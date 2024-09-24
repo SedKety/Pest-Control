@@ -18,7 +18,7 @@ public enum TowerType
 }
 public abstract class Tower : MonoBehaviour
 {
-    public TargettingType typeToTarget;
+    public EnemyType typeToTarget;
     public TowerType typeOfTower;
     public bool canShoot = true;
     public GameObject canvas;
@@ -34,5 +34,10 @@ public abstract class Tower : MonoBehaviour
         print((int)middleMan);
         await Task.Delay((int)middleMan);
         canShoot = true;
+    }
+
+    public virtual void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }
