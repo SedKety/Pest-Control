@@ -16,16 +16,22 @@ public class Ratter : MonoBehaviour
     {
         originalRot = transform.rotation;
         originalPos = transform.position;
-        Return();
+        if (isCar)
+        {
+            Return();
+        }
     }
     private void Update()
     {
-        if (!hasHit) transform.Translate((Vector3.forward * Time.deltaTime) * 15);
-        else HasHit();
+        if (isCar)
+        {
+            if (!hasHit) transform.Translate((Vector3.forward * Time.deltaTime) * 15);
+            else HasHit();
+        }
 
         if (isRat)
         {
-            transform.Rotate(0, 50, 0);
+            transform.Rotate(0, 5000 * Time.deltaTime , 0);
             if (isCar)
             {
                 StopRotating();
@@ -39,7 +45,6 @@ public class Ratter : MonoBehaviour
             GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), Random.Range(-20, 20) * 3), ForceMode.Impulse);
         }
     }
-
 
     async void Return()
     {

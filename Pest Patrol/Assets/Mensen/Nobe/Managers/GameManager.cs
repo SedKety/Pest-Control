@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public static List<Transform> wayPoints = new List<Transform>();
     public List<Transform> wavePoints = new List<Transform>();
     public static List<GameObject> enemies = new List<GameObject>();
-    public static int points;
+    public static long points;
     public static float pMultiplier = 1;
     public static float enemyHealthMultiplier = 1;
 
@@ -49,10 +49,14 @@ public class GameManager : MonoBehaviour
     {
         wavePoints = wayPoints;
     }
-    public static void AddPoints(int addedPoints)
+    public static void AddPoints(long addedPoints)
     {
         var pointsToAdd = addedPoints * pMultiplier;
         points += (int)pointsToAdd;
+    }
+    public static void RemovePoints(long removedPoints)
+    {
+        points -= (long)removedPoints;
     }
     public void TakeDamage(int damageTaken)
     {
