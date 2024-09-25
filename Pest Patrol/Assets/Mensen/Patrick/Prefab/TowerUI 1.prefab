@@ -108,10 +108,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7432958312442582550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.17217693, y: 0.62823474}
-  m_AnchorMax: {x: 0.30600002, y: 0.81000006}
-  m_AnchoredPosition: {x: 17.97, y: 3.41}
-  m_SizeDelta: {x: 0.069, y: -0.615}
+  m_AnchorMin: {x: 0.7902009, y: 0.7538024}
+  m_AnchorMax: {x: 0.91384214, y: 0.92600006}
+  m_AnchoredPosition: {x: 0.16459942, y: 0.041581154}
+  m_SizeDelta: {x: 0.25982, y: 0.02716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4027807522091037645
 CanvasRenderer:
@@ -726,7 +726,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4
+  m_fontSize: 3.7
   m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -787,7 +787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3458318683019888569
 RectTransform:
   m_ObjectHideFlags: 0
@@ -853,7 +853,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7269569586523090601
 MonoBehaviour:
   m_ObjectHideFlags: 0
