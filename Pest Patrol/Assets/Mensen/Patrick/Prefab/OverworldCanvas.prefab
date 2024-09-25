@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 5871601716450751517}
   - component: {fileID: 4546799346849553815}
   - component: {fileID: 5533434798777339449}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Overworld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
