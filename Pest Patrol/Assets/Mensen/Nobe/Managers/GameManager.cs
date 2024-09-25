@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
 
     public GameObject waypointFlag, endPointFlag;
+    public bool shouldSpawnFlags;
     public void Awake()
     {
         if (instance != null)
@@ -62,6 +63,12 @@ public class GameManager : MonoBehaviour
     }
     public void Start()
     {
+        points = 0;
+        GameHasStarted = false;
+        wayPoints.Clear();
+        enemies.Clear();
+        tickCount = 0;
+        enemyHealthMultiplier = 1;
         Ticker.OnTickAction += OnTick;
         AddPoints(startingPoints);
     }
@@ -80,6 +87,11 @@ public class GameManager : MonoBehaviour
         var pointsToAdd = addedPoints * pMultiplier;
         points += (int)pointsToAdd;
     }
+    public static void DeletePoints(long removedPoints)
+    {
+        var pointsToRemove = removedPoints;
+        points -= (int)pointsToRemove;
+    }
     public void TakeDamage(int damageTaken)
     {
         health -= damageTaken;
@@ -95,6 +107,14 @@ public class GameManager : MonoBehaviour
         WaveSystem.instance.canStartSpawningWaves = true;
         BuildingSystem.Instance.EnterTowerPhase();
         AddPoints(startingPoints);
+        if (shouldSpawnFlags)
+        {
+            SpawnFlags();
+        }
+    }
+
+    public void SpawnFlags()
+    {
         for (int i = 0; i < wayPoints.Count; i++)
         {
             if (wayPoints.Count > i + 1)

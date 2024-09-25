@@ -54,6 +54,10 @@ public class WaveSystem : MonoBehaviour
     public void Start()
     {
         Ticker.OnTickAction += OnTick;
+        tickCounter = 0;
+        wavePoints = 0;
+        wavePointsModifier = 1;
+        canStartSpawningWaves = false;
     }
 
     public void OnTick()

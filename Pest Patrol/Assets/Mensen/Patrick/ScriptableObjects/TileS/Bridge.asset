@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a0db6f1afdee9488fbd2c106dc675e, type: 3}
   m_Name: Bridge
   m_EditorClassIdentifier: 
-  towerGhostGO: {fileID: 0}
-  towerToPlaceGO: {fileID: 0}
+  towerGhostGO: {fileID: 8258163287839531813, guid: 4a106372f98ac7f469ed6119f7dd09de,
+    type: 3}
+  towerToPlaceGO: {fileID: 8258163287839531813, guid: c95153b00a45c75478b5abf1f6bbff8b,
+    type: 3}
   towerSprite: {fileID: 0}
-  towerBuildPointCost: 10
+  towerBuildPointCost: 5
   allowedOverlaps: 2

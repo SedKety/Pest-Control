@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a0db6f1afdee9488fbd2c106dc675e, type: 3}
   m_Name: Maze
   m_EditorClassIdentifier: 
-  towerGhostGO: {fileID: 0}
-  towerToPlaceGO: {fileID: 0}
+  towerGhostGO: {fileID: 8370825494523820419, guid: d30fddd019eb8544eb84968ce1713007,
+    type: 3}
+  towerToPlaceGO: {fileID: 8370825494523820419, guid: dbe0d5835d02aea4c83995acddf2116f,
+    type: 3}
   towerSprite: {fileID: 0}
-  towerBuildPointCost: 15
+  towerBuildPointCost: 5
   allowedOverlaps: 2

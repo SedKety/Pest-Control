@@ -13,10 +13,10 @@ public class PathTile : MonoBehaviour, IPathTileInterface
 
     public void Start()
     {
-            for (int i = 0; i < wayPoints.Length; i++)
-            {
-                GameManager.wayPoints.Add(wayPoints[i]);
-            }
+        for (int i = 0; i < wayPoints.Length; i++)
+        {
+            GameManager.wayPoints.Add(wayPoints[i]);
+        }
     }
     public Transform GetSnapPoint()
     {
