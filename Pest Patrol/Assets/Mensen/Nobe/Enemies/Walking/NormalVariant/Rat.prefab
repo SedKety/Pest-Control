@@ -61,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1b55a81092a32104dbf111998ed88456,
         type: 3}
       propertyPath: m_Name
-      value: CrazyIwasCrazyOnce
+      value: Rat
       objectReference: {fileID: 0}
     - target: {fileID: 5074512353664290214, guid: 1b55a81092a32104dbf111998ed88456,
         type: 3}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c4969e1444e0b4196bd65245ed55b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 20
   damage: 1
   type: 1
   cantMove: 0

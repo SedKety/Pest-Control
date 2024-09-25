@@ -487,6 +487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 671808008}
+  - component: {fileID: 671808009}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -503,13 +504,34 @@ Transform:
   m_GameObject: {fileID: 671808007}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 434.9, y: 260.796, z: -178.248}
+  m_LocalPosition: {x: 434.9, y: 260.796, z: -177.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 920216146}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &671808009
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671808007}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.142914, y: 3.7926636, z: 7.3507233}
+  m_Center: {x: -1.0595245, y: 1.3963318, z: -3.1753616}
 --- !u!1 &715894874
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,8 +617,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 37
+  m_fontSizeBase: 37
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -1656,12 +1678,12 @@ PrefabInstance:
     - target: {fileID: 1392696090875004492, guid: 5aeba941ea5ac0d4e810894154a3daa4,
         type: 3}
       propertyPath: m_fontSize
-      value: 20
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 1392696090875004492, guid: 5aeba941ea5ac0d4e810894154a3daa4,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 20
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 1392696090875004492, guid: 5aeba941ea5ac0d4e810894154a3daa4,
         type: 3}
@@ -1807,17 +1829,27 @@ PrefabInstance:
     - target: {fileID: 3904108758475798628, guid: 5aeba941ea5ac0d4e810894154a3daa4,
         type: 3}
       propertyPath: m_fontSize
-      value: 20
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 3904108758475798628, guid: 5aeba941ea5ac0d4e810894154a3daa4,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 20
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 4711135910953152345, guid: 5aeba941ea5ac0d4e810894154a3daa4,
         type: 3}
       propertyPath: m_text
       value: Crossbow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4711135910953152345, guid: 5aeba941ea5ac0d4e810894154a3daa4,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4711135910953152345, guid: 5aeba941ea5ac0d4e810894154a3daa4,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 4818386693505104179, guid: 5aeba941ea5ac0d4e810894154a3daa4,
         type: 3}
@@ -1828,6 +1860,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Cannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324653107823404238, guid: 5aeba941ea5ac0d4e810894154a3daa4,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324653107823404238, guid: 5aeba941ea5ac0d4e810894154a3daa4,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 5908276149891628169, guid: 5aeba941ea5ac0d4e810894154a3daa4,
         type: 3}
@@ -2116,7 +2158,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.8
+  m_fontSize: 13.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2251,7 +2293,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.8
+  m_fontSize: 13.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2527,8 +2569,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 37
+  m_fontSizeBase: 37
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
