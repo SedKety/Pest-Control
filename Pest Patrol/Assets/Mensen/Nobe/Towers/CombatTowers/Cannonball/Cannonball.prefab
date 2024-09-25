@@ -39,6 +39,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5191735485625079731}
     m_Modifications:
+    - target: {fileID: 659834061615482639, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 693098698114419236}
+    - target: {fileID: 659834061615482639, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 659834061615482639, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4847965871782055177}
     - target: {fileID: 3293608079465152753, guid: dd451b523afb900479f9ed07adf4abe8,
         type: 3}
       propertyPath: m_Name
@@ -47,7 +62,7 @@ PrefabInstance:
     - target: {fileID: 3293608079465152753, guid: dd451b523afb900479f9ed07adf4abe8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3458318683019888569, guid: dd451b523afb900479f9ed07adf4abe8,
         type: 3}
@@ -154,11 +169,61 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 3.7
       objectReference: {fileID: 0}
+    - target: {fileID: 4572744528906922428, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 693098698114419236}
+    - target: {fileID: 4572744528906922428, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572744528906922428, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4847965871782055177}
+    - target: {fileID: 4848212093535113278, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848212093535113278, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.928
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848212093535113278, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 16.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848212093535113278, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.21
+      objectReference: {fileID: 0}
     - target: {fileID: 6144557744845435969, guid: dd451b523afb900479f9ed07adf4abe8,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6494484764056159690, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 693098698114419236}
+    - target: {fileID: 6494484764056159690, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494484764056159690, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4847965871782055177}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -293,7 +358,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 853a33d13b6897044a00e7a8b45001bb,
         type: 3}
       propertyPath: m_Name
-      value: CannonballTower
+      value: Cannonball
       objectReference: {fileID: 0}
     - target: {fileID: 1297066318899855533, guid: 853a33d13b6897044a00e7a8b45001bb,
         type: 3}
