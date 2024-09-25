@@ -133,6 +133,7 @@ public class BuildingSystem : MonoBehaviour
                 if(state == BuildState.TowerBuild)
                 {
                     towersGO.Add(newTower);
+                    newTower.GetComponent<Tower>().MakeInteractable();
                 }
                 DestroyCurrentTowerPreview();
                 selectedTowerSO = null;

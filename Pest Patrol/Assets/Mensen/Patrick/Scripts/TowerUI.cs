@@ -15,10 +15,13 @@ public class TowerUI : MonoBehaviour
 
             if (hit.collider.GetComponent<Tower>() != null)
             {
-                string name = hit.collider.GetComponent<Tower>().name;
-                name = name.Replace("(Clone)", "");
-                hit.collider.GetComponent<Tower>().canvas.GetComponent<LookToCamera>().ChangeText(name);
-                hit.collider.GetComponent<Tower>().canvas.SetActive(!hit.collider.GetComponent<Tower>().canvas.activeSelf);
+                if (hit.collider.GetComponent<Tower>().interactable)
+                {
+                    string name = hit.collider.GetComponent<Tower>().name;
+                    name = name.Replace("(Clone)", "");
+                    hit.collider.GetComponent<Tower>().canvas.GetComponent<LookToCamera>().ChangeText(name);
+                    hit.collider.GetComponent<Tower>().canvas.SetActive(!hit.collider.GetComponent<Tower>().canvas.activeSelf);
+                }
             }
         }
     }

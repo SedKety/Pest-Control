@@ -21,6 +21,7 @@ public abstract class Tower : MonoBehaviour
     public EnemyType typeToTarget;
     public TowerType typeOfTower;
     public bool canShoot = true;
+    public bool interactable = false;
     public GameObject canvas;
 
     protected abstract void Start();
@@ -39,5 +40,11 @@ public abstract class Tower : MonoBehaviour
     public virtual void OnDestroy()
     {
         StopAllCoroutines();
+    }
+
+    public async void MakeInteractable()
+    {
+        await Task.Delay(300);
+        interactable = true;
     }
 }
