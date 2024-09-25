@@ -224,6 +224,46 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 4847965871782055177}
+    - target: {fileID: 7585495776643909619, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585495776643909619, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585495776643909619, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 693098698114419236}
+    - target: {fileID: 7585495776643909619, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585495776643909619, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DestroyTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585495776643909619, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UpgradeTower, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585495776643909619, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4847965871782055177}
+    - target: {fileID: 7585495776643909619, guid: dd451b523afb900479f9ed07adf4abe8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -368,12 +408,12 @@ PrefabInstance:
     - target: {fileID: 8670761335428686811, guid: 853a33d13b6897044a00e7a8b45001bb,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9396927
+      value: 0.9063079
       objectReference: {fileID: 0}
     - target: {fileID: 8670761335428686811, guid: 853a33d13b6897044a00e7a8b45001bb,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3420201
+      value: 0.42261827
       objectReference: {fileID: 0}
     - target: {fileID: 8670761335428686811, guid: 853a33d13b6897044a00e7a8b45001bb,
         type: 3}
@@ -388,7 +428,7 @@ PrefabInstance:
     - target: {fileID: 8670761335428686811, guid: 853a33d13b6897044a00e7a8b45001bb,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

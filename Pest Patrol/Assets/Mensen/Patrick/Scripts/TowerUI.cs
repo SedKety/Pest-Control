@@ -8,7 +8,6 @@ public class TowerUI : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("clicked mouse 0");
             
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity);

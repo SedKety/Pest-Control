@@ -55,13 +55,16 @@ public class Crossbow : CombatTower
     protected override void EnemyDistanceCheck()
     {
         if (!currentDetectedEnemyGO) { Ticker.OnTickAction -= EnemyDistanceCheck; return; }
-        var distance = 0f;
-        distance = Vector3.Distance(transform.position, currentDetectedEnemyGO.transform.position);
-        if (distance > detectionRange)
+        if (gameObject != null)
         {
-            currentDetectedEnemyGO = null;
-            ReturnToOriginalPosition();
-            Ticker.OnTickAction -= EnemyDistanceCheck;
+            var distance = 0f;
+            distance = Vector3.Distance(transform.position, currentDetectedEnemyGO.transform.position);
+            if (distance > detectionRange)
+            {
+                currentDetectedEnemyGO = null;
+                ReturnToOriginalPosition();
+                Ticker.OnTickAction -= EnemyDistanceCheck;
+            }
         }
     }
 

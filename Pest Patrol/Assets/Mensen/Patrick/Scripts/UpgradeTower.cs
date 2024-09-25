@@ -44,4 +44,14 @@ public class UpgradeTower : MonoBehaviour
             GameManager.DeletePoints(cost);
         }
     }
+
+    public void DestroyTower(GameObject tower)
+    {
+        BuildingSystem.Instance.DeleteTower(tower);
+    }
+
+    public void OnDestroy()
+    {
+        Ticker.OnTickAction -= OnTick;
+    }
 }

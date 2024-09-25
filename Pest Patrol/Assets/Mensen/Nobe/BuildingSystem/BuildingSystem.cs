@@ -168,16 +168,12 @@ public class BuildingSystem : MonoBehaviour
         return hit.collider.gameObject.layer;  
     }
 
-    public void DeleteTower(Vector3 position)
+    public void DeleteTower(GameObject tower)
     {
-        Collider[] colliders = Physics.OverlapBox(position, currentBuildingTower.GetComponent<BoxCollider>().size * 0.75f);
-        foreach (Collider col in colliders)
+        if (towersGO.Contains(tower))
         {
-            if (col.gameObject.layer != groundLayer)
-            {
-                Destroy(col.gameObject);
-                towersGO.Remove(col.gameObject);
-            }
+            Destroy(tower);
+            towersGO.Remove(tower);
         }
     }
 

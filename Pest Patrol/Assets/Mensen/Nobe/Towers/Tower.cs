@@ -40,6 +40,7 @@ public abstract class Tower : MonoBehaviour
     public virtual void OnDestroy()
     {
         StopAllCoroutines();
+        Ticker.OnTickAction -= OnTick;
     }
 
     public async void MakeInteractable()
