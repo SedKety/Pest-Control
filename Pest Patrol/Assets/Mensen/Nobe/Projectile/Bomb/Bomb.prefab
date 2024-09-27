@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8951144598728049241}
-  - component: {fileID: 1434689990284098952}
+  - component: {fileID: -3180424970811932991}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 2372745815076277300}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1434689990284098952
+--- !u!114 &-3180424970811932991
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,15 +42,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2338559863231945164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b06f04a0788da45aa60144f979db01, type: 3}
+  m_Script: {fileID: 11500000, guid: 104b82b111931e74c91b681e77a076f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tickLifeTime: 8
+  tickLifeTime: 9
   movementSpeed: 20
   enemyGO: {fileID: 0}
   projectileDamage: 0
-  pierceAmount: 3
+  pierceAmount: 2
   hitDistance: 0.6
+  explosion: {fileID: 3867533903961630234, guid: db4fc5ad68576ee4aa749716b7f73e28,
+    type: 3}
 --- !u!1 &3892889662349316815
 GameObject:
   m_ObjectHideFlags: 0

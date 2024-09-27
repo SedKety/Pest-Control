@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     //globally accessed variables
     public static List<Transform> wayPoints = new List<Transform>();
     public List<Transform> wavePoints = new List<Transform>();
+    public static List<Transform> flyingWaypoints = new List<Transform>();
     public static List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> enemieTest = new List<GameObject>();
     public static long points;
@@ -126,5 +127,9 @@ public class GameManager : MonoBehaviour
                 Instantiate(endPointFlag, wayPoints[i].position, Quaternion.identity);
             }
         }
+    }
+    public void OnDestroy()
+    {
+        instance = null;
     }
 }

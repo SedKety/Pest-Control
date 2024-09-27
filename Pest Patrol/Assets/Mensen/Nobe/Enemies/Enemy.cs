@@ -19,7 +19,7 @@ public abstract class Enemy : MonoBehaviour
     public bool cantMove;
     public float moveSpeed;
     public float minDistance;
-    private int currentWaypoint = 0;
+    protected int currentWaypoint = 0;
 
     //miscelaneous variables
     public int pointsDropped;
@@ -60,7 +60,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void CheckIfAtEnd()
+    public virtual void CheckIfAtEnd()
     {
         if (currentWaypoint >= GameManager.wayPoints.Count)
         {
@@ -69,11 +69,32 @@ public abstract class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void FaceWaypoint()
+    public virtual void FaceWaypoint()
     {
         CheckIfAtEnd();
         if(isDead) return;
-        transform.LookAt(GameManager.wayPoints[currentWaypoint].position);
+        float distance = Vector3.Distance(transform.position, GameManager.wayPoints[currentWaypoint].position);
+        bool nextWaypointActive = CheckIfNextWaypointExists();
+        if (distance < minDistance * 2 & nextWaypointActive)
+        {
+            transform.LookAt(GameManager.wayPoints[currentWaypoint + 1].position);
+        }
+        else
+        {
+            transform.LookAt(GameManager.wayPoints[currentWaypoint].position);
+        }
+    }
+
+    public virtual bool CheckIfNextWaypointExists()
+    {
+        if(GameManager.wayPoints.Count >= currentWaypoint + 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     public virtual void OnHit(int damage)
     {

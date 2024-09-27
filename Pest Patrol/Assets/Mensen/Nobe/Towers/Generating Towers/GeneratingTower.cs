@@ -19,7 +19,7 @@ public abstract class GeneratingTower : Tower
         StartCoroutine(GeneratePoints());
     }
 
-    public void OnDestroy()
+    public override void OnDestroy()
     {
         StopCoroutine(GeneratePoints());
     }

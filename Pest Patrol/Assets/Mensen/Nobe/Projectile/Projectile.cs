@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     public int pierceAmount;
     protected int pierceCount;
 
+    public List<GameObject> hitEnemy;
     public float hitDistance;
     protected virtual void Start()
     {

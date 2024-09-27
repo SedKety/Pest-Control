@@ -488,7 +488,7 @@ MonoBehaviour:
   canShoot: 1
   interactable: 0
   canvas: {fileID: 165917350715686082}
-  baseDamage: 5
+  baseDamage: 10
   baseReloadSpeed: 2
   detectionRange: 5
   currentDetectedEnemyGO: {fileID: 0}

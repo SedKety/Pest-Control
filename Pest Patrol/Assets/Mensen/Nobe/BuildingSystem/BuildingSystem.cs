@@ -338,4 +338,8 @@ public class BuildingSystem : MonoBehaviour
     {
         return FindObjectsOfType<GameObject>().FirstOrDefault(obj => obj.layer == layer);
     }
+    public void OnDestroy()
+    {
+        Instance = null;
+    }
 }

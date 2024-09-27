@@ -10,10 +10,13 @@ public struct WaveGroups
     public GameObject[] enemyGO;
     public float timeBetweenEnemy;
     public float timeBetweenGroup;
+
+    public int minWave;
 }
 
 public class WaveSystem : MonoBehaviour
 {
+
     public static WaveSystem instance;
     public static int wave;
 
@@ -32,34 +35,30 @@ public class WaveSystem : MonoBehaviour
 
     public Transform enemySpawnPos;
     public bool canStartSpawningWaves;
-
-    private int tickCounter;
-    private Coroutine currentWaveCoroutine;
+    public Coroutine currentWaveCoroutine;
 
     public bool isWaveSpawning = false;
 
     public void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
         {
-            Destroy(instance.gameObject);
-            instance = this;
+            Destroy(gameObject); 
+            return;
         }
-        else
-        {
-            instance = this;
-        }
-    }
 
+        instance = this;
+        DontDestroyOnLoad(gameObject); 
+    }
     public void Start()
     {
-        Ticker.OnTickAction += OnTick;
-        tickCounter = 0;
+        wave = 0;
         wavePoints = 0;
         wavePointsModifier = 1;
         canStartSpawningWaves = false;
+        currentWaveCoroutine = null;
+        Ticker.OnTickAction += OnTick;
     }
-
     public void OnTick()
     {
         if (GameManager.enemies.Count == 0 && canStartSpawningWaves && !isWaveSpawning)
@@ -71,13 +70,13 @@ public class WaveSystem : MonoBehaviour
     [ContextMenu("StartNewWave")]
     public void StartNewWave()
     {
-        if (currentWaveCoroutine != null)
+        if (isWaveSpawning && currentWaveCoroutine != null)
         {
-            StopCoroutine(currentWaveCoroutine);
+            StopCoroutine(currentWaveCoroutine); 
+            currentWaveCoroutine = null;        
         }
 
         currentWaveGroups.Clear();
-
         GameManager.enemyHealthMultiplier += enemyHealthMultiplierIncrease;
 
         wave++;
@@ -118,7 +117,7 @@ public class WaveSystem : MonoBehaviour
         availableGroups.Clear();
         foreach (WaveGroups groups in enemyGroups)
         {
-            if (groups.wavePointCost <= wavePoints)
+            if (groups.wavePointCost <= wavePoints & wave >= groups.minWave)
             {
                 availableGroups.Add(groups);
             }
@@ -150,5 +149,10 @@ public class WaveSystem : MonoBehaviour
         yield return null;
 
         isWaveSpawning = false;
+    }
+
+    public void OnDestroy()
+    {
+        instance = null;
     }
 }
