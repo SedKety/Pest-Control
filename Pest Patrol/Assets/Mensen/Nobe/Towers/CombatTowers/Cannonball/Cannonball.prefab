@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2793852491771766181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9108020273450370560}
+  m_Layer: 0
+  m_Name: StunEffectHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9108020273450370560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2793852491771766181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5191735485625079731}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3024847612537056077
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +468,10 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 1725608201862026}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 853a33d13b6897044a00e7a8b45001bb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9108020273450370560}
     - targetCorrespondingSourceObject: {fileID: 8670761335428686811, guid: 853a33d13b6897044a00e7a8b45001bb,
         type: 3}
       insertIndex: -1
@@ -496,6 +531,9 @@ MonoBehaviour:
   projectileGO: {fileID: 2338559863231945164, guid: a9509714ee823cf4a927279099e3861d,
     type: 3}
   timeToAttackEnemy: 0
+  stunParticles: {fileID: 9079122564067699494, guid: aba317adb61a3ca48a8c17444a6a87ab,
+    type: 3}
+  stunParticleHolder: {fileID: 9108020273450370560}
   crossbowPad: {fileID: 6802231397874810209}
   crossbow: {fileID: 4022486225631794051}
 --- !u!65 &4140284573302565377

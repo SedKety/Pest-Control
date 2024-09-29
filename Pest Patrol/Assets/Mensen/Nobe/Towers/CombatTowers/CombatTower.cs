@@ -18,7 +18,45 @@ public abstract class CombatTower : Tower
     public GameObject projectileGO;
     public float timeToAttackEnemy;
     protected bool onReloadTime = false;
+    private Coroutine stunCoroutine;
 
+    public GameObject stunParticles;
+    public Transform stunParticleHolder;
+    protected virtual IEnumerator StunTower(float timeInSeconds)
+    {
+        print(gameObject.name + " is stunned for " + timeInSeconds + " seconds");
+        canShoot = false;
+        currentDetectedEnemyGO = null;
+       var particles = Instantiate(stunParticles, stunParticleHolder.position , Quaternion.identity); 
+
+        yield return new WaitForSeconds(timeInSeconds);
+
+        canShoot = true;
+        print(gameObject.name + " can shoot again.");
+        Destroy(particles);
+    }
+
+    public void StartStun(float timeInSeconds)
+    {
+        if (stunCoroutine != null)
+        {
+            StopCoroutine(stunCoroutine);
+        }
+        stunCoroutine = StartCoroutine(StunTower(timeInSeconds)); 
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        if (stunCoroutine != null)
+        {
+            StopCoroutine(stunCoroutine);
+            stunCoroutine = null;
+        }
+
+        Ticker.OnTickAction -= EnemyDistanceCheck;
+    }
     protected virtual void EnemyDistanceCheck()
     {
 
@@ -26,7 +64,7 @@ public abstract class CombatTower : Tower
     protected abstract IEnumerator TryAttackEnemy();
     protected virtual void TryDetectEnemy()
     {
-        if (currentDetectedEnemyGO) { return; }
+        if (currentDetectedEnemyGO || !canShoot) { return; }
         var distance = 0f;
         foreach (GameObject enemy in GameManager.enemies.Where(enemy => enemy != null))
         {
@@ -53,5 +91,4 @@ public abstract class CombatTower : Tower
     {
 
     }
-
 }

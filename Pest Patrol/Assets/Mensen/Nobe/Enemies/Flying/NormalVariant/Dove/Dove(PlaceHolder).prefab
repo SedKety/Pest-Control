@@ -126,3 +126,7 @@ MonoBehaviour:
   minDistance: 0.1
   pointsDropped: 2
   isDead: 0
+  initTimeTillEgg: 5
+  timeTillEgg: 5
+  eggGO: {fileID: 5203137003584337928, guid: f720dc49295fa7c4caac5994aba25d8b, type: 3}
+  eggDropChancePercentage: 10

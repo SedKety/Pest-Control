@@ -30,7 +30,7 @@ public class Settings : MonoBehaviour
         resolutions = Screen.resolutions;
         resolutionList = new List<Resolution>();
         currentRefRate = Screen.currentResolution.refreshRateRatio.value;
-        Debug.LogWarning(resolutions.Length);
+        //Debug.LogWarning(resolutions.Length);
         for (int i = 0; i < resolutions.Length; i++)
         {
             float refRate = (float)currentRefRate;

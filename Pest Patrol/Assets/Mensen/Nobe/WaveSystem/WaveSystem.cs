@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 [System.Serializable]
 public struct WaveGroups
 {
@@ -33,7 +34,6 @@ public class WaveSystem : MonoBehaviour
     public List<WaveGroups> availableGroups;
     public List<WaveGroups> currentWaveGroups;
 
-    public Transform enemySpawnPos;
     public bool canStartSpawningWaves;
     public Coroutine currentWaveCoroutine;
 
@@ -41,22 +41,25 @@ public class WaveSystem : MonoBehaviour
 
     public void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject); 
-            return;
-        }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject); 
+        ResetWaveSystem();
+        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-    public void Start()
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        ResetWaveSystem();
+    }
+    public void ResetWaveSystem()
+    {
+        instance = this;
         wave = 0;
         wavePoints = 0;
         wavePointsModifier = 1;
         canStartSpawningWaves = false;
         currentWaveCoroutine = null;
+    }
+    public void Start()
+    {
         Ticker.OnTickAction += OnTick;
     }
     public void OnTick()
@@ -137,7 +140,7 @@ public class WaveSystem : MonoBehaviour
         {
             foreach (GameObject enemy in groups[i].enemyGO)
             {
-                GameObject e = Instantiate(enemy, enemySpawnPos.position, enemySpawnPos.rotation);
+                GameObject e = Instantiate(enemy, GameManager.wayPoints[0].position, GameManager.wayPoints[0].rotation);
                 GameManager.enemies.Add(e);
                 e.name += wave;
                 yield return new WaitForSeconds(groups[i].timeBetweenEnemy);

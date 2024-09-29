@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public enum TargettingType
 {
@@ -28,18 +30,9 @@ public abstract class Tower : MonoBehaviour
     protected abstract void Update();
 
     protected abstract void OnTick();
-    public async Task StunTower(float timeInSeconds)
-    {
-        canShoot = false;
-        var middleMan = timeInSeconds * 1000;
-        print((int)middleMan);
-        await Task.Delay((int)middleMan);
-        canShoot = true;
-    }
 
     public virtual void OnDestroy()
     {
-        StopAllCoroutines();
         Ticker.OnTickAction -= OnTick;
     }
 

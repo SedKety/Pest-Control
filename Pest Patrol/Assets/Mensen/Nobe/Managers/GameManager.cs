@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI pointDisplay;
 
+    public Transform enemySpawnPos;
 
     public GameObject waypointFlag, endPointFlag;
     public bool shouldSpawnFlags;

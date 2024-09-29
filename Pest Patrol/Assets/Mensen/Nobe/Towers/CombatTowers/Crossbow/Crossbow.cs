@@ -54,7 +54,7 @@ public class Crossbow : CombatTower
 
     protected override void EnemyDistanceCheck()
     {
-        if (this == null || !gameObject || !currentDetectedEnemyGO)
+        if (this == null || !gameObject || !currentDetectedEnemyGO || !canShoot)
         {
             return;
         }
@@ -64,14 +64,14 @@ public class Crossbow : CombatTower
         if (distance > detectionRange)
         {
             currentDetectedEnemyGO = null;
-            ReturnToOriginalPosition();
+            //ReturnToOriginalPosition();
             Ticker.OnTickAction -= EnemyDistanceCheck;
         }
     }
 
     protected override IEnumerator TryAttackEnemy()
     {
-        if (currentDetectedEnemyGO == null || onReloadTime)
+        if (currentDetectedEnemyGO == null || onReloadTime || !canShoot)
         {
             yield return null;
             yield break;

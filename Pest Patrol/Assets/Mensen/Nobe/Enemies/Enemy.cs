@@ -98,7 +98,6 @@ public abstract class Enemy : MonoBehaviour
     }
     public virtual void OnHit(int damage)
     {
-        print(damage);
         health -= damage;
         if (health <= 0)
         {
