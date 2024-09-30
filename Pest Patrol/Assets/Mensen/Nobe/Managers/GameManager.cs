@@ -133,4 +133,9 @@ public class GameManager : MonoBehaviour
     {
         instance = null;
     }
+
+    public void AddPointsDevTool()
+    {
+        AddPoints(100);
+    }
 }

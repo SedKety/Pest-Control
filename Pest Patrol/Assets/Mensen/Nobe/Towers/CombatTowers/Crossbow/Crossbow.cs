@@ -4,12 +4,14 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 
 public class Crossbow : CombatTower
 {
     public Transform crossbowPad, crossbow;
     private Quaternion originalCrossbowPadRotation, originalCrossbowRotation;
+    private bool isReturningBackToPosition;
 
     protected override void Start()
     {
@@ -24,14 +26,13 @@ public class Crossbow : CombatTower
         {
             AimAtEnemy();
         }
-        else { }
     }
     protected override void OnTick()
     {
         TryDetectEnemy();
         if (currentDetectedEnemyGO == null)
         {
-            ReturnToOriginalPosition();
+            if (!isReturningBackToPosition) { ReturnToOriginalPosition(); }
         }
         else if (currentDetectedEnemyGO != null)
         {
@@ -42,14 +43,15 @@ public class Crossbow : CombatTower
 
     protected async void ReturnToOriginalPosition()
     {
-        while (crossbow.rotation != originalCrossbowRotation)
+        isReturningBackToPosition = true;
+        while (crossbow.rotation != originalCrossbowRotation && currentDetectedEnemyGO == null)
         {
             crossbow.rotation = Quaternion.Lerp(crossbow.rotation, originalCrossbowRotation, 0.1f);
             crossbowPad.rotation = Quaternion.Lerp(crossbowPad.rotation, originalCrossbowPadRotation, 0.1f);
             await Task.Delay(20);
         }
+        isReturningBackToPosition = false;
     }
-
     protected override void AimAtEnemy()
     {
         if (!currentDetectedEnemyGO) { return; }
@@ -72,7 +74,7 @@ public class Crossbow : CombatTower
         if (distance > detectionRange)
         {
             currentDetectedEnemyGO = null;
-            //ReturnToOriginalPosition();
+            ReturnToOriginalPosition();
             Ticker.OnTickAction -= EnemyDistanceCheck;
         }
     }

@@ -40,7 +40,7 @@ public class UpgradeTower : MonoBehaviour
     }
     public void UpgradeSpeed(GameObject tower)
     {
-        int cost = Mathf.RoundToInt((tower.GetComponent<CombatTower>().baseReloadSpeed + 15 * 1.2f));
+        int cost = Mathf.RoundToInt((tower.GetComponent<CombatTower>().baseReloadSpeed + 15 * 1.5f));
         if (GameManager.points - cost >= 0)
         {
             tower.GetComponent<CombatTower>().baseReloadSpeed -= 0.1f;
