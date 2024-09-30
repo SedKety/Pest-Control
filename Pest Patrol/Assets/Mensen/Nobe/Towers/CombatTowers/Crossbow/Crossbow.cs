@@ -42,7 +42,7 @@ public class Crossbow : CombatTower
 
     protected async void ReturnToOriginalPosition()
     {
-        while (true)
+        while (crossbow.rotation != originalCrossbowRotation)
         {
             crossbow.rotation = Quaternion.Lerp(crossbow.rotation, originalCrossbowRotation, 0.1f);
             crossbowPad.rotation = Quaternion.Lerp(crossbowPad.rotation, originalCrossbowPadRotation, 0.1f);
