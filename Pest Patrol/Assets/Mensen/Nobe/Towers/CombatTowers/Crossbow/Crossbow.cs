@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -21,13 +24,14 @@ public class Crossbow : CombatTower
         {
             AimAtEnemy();
         }
+        else { }
     }
     protected override void OnTick()
     {
         TryDetectEnemy();
         if (currentDetectedEnemyGO == null)
         {
-            //ReturnToOriginalPosition();
+            ReturnToOriginalPosition();
         }
         else if (currentDetectedEnemyGO != null)
         {
@@ -36,10 +40,14 @@ public class Crossbow : CombatTower
     }
     #endregion
 
-    protected virtual void ReturnToOriginalPosition()
+    protected async void ReturnToOriginalPosition()
     {
-        crossbowPad.rotation = originalCrossbowPadRotation;
-        crossbow.rotation = originalCrossbowRotation;
+        while (true)
+        {
+            crossbow.rotation = Quaternion.Lerp(crossbow.rotation, originalCrossbowRotation, 0.1f);
+            crossbowPad.rotation = Quaternion.Lerp(crossbowPad.rotation, originalCrossbowPadRotation, 0.1f);
+            await Task.Delay(20);
+        }
     }
 
     protected override void AimAtEnemy()
@@ -85,4 +93,15 @@ public class Crossbow : CombatTower
         StartCoroutine(Reload());
         yield return null;
     }
+
+    #region async bs
+    void OnApplicationQuit()
+    {
+        #if UNITY_EDITOR
+        var constructor = SynchronizationContext.Current.GetType().GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new System.Type[] { typeof(int) }, null);
+        var newContext = constructor.Invoke(new object[] { Thread.CurrentThread.ManagedThreadId });
+        SynchronizationContext.SetSynchronizationContext(newContext as SynchronizationContext);
+        #endif
+    }
+    #endregion
 }
