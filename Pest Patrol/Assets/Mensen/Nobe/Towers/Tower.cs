@@ -26,10 +26,19 @@ public abstract class Tower : MonoBehaviour
     public bool interactable = false;
     public GameObject canvas;
 
-    protected abstract void Start();
-    protected abstract void Update();
+    protected virtual void Start()
+    {
 
-    protected abstract void OnTick();
+    }
+    protected virtual void Update()
+    {
+
+    }
+
+    protected virtual void OnTick()
+    {
+
+    }
 
     public virtual void OnDestroy()
     {

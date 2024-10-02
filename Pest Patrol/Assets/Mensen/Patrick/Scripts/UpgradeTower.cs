@@ -18,7 +18,7 @@ public class UpgradeTower : MonoBehaviour
         coinTexts[2].text = Mathf.RoundToInt((gameObject.GetComponent<CombatTower>().baseReloadSpeed + (1 - gameObject.GetComponent<CombatTower>().baseReloadSpeed * 6) + 15 * 1.2f)).ToString();
         coinTexts[3].text = gameObject.GetComponent<CombatTower>().baseDamage.ToString();
         coinTexts[4].text = gameObject.GetComponent<CombatTower>().detectionRange.ToString();
-        coinTexts[5].text = gameObject.GetComponent<CombatTower>().baseReloadSpeed.ToString();
+        coinTexts[5].text = (Mathf.Round((gameObject.GetComponent<CombatTower>().baseReloadSpeed * 10.0f)) * 0.1f).ToString();
     }
     public void UpgradeDamage(GameObject tower)
     {

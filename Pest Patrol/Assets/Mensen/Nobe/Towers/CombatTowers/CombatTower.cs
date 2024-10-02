@@ -61,7 +61,10 @@ public abstract class CombatTower : Tower
     {
 
     }
-    protected abstract IEnumerator TryAttackEnemy();
+    protected virtual IEnumerator TryAttackEnemy()
+    {
+        yield return null;
+    }
     protected virtual void TryDetectEnemy()
     {
         if (currentDetectedEnemyGO || !canShoot) { return; }

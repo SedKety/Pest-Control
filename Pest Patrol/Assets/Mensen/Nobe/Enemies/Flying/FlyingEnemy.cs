@@ -34,7 +34,7 @@ public class FlyingEnemy : Enemy
     public override void FaceWaypoint()
     {
         CheckIfAtEnd();
-        if (isDead) return;
+        if (isDead || gameObject == null) return;
         float distance = Vector3.Distance(transform.position, GameManager.flyingWaypoints[currentWaypoint].position);
         bool nextWaypointActive = CheckIfNextWaypointExists();
         if (distance < minDistance * 2 & nextWaypointActive)

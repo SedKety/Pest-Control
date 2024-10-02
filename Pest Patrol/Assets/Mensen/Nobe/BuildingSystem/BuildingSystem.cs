@@ -153,9 +153,31 @@ public class BuildingSystem : MonoBehaviour
     {
         Vector3 center = currentBuildingTower.GetComponent<BoxCollider>().bounds.center;
         Vector3 halfExtents = currentBuildingTower.GetComponent<BoxCollider>().bounds.extents;
+
+        // Step 1: Detect colliders
         Collider[] colliders = Physics.OverlapBox(center, halfExtents);
-        colliders = colliders.Where(c => c.transform != currentBuildingTower.transform && !currentBuildingTower.transform.IsChildOf(c.transform)).ToArray();
-        int blockingColliders = colliders.Count(c => c.gameObject.layer != groundLayer & c.gameObject.transform != transform);
+        print("Detected colliders count: " + colliders.Length);
+
+        // Step 2: Print colliders before filtering
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            print("Collider detected before filtering: " + colliders[i].gameObject.name);
+        }
+
+        // Step 3: Apply filtering
+        colliders = colliders.Where(c => c.transform != currentBuildingTower.transform &&
+                                         !currentBuildingTower.transform.IsChildOf(c.transform)).ToArray();
+
+        // Step 4: Print filtered colliders
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            print("Filtered collider: " + colliders[i].gameObject.name);
+        }
+
+        // Step 5: Check for blocking colliders
+        int blockingColliders = colliders.Count(c => c.gameObject.layer != groundLayer &&
+                                                     c.gameObject.transform != transform);
+
         if (blockingColliders > selectedTowerSO.allowedOverlaps)
         {
             return false;

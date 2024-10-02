@@ -32,4 +32,8 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void OnDestroy()
+    {
+        Ticker.OnTickAction -= OnTick;
+    }
 }
