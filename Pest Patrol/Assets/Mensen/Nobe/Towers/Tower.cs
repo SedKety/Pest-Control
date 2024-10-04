@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 using static Unity.VisualScripting.Member;
 
 public enum TargettingType
@@ -25,7 +26,7 @@ public abstract class Tower : MonoBehaviour
     public bool canShoot = true;
     public bool interactable = false;
     public GameObject canvas;
-
+    public RenderTexture renderTexture;
     protected virtual void Start()
     {
 

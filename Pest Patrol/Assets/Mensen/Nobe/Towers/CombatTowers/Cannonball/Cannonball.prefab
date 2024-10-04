@@ -559,6 +559,7 @@ MonoBehaviour:
   canShoot: 1
   interactable: 0
   canvas: {fileID: 165917350715686082}
+  renderTexture: {fileID: 8400000, guid: 802a49d62188be44bb7d1d32ec1e6cdc, type: 2}
   baseDamage: 15
   baseReloadSpeed: 2.5
   detectionRange: 8
