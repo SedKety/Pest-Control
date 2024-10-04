@@ -33,10 +33,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7432958312442582550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.044790037, y: 0.7538024}
-  m_AnchorMax: {x: 0.22963786, y: 0.87680244}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.0834041, y: 0.7538024}
+  m_AnchorMax: {x: 0.22963786, y: 0.92600006}
+  m_AnchoredPosition: {x: 0.10499954, y: -0.21799994}
+  m_SizeDelta: {x: -0.21099997, y: -0.436}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8918098201580440791
 CanvasRenderer:
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 4292879376101114877}
   - component: {fileID: 7833958772449917037}
   m_Layer: 0
-  m_Name: Panel (3)
+  m_Name: SpeedCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 468375471354769573}
   - component: {fileID: 799945939928954564}
   m_Layer: 0
-  m_Name: Button (1)
+  m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 3744794393394370713}
   - component: {fileID: 7632577970312497063}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: DamageRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -471,8 +471,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d832b71ef74fde459e4fbc04c950f78, type: 2}
-  m_sharedMaterial: {fileID: -7058817279258045848, guid: 9d832b71ef74fde459e4fbc04c950f78,
+  m_fontAsset: {fileID: 11400000, guid: c35181a1cdbe0774e8a4f719cc97e5f0, type: 2}
+  m_sharedMaterial: {fileID: 7519181947261463027, guid: c35181a1cdbe0774e8a4f719cc97e5f0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -497,8 +497,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2
-  m_fontSizeBase: 2
+  m_fontSize: 1.5
+  m_fontSizeBase: 1.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 8979997229487949696}
   - component: {fileID: 5062933468762399019}
   m_Layer: 0
-  m_Name: Panel (1)
+  m_Name: DamageCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 2073504101896547853}
   - component: {fileID: 5633543756874002347}
   m_Layer: 0
-  m_Name: Text (TMP) (2)
+  m_Name: RangePrice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -648,7 +648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.16413331, y: 0.38320273}
   m_AnchorMax: {x: 0.32534873, y: 0.45689642}
-  m_AnchoredPosition: {x: -0.0909996, y: -0.0064992905}
+  m_AnchoredPosition: {x: -0.03750038, y: 0.12927008}
   m_SizeDelta: {x: -0.075, y: 0.013000011}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2073504101896547853
@@ -683,8 +683,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d832b71ef74fde459e4fbc04c950f78, type: 2}
-  m_sharedMaterial: {fileID: -7058817279258045848, guid: 9d832b71ef74fde459e4fbc04c950f78,
+  m_fontAsset: {fileID: 11400000, guid: c35181a1cdbe0774e8a4f719cc97e5f0, type: 2}
+  m_sharedMaterial: {fileID: 7519181947261463027, guid: c35181a1cdbe0774e8a4f719cc97e5f0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -763,7 +763,7 @@ GameObject:
   - component: {fileID: 5762866136410966734}
   - component: {fileID: 4245106689662166196}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: TowerNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -820,8 +820,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d832b71ef74fde459e4fbc04c950f78, type: 2}
-  m_sharedMaterial: {fileID: -7058817279258045848, guid: 9d832b71ef74fde459e4fbc04c950f78,
+  m_fontAsset: {fileID: 11400000, guid: c35181a1cdbe0774e8a4f719cc97e5f0, type: 2}
+  m_sharedMaterial: {fileID: 7519181947261463027, guid: c35181a1cdbe0774e8a4f719cc97e5f0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -846,14 +846,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3.7
+  m_fontSize: 3.35
   m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -925,7 +925,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.5917969, y: 5.2634277}
+  m_AnchoredPosition: {x: 3.3930054, y: 6.664978}
   m_SizeDelta: {x: 25.8973, y: 20.3262}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1110067774503393214
@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 659834061615482639}
   - component: {fileID: 4103332586504185158}
   m_Layer: 0
-  m_Name: Button (3)
+  m_Name: RangeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 7819169778191990586}
   - component: {fileID: 958509226395891608}
   m_Layer: 0
-  m_Name: Text (TMP) (6)
+  m_Name: SpeedCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1186,7 +1186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.82593876, y: 0.17152573}
   m_AnchorMax: {x: 0.9524562, y: 0.25300002}
-  m_AnchoredPosition: {x: 0.06452179, y: 0.024487495}
+  m_AnchoredPosition: {x: 0.06639767, y: 0.35649967}
   m_SizeDelta: {x: 0.1324, y: -0.027997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7819169778191990586
@@ -1221,8 +1221,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d832b71ef74fde459e4fbc04c950f78, type: 2}
-  m_sharedMaterial: {fileID: -7058817279258045848, guid: 9d832b71ef74fde459e4fbc04c950f78,
+  m_fontAsset: {fileID: 11400000, guid: c35181a1cdbe0774e8a4f719cc97e5f0, type: 2}
+  m_sharedMaterial: {fileID: 7519181947261463027, guid: c35181a1cdbe0774e8a4f719cc97e5f0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1394,7 +1394,7 @@ GameObject:
   - component: {fileID: 5985501018425805514}
   - component: {fileID: 625627692965185598}
   m_Layer: 0
-  m_Name: Panel (2)
+  m_Name: RangeCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1469,7 +1469,7 @@ GameObject:
   - component: {fileID: 1190237113886568998}
   - component: {fileID: 8514970031397685966}
   m_Layer: 0
-  m_Name: Text (TMP) (4)
+  m_Name: DamageCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1491,8 +1491,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.82593876, y: 0.5745912}
   m_AnchorMax: {x: 0.9524562, y: 0.6756777}
-  m_AnchoredPosition: {x: 0.0661993, y: 0.016560078}
-  m_SizeDelta: {x: 0.1324, y: -0.27376}
+  m_AnchoredPosition: {x: 0.0661993, y: -0.06004715}
+  m_SizeDelta: {x: 0.132, y: -0.12053}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1190237113886568998
 CanvasRenderer:
@@ -1526,8 +1526,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d832b71ef74fde459e4fbc04c950f78, type: 2}
-  m_sharedMaterial: {fileID: -7058817279258045848, guid: 9d832b71ef74fde459e4fbc04c950f78,
+  m_fontAsset: {fileID: 11400000, guid: c35181a1cdbe0774e8a4f719cc97e5f0, type: 2}
+  m_sharedMaterial: {fileID: 7519181947261463027, guid: c35181a1cdbe0774e8a4f719cc97e5f0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1606,7 +1606,7 @@ GameObject:
   - component: {fileID: 6039691343769464945}
   - component: {fileID: 507728891435677948}
   m_Layer: 0
-  m_Name: Text (TMP) (5)
+  m_Name: RangeCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1628,7 +1628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.82593876, y: 0.3557362}
   m_AnchorMax: {x: 0.9524562, y: 0.45689642}
-  m_AnchoredPosition: {x: 0.06622982, y: 0.016614914}
+  m_AnchoredPosition: {x: 0.06639767, y: 0.27265}
   m_SizeDelta: {x: 0.1324, y: -0.27376}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6039691343769464945
@@ -1663,8 +1663,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d832b71ef74fde459e4fbc04c950f78, type: 2}
-  m_sharedMaterial: {fileID: -7058817279258045848, guid: 9d832b71ef74fde459e4fbc04c950f78,
+  m_fontAsset: {fileID: 11400000, guid: c35181a1cdbe0774e8a4f719cc97e5f0, type: 2}
+  m_sharedMaterial: {fileID: 7519181947261463027, guid: c35181a1cdbe0774e8a4f719cc97e5f0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1743,7 +1743,7 @@ GameObject:
   - component: {fileID: 525424900671688353}
   - component: {fileID: 6884732511304036542}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: DamageSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1765,8 +1765,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3303809, y: 0.1867109}
   m_AnchorMax: {x: 0.5864607, y: 0.25300002}
-  m_AnchoredPosition: {x: -0.03584957, y: 0.024481773}
-  m_SizeDelta: {x: 0.027706249, y: -0.074721664}
+  m_AnchoredPosition: {x: 0.36835003, y: -0.25400066}
+  m_SizeDelta: {x: 0.83611, y: 0.482}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &525424900671688353
 CanvasRenderer:
@@ -1800,8 +1800,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d832b71ef74fde459e4fbc04c950f78, type: 2}
-  m_sharedMaterial: {fileID: -7058817279258045848, guid: 9d832b71ef74fde459e4fbc04c950f78,
+  m_fontAsset: {fileID: 11400000, guid: c35181a1cdbe0774e8a4f719cc97e5f0, type: 2}
+  m_sharedMaterial: {fileID: 7519181947261463027, guid: c35181a1cdbe0774e8a4f719cc97e5f0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1826,8 +1826,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2
-  m_fontSizeBase: 2
+  m_fontSize: 1.5
+  m_fontSizeBase: 1.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -1880,7 +1880,7 @@ GameObject:
   - component: {fileID: 8375676174460602512}
   - component: {fileID: 5826938377954635099}
   m_Layer: 0
-  m_Name: Text (TMP) (3)
+  m_Name: DamagePrice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1902,7 +1902,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.16413331, y: 0.5600279}
   m_AnchorMax: {x: 0.29485345, y: 0.6601175}
-  m_AnchoredPosition: {x: 0, y: -0.0000021457672}
+  m_AnchoredPosition: {x: 0.03750038, y: 0.06833887}
   m_SizeDelta: {x: -0.075, y: 0.0000071526}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8375676174460602512
@@ -2017,7 +2017,7 @@ GameObject:
   - component: {fileID: 4342133026586107103}
   - component: {fileID: 3367240856779804812}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: DamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2074,8 +2074,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d832b71ef74fde459e4fbc04c950f78, type: 2}
-  m_sharedMaterial: {fileID: -7058817279258045848, guid: 9d832b71ef74fde459e4fbc04c950f78,
+  m_fontAsset: {fileID: 11400000, guid: c35181a1cdbe0774e8a4f719cc97e5f0, type: 2}
+  m_sharedMaterial: {fileID: 7519181947261463027, guid: c35181a1cdbe0774e8a4f719cc97e5f0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2100,8 +2100,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2
-  m_fontSizeBase: 2
+  m_fontSize: 1.5
+  m_fontSizeBase: 1.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -2154,7 +2154,7 @@ GameObject:
   - component: {fileID: 3430457293660069220}
   - component: {fileID: 3981799226543502569}
   m_Layer: 0
-  m_Name: Text (TMP) (1)
+  m_Name: SpeedPrice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2177,7 +2177,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.16413331, y: 0.1631339}
   m_AnchorMax: {x: 0.26825193, y: 0.24318439}
-  m_AnchoredPosition: {x: -0.03752899, y: -0.00004386902}
+  m_AnchoredPosition: {x: -0.03750038, y: 0.21463966}
   m_SizeDelta: {x: -0.075, y: -0.056}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3430457293660069220
@@ -2212,8 +2212,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d832b71ef74fde459e4fbc04c950f78, type: 2}
-  m_sharedMaterial: {fileID: -7058817279258045848, guid: 9d832b71ef74fde459e4fbc04c950f78,
+  m_fontAsset: {fileID: 11400000, guid: c35181a1cdbe0774e8a4f719cc97e5f0, type: 2}
+  m_sharedMaterial: {fileID: 7519181947261463027, guid: c35181a1cdbe0774e8a4f719cc97e5f0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2294,7 +2294,7 @@ GameObject:
   - component: {fileID: 6494484764056159690}
   - component: {fileID: 9095356339313403153}
   m_Layer: 0
-  m_Name: Button (4)
+  m_Name: SpeedButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2518,7 +2518,7 @@ GameObject:
   - component: {fileID: 4572744528906922428}
   - component: {fileID: 3348375883094749433}
   m_Layer: 0
-  m_Name: Button (2)
+  m_Name: DamageButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

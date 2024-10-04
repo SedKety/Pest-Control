@@ -46,8 +46,8 @@ public class Crossbow : CombatTower
         isReturningBackToPosition = true;
         while (crossbow.rotation != originalCrossbowRotation && currentDetectedEnemyGO == null)
         {
-            crossbow.rotation = Quaternion.Lerp(crossbow.rotation, originalCrossbowRotation, 0.1f);
-            crossbowPad.rotation = Quaternion.Lerp(crossbowPad.rotation, originalCrossbowPadRotation, 0.1f);
+            crossbow.rotation = Quaternion.Slerp(crossbow.rotation, originalCrossbowRotation, 0.1f);
+            crossbowPad.rotation = Quaternion.Slerp(crossbowPad.rotation, originalCrossbowPadRotation, 0.1f);
             await Task.Delay(20);
         }
         isReturningBackToPosition = false;
@@ -57,6 +57,7 @@ public class Crossbow : CombatTower
         if (!currentDetectedEnemyGO) { return; }
         Vector3 padTargetPos = new(currentDetectedEnemyGO.transform.position.x, crossbowPad.position.y, currentDetectedEnemyGO.transform.position.z);
         crossbowPad.LookAt(padTargetPos);
+
 
         Vector3 crosTargetPos = currentDetectedEnemyGO.transform.position;
         crossbow.LookAt(crosTargetPos);

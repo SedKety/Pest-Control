@@ -29,7 +29,10 @@ public class Projectile : MonoBehaviour
         if (currentTickCount >= tickLifeTime)
         {
             Ticker.OnTickAction -= OnTick;
-            Destroy(gameObject);
+            if (gameObject != null)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     public void OnDestroy()
