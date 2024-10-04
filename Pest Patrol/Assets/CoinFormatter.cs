@@ -24,16 +24,16 @@ public class CoinFormatter : MonoBehaviour
     }
     public void FormatCoins()
     {
-        string coins = GameManager.points.ToString();
-        float decimals = Mathf.Log10(float.Parse(coins));
-        string moneyAsText = coins;
+        long coins = GameManager.points;
+        float decimals = Mathf.Log10(coins);
+        string moneyAsText = coins.ToString();
         if (decimals >= 3 && decimals <= 6)
         {
-            moneyAsText = (float.Parse(coins) / 1000).ToString("F") + "K";
+            moneyAsText = (coins / 1000).ToString("F") + "K";
         }
         if (decimals >= 6)
         {
-            moneyAsText = (float.Parse(coins) / 1000000).ToString("F") + "M";
+            moneyAsText = (coins / 1000000).ToString("F") + "M";
         }
         gameObject.transform.GetComponent<TMP_Text>().text = moneyAsText;
     }

@@ -72,7 +72,7 @@ public class Ratter : MonoBehaviour
         isRat = false;
         transform.rotation = originalRot;
     }
-
+    #region async bs
     void OnApplicationQuit()
     {
         #if UNITY_EDITOR
@@ -81,4 +81,5 @@ public class Ratter : MonoBehaviour
             SynchronizationContext.SetSynchronizationContext(newContext as SynchronizationContext);
         #endif
     }
+    #endregion
 }

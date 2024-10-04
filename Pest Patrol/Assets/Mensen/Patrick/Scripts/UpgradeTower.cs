@@ -18,7 +18,11 @@ public class UpgradeTower : MonoBehaviour
         coinTexts[2].text = Mathf.RoundToInt((gameObject.GetComponent<CombatTower>().baseReloadSpeed + (1 - gameObject.GetComponent<CombatTower>().baseReloadSpeed * 6) + 15 * 1.2f)).ToString();
         coinTexts[3].text = gameObject.GetComponent<CombatTower>().baseDamage.ToString();
         coinTexts[4].text = gameObject.GetComponent<CombatTower>().detectionRange.ToString();
-        coinTexts[5].text = (Mathf.Round((gameObject.GetComponent<CombatTower>().baseReloadSpeed * 10.0f)) * 0.1f).ToString();
+        if (gameObject.GetComponent<CombatTower>().baseReloadSpeed > 0.1f)
+        {
+            coinTexts[5].text = (Mathf.Round((gameObject.GetComponent<CombatTower>().baseReloadSpeed * 10.0f)) * 0.1f).ToString();
+
+        }
     }
     public void UpgradeDamage(GameObject tower)
     {
@@ -43,8 +47,15 @@ public class UpgradeTower : MonoBehaviour
         int cost = Mathf.RoundToInt((tower.GetComponent<CombatTower>().baseReloadSpeed + 15 * 1.5f));
         if (GameManager.points - cost >= 0)
         {
-            tower.GetComponent<CombatTower>().baseReloadSpeed -= 0.1f;
-            GameManager.DeletePoints(cost);
+            if (tower.GetComponent<CombatTower>().baseReloadSpeed - 0.1f > 0)
+            {
+                tower.GetComponent<CombatTower>().baseReloadSpeed -= 0.1f;
+                GameManager.DeletePoints(cost);
+            }
+            else
+            {
+                coinTexts[5].text = "MAX";
+            }
         }
     }
 

@@ -8,18 +8,15 @@ public class TowerUI : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity);
-
             if (hit.collider.GetComponent<Tower>() != null)
             {
                 if (hit.collider.GetComponent<Tower>().interactable)
                 {
                     string name = hit.collider.GetComponent<Tower>().name;
                     name = name.Replace("(Clone)", "");
-                    hit.collider.GetComponent<Tower>().canvas.GetComponent<LookToCamera>().ChangeText(name);
-                    hit.collider.GetComponent<Tower>().canvas.SetActive(!hit.collider.GetComponent<Tower>().canvas.activeSelf);
+                    UpdateText.instance.UpdatePanel(hit.collider.GetComponent<Tower>());
                 }
             }
         }
