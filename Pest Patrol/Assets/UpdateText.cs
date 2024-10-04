@@ -60,7 +60,7 @@ public class UpdateText : MonoBehaviour
         coinTexts[4].text = tower.gameObject.GetComponent<CombatTower>().detectionRange.ToString();
         if (tower.gameObject.GetComponent<CombatTower>().baseReloadSpeed > 0.1f)
         {
-            coinTexts[2].text = Mathf.RoundToInt((currentTower.GetComponent<CombatTower>().baseReloadSpeed + 15 * 1.5f)).ToString();
+            coinTexts[2].text = Mathf.RoundToInt((tower.GetComponent<CombatTower>().baseReloadSpeed + 15 * 1.5f)).ToString();
             coinTexts[5].text = (Mathf.Round((tower.gameObject.GetComponent<CombatTower>().baseReloadSpeed * 10.0f)) * 0.1f).ToString();
         }
         currentTower = tower.gameObject;
