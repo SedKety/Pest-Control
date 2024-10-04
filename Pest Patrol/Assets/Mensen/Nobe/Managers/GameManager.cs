@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     public void OnWaveChange()
     {
-        print(WaveSystem.wave);
+        print("currentWave = " + WaveSystem.wave);
         if (WaveSystem.wave > maxWave)
         {
             gameWon.Invoke();

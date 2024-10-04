@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RatSkewer : GeneratingTower
 {
+    public GameObject ratGO;
+    public Vector3 ratRot;
     protected override void OnTick()
     {
         
@@ -11,6 +13,6 @@ public class RatSkewer : GeneratingTower
 
     protected override void Update()
     {
-        
+        ratGO.transform.Rotate(ratRot * Time.deltaTime);
     }
 }

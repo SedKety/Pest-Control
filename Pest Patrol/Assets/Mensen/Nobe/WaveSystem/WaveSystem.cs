@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 [System.Serializable]
 public struct WaveGroups
@@ -12,19 +13,28 @@ public struct WaveGroups
     public float timeBetweenEnemy;
     public float timeBetweenGroup;
 
-    public int minWave;
+    public int minWaveEasy;
+    public int minWaveMedium;
+    public int minWaveHard;
 }
-
+public enum GameMode
+{
+    Easy,
+    Medium,
+    Hard
+}
 public class WaveSystem : MonoBehaviour
 {
-
+    public GameMode mode;
     public static WaveSystem instance;
     public static int wave;
 
     //WavePoint variables
     private int wavePoints;
     public int startingWavePoints;
-    public float wavePointsModifier;
+    public float easyWavePointMultiplier;
+    public float mediumWavePointMultiplier;
+    public float hardWavePointMultiplier;
 
     // Miscellaneous variables
     public float enemyHealthMultiplierIncrease;
@@ -54,7 +64,9 @@ public class WaveSystem : MonoBehaviour
         instance = this;
         wave = 0;
         wavePoints = 0;
-        wavePointsModifier = 1;
+        easyWavePointMultiplier = 1.25f;
+        mediumWavePointMultiplier = 1.5f;
+        hardWavePointMultiplier = 2f;
         canStartSpawningWaves = false;
         currentWaveCoroutine = null;
     }
@@ -75,8 +87,8 @@ public class WaveSystem : MonoBehaviour
     {
         if (isWaveSpawning && currentWaveCoroutine != null)
         {
-            StopCoroutine(currentWaveCoroutine); 
-            currentWaveCoroutine = null;        
+            StopCoroutine(currentWaveCoroutine);
+            currentWaveCoroutine = null;
         }
 
         currentWaveGroups.Clear();
@@ -84,24 +96,35 @@ public class WaveSystem : MonoBehaviour
 
         wave++;
         GameManager.instance.OnWaveChange();
-        wavePoints = 0;
-        int middleMan = startingWavePoints * wave;
-        wavePoints = middleMan;
+        wavePoints = CalculateWavePoints(wave);
 
-        isWaveSpawning = true; 
+        isWaveSpawning = true;
         currentWaveCoroutine = StartCoroutine(GenerateNewWave());
     }
 
+    int CalculateWavePoints(int wave)
+    {
+        if (wave <= 0) { wave = 1; }
+        float multiplier = mode switch
+        {
+            GameMode.Easy => easyWavePointMultiplier,
+            GameMode.Medium => mediumWavePointMultiplier,
+            GameMode.Hard => hardWavePointMultiplier,
+            _ => 1f
+        };
+
+        return Mathf.RoundToInt(wave * 2f / 3f * multiplier);
+    }
     public IEnumerator GenerateNewWave()
     {
-        SelectAvailableGroups();
+        UpdateAvailableGroups();
 
         var maxTries = 10 * wave;
         while (wavePoints > 0 && maxTries >= 0)
         {
             maxTries--;
             currentWaveGroups.Add(SelectGroup());
-            SelectAvailableGroups();
+            UpdateAvailableGroups();
         }
 
         currentWaveCoroutine = StartCoroutine(SpawnEnemyGroups());
@@ -115,14 +138,22 @@ public class WaveSystem : MonoBehaviour
         return selectedGroup;
     }
 
-    public void SelectAvailableGroups()
+    void UpdateAvailableGroups()
     {
         availableGroups.Clear();
-        foreach (WaveGroups groups in enemyGroups)
+        foreach (WaveGroups group in enemyGroups)
         {
-            if (groups.wavePointCost <= wavePoints & wave >= groups.minWave)
+            bool isValid = mode switch
             {
-                availableGroups.Add(groups);
+                GameMode.Easy => wave >= group.minWaveEasy,
+                GameMode.Medium => wave >= group.minWaveMedium,
+                GameMode.Hard => wave >= group.minWaveHard,
+                _ => false
+            };
+
+            if (isValid && group.wavePointCost <= wavePoints)
+            {
+                availableGroups.Add(group);
             }
         }
     }

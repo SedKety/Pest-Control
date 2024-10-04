@@ -15,10 +15,10 @@ public class HammerTower : CombatTower
     private float swingProgress = 0f;
     private float swingDuration;
 
-    private const float minSwingDuration = 0.1f; 
-    private const float maxSwingDuration = 5f; 
-    private const float baseDuration = 1.0f; 
-    private const float reloadSpeedSensitivity = 2.0f; 
+    private const float minSwingDuration = 0.1f;
+    private const float maxSwingDuration = 5f;
+    private const float baseDuration = 1.0f;
+    private const float reloadSpeedSensitivity = 2.0f;
 
     protected override void Start()
     {
@@ -109,8 +109,7 @@ public class HammerTower : CombatTower
         }
         else
         {
-            swingDuration = maxSwingDuration; 
+            swingDuration = maxSwingDuration;
         }
     }
-
 }

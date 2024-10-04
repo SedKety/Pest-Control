@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1370590793782163892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4543694234297643038}
+  m_Layer: 0
+  m_Name: Raycast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4543694234297643038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370590793782163892}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3629902331308707943}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2165906751866239240
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,10 +316,13 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4690112360014178828, guid: 67fc66fcbf480bf42850971bb394ead6, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7893355647008806355, guid: 67fc66fcbf480bf42850971bb394ead6, type: 3}
     - {fileID: 1803404971882641480, guid: 67fc66fcbf480bf42850971bb394ead6, type: 3}
+    - {fileID: 6097321553202608926, guid: 67fc66fcbf480bf42850971bb394ead6, type: 3}
+    - {fileID: 5905852174347336178, guid: 67fc66fcbf480bf42850971bb394ead6, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 318685527278038612, guid: 67fc66fcbf480bf42850971bb394ead6,
         type: 3}
@@ -302,6 +336,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2081836347115504747}
+    - targetCorrespondingSourceObject: {fileID: 318685527278038612, guid: 67fc66fcbf480bf42850971bb394ead6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4543694234297643038}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5275177400138622779, guid: 67fc66fcbf480bf42850971bb394ead6,
         type: 3}

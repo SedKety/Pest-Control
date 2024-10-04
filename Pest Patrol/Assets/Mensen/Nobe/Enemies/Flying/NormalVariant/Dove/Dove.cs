@@ -16,17 +16,13 @@ public class Dove : FlyingEnemy
     public IEnumerator DropEggs()
     {
         yield return new WaitForSeconds(initTimeTillEgg);
-        print("StartSpawningEggs");
         while (gameObject.activeSelf)
         {
-            print("Tries to drop egg");
             if (CanDropEgg())
             {
-                print("Succesfully Dropped an egg");
                 Instantiate(eggGO, transform.position, Quaternion.identity);
                 yield return new WaitForSeconds(timeTillEgg);
             }
-            print("Failed, will retry in " + timeTillEgg + "seconds");
             yield return new WaitForSeconds(timeTillEgg);
         }
 

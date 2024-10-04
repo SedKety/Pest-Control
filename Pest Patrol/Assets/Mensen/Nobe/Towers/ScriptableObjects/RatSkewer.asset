@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a0db6f1afdee9488fbd2c106dc675e, type: 3}
   m_Name: RatSkewer
   m_EditorClassIdentifier: 
-  towerGhostGO: {fileID: 8185070648664195820, guid: b614b0808ac90474f81c57b6b00860ab,
+  towerGhostGO: {fileID: 1856789100862033064, guid: b3f1cf3e7a5e0db4cbcb41c4ed8935d5,
     type: 3}
-  towerToPlaceGO: {fileID: 8185070648664195820, guid: e2aeb2f9b4b4dbc49977ecb315feabba,
+  towerToPlaceGO: {fileID: 1856789100862033064, guid: d3cdeec1702864f419062c9d4314aabf,
     type: 3}
   towerSprite: {fileID: 0}
-  towerBuildPointCost: 0
+  towerBuildPointCost: 25
   allowedOverlaps: 1
