@@ -31,10 +31,10 @@ public class Settings : MonoBehaviour
         resolutionList = new List<Resolution>();
         currentRefRate = Screen.currentResolution.refreshRateRatio.value;
         //Debug.LogWarning(resolutions.Length);
-        for (int i = 0; i < resolutions.Length; i++)
+        for (var i = 0; i < resolutions.Length; i++)
         {
-            float refRate = (float)currentRefRate;
-            float rate = (float)resolutions[i].refreshRateRatio.value;
+            var refRate = (float)currentRefRate;
+            var rate = (float)resolutions[i].refreshRateRatio.value;
             if (Mathf.Approximately(refRate, rate))
             {
                 resolutionList.Add(resolutions[i]);
@@ -44,10 +44,10 @@ public class Settings : MonoBehaviour
                 Debug.LogWarning("refresh rate not correct");
             }
         }
-        List<string> options = new List<string>();
-        for (int i = 0; i < resolutionList.Count; i++)
+        var options = new List<string>();
+        for (var i = 0; i < resolutionList.Count; i++)
         {
-            string resolutionOption = resolutionList[i].width + "x" + resolutionList[i].height + " " + Mathf.Round((float)resolutionList[i].refreshRateRatio.value) + " Hz";
+            var resolutionOption = resolutionList[i].width + "x" + resolutionList[i].height + " " + Mathf.Round((float)resolutionList[i].refreshRateRatio.value) + " Hz";
             options.Add(resolutionOption);
             if (resolutionList[i].width == Screen.width && resolutionList[i].height == Screen.height)
             {
@@ -95,7 +95,7 @@ public class Settings : MonoBehaviour
     {
         try
         {
-            if (float.Parse(value) <= 0) CameraController.Instance.UpdateMouseSens(float.Parse(value));
+            if (float.Parse(value) <= 0) CameraController.Instance.UpdateMouseSens(1);
             else CameraController.Instance.UpdateMouseSens(float.Parse(value));
         }
         catch { Debug.Log("No camera controller present."); }

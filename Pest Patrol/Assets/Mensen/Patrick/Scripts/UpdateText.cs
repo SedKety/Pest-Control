@@ -35,17 +35,17 @@ public class UpdateText : MonoBehaviour
     }
     public void UpdatePanel(Tower tower)
     {
-        string name = tower.name.Replace("(Clone)", "");
+        var name = tower.name.Replace("(Clone)", "");
         nameText.text = name;
         GetComponent<UIFoldout>().SetState(true);
         skibidi.texture = tower.renderTexture;
         switch (tower.typeOfTower)
         {
             case TowerType.generating:
-                foreach (GameObject go in generatingTowerUpgrades) go.SetActive(true);
+                foreach (var go in generatingTowerUpgrades) go.SetActive(true);
                 break;
             case TowerType.fighting:
-                foreach (GameObject go in combatTowerUpgrades) go.SetActive(true);
+                foreach (var go in combatTowerUpgrades) go.SetActive(true);
                 break;
             default:
                 throw new System.Exception("No valid tower type, if there's a new tower type please add it to the script. I am very bad at programming.");
@@ -68,39 +68,33 @@ public class UpdateText : MonoBehaviour
 
     public void UpgradeDamage()
     {
-        int cost = Mathf.RoundToInt((currentTower.GetComponent<CombatTower>().baseDamage * 2) * 1.2f);
-        if (GameManager.points - cost >= 0)
-        {
-            currentTower.GetComponent<CombatTower>().baseDamage += 2;
-            GameManager.DeletePoints(cost);
-            UpdateValues();
-        }
+        var cost = Mathf.RoundToInt((currentTower.GetComponent<CombatTower>().baseDamage * 2) * 1.2f);
+        if (GameManager.points - cost < 0) return;
+        currentTower.GetComponent<CombatTower>().baseDamage += 2;
+        GameManager.DeletePoints(cost);
+        UpdateValues();
     }
     public void UpgradeRange()
     {
-        int cost = Mathf.RoundToInt((currentTower.GetComponent<CombatTower>().detectionRange * 2) * 1.2f);
-        if (GameManager.points - cost >= 0)
-        {
-            currentTower.GetComponent<CombatTower>().detectionRange += 2;
-            GameManager.DeletePoints(cost);
-            UpdateValues();
-        }
+        var cost = Mathf.RoundToInt((currentTower.GetComponent<CombatTower>().detectionRange * 2) * 1.2f);
+        if (GameManager.points - cost < 0) return;
+        currentTower.GetComponent<CombatTower>().detectionRange += 2;
+        GameManager.DeletePoints(cost);
+        UpdateValues();
     }
     public void UpgradeSpeed()
     {
-        int cost = Mathf.RoundToInt((currentTower.GetComponent<CombatTower>().baseReloadSpeed + 15 * 1.5f));
-        if (GameManager.points - cost >= 0)
+        var cost = Mathf.RoundToInt((currentTower.GetComponent<CombatTower>().baseReloadSpeed + 15 * 1.5f));
+        if (GameManager.points - cost < 0) return;
+        if (currentTower.GetComponent<CombatTower>().baseReloadSpeed - 0.1f > 0)
         {
-            if (currentTower.GetComponent<CombatTower>().baseReloadSpeed - 0.1f > 0)
-            {
-                currentTower.GetComponent<CombatTower>().baseReloadSpeed -= 0.1f;
-                GameManager.DeletePoints(cost);
-                UpdateValues();
-            }
-            else
-            {
-                coinTexts[5].text = "MAX";
-            }
+            currentTower.GetComponent<CombatTower>().baseReloadSpeed -= 0.1f;
+            GameManager.DeletePoints(cost);
+            UpdateValues();
+        }
+        else
+        {
+            coinTexts[5].text = "MAX";
         }
     }
 }

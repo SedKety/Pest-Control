@@ -72,6 +72,8 @@ public class WaveSystem : MonoBehaviour
     }
     public void Start()
     {
+        mode = (GameMode)PlayerPrefs.GetInt("Difficulty");
+        print(mode.ToString());
         Ticker.OnTickAction += OnTick;
     }
     public void OnTick()
