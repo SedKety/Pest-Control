@@ -20,6 +20,7 @@ public class HammerTower : CombatTower
     private const float baseDuration = 1.0f;
     private const float reloadSpeedSensitivity = 2.0f;
 
+    public ProjectileType projectileType;
     protected override void Start()
     {
         Ticker.OnTickAction += OnTick;
@@ -69,7 +70,7 @@ public class HammerTower : CombatTower
         {
             if (nearbyEnemies[i] != null)
             {
-                nearbyEnemies[i].GetComponent<Enemy>().OnHit((int)(baseDamage * TowerManager.globalTowerDamageMultiplier));
+                nearbyEnemies[i].GetComponent<Enemy>().OnHit((int)(baseDamage * TowerManager.globalTowerDamageMultiplier), projectileType);
             }
         }
     }

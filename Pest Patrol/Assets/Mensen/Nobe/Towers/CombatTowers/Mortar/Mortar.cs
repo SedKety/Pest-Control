@@ -39,7 +39,7 @@ public class Mortar : CombatTower
         if (enemy == null) { return; }
         Instantiate(explosionGO, enemy.transform.position, enemy.transform.rotation);
         var middleMan = baseDamage * TowerManager.globalTowerDamageMultiplier;
-        enemy.GetComponent<Enemy>().OnHit((int)middleMan);
+        //enemy.GetComponent<Enemy>().OnHit((int)middleMan), projectileType);
         return;
     }
 

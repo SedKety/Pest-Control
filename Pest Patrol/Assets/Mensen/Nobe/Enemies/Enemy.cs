@@ -96,7 +96,7 @@ public abstract class Enemy : MonoBehaviour
             return false;
         }
     }
-    public virtual void OnHit(int damage)
+    public virtual void OnHit(int damage, ProjectileType projectileType)
     {
         health -= damage;
         if (health <= 0)
@@ -105,6 +105,7 @@ public abstract class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     protected virtual void OnDestroy()
     {
         GameManager.AddPoints(pointsDropped);

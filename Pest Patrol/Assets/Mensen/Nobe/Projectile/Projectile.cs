@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ProjectileType
+{
+    blunt,
+    sharp,
+}
 public class Projectile : MonoBehaviour
 {
     public int tickLifeTime;
@@ -15,6 +20,7 @@ public class Projectile : MonoBehaviour
 
     public List<GameObject> hitEnemy;
     public float hitDistance;
+    public ProjectileType projectileType;
     protected virtual void Start()
     {
         Ticker.OnTickAction += OnTick;

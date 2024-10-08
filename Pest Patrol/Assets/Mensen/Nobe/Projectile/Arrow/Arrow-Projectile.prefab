@@ -101,4 +101,6 @@ MonoBehaviour:
   enemyGO: {fileID: 0}
   projectileDamage: 0
   pierceAmount: 1
+  hitEnemy: []
   hitDistance: 0.2
+  projectileType: 1

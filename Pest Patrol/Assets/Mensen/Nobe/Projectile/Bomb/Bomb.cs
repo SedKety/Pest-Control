@@ -15,8 +15,7 @@ public class Bomb : Arrow
             var distance = Vector3.Distance(transform.position, GameManager.enemies[i].transform.position);
             if (distance <= hitDistance)
             {
-                var middleman = projectileDamage * TowerManager.globalTowerDamageMultiplier;
-                GameManager.enemies[i].GetComponent<Enemy>().OnHit((int)middleman);
+                GameManager.enemies[i].GetComponent<Enemy>().OnHit((int)(projectileDamage * TowerManager.globalTowerDamageMultiplier), projectileType);
                 hitEnemy.Add(GameManager.enemies[i]);
 
                 Instantiate(explosion, GameManager.enemies[i].transform.position, new());

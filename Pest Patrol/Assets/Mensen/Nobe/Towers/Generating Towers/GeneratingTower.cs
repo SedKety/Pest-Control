@@ -6,8 +6,24 @@ public abstract class GeneratingTower : Tower
 {
     [Header("Generating Tower Variables")]
     public int basePointsGenerated;
-    public float timeBetweenPoints;
+    public int maxPointsGenerated;
+    private float basePointMultiplier = 1;
 
+    public float timeBetweenPoints;
+    public float minTimeBetweenPoints;
+    private float timeBetweenPointsMultiplier = 1;
+
+
+    public void IncreasePointsGenerated(float pointMultiplier)
+    {
+        basePointMultiplier += pointMultiplier;
+        basePointsGenerated = (int)(basePointsGenerated * basePointMultiplier);
+    }
+
+    public void IncreaseTimeBetweenPoints(float timeBetweenMultiplier)
+    {
+
+    }
     protected override void Start()
     {
         StartCoroutine(GeneratePoints());

@@ -27,6 +27,8 @@ public abstract class Tower : MonoBehaviour
     public bool interactable = false;
     public GameObject canvas;
     public RenderTexture renderTexture;
+
+    public TowerSO towerSO;
     protected virtual void Start()
     {
 

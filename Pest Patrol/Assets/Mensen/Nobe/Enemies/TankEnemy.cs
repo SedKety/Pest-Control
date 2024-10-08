@@ -5,10 +5,10 @@ using UnityEngine;
 public abstract class TankEnemy : Enemy
 {
     public int shield;
-
-    public override void OnHit(int damage)
+    public ProjectileType typeToHitShield;
+    public override void OnHit(int damage, ProjectileType projectileType)
     {
-        // If damage is greater than or equal to the shield
+        if (projectileType == ProjectileType.sharp && shield <= 0) { return; } 
         if (damage >= shield)
         {
             int leftOverDamage = damage - shield;
