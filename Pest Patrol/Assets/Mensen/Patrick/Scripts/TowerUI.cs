@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TowerUI : MonoBehaviour
 {
+    public TowerUpgrading upgradePanel;
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -14,9 +15,7 @@ public class TowerUI : MonoBehaviour
             {
                 if (hit.collider.GetComponent<Tower>().interactable)
                 {
-                    string name = hit.collider.GetComponent<Tower>().name;
-                    name = name.Replace("(Clone)", "");
-                    UpdateText.instance.UpdatePanel(hit.collider.GetComponent<Tower>());
+                    upgradePanel.UpdatePanel(hit.collider.GetComponent<Tower>());
                 }
             }
         }

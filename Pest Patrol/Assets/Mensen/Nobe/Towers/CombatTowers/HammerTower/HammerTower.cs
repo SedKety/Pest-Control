@@ -37,6 +37,12 @@ public class HammerTower : CombatTower
 
     protected override void Update()
     {
+        if (!canShoot)
+        {
+            ResetSwing();
+            return;
+        }
+
         if (!isSwingingForward && !isSwingingBackward && canShoot)
         {
             StartSwing();
@@ -77,6 +83,12 @@ public class HammerTower : CombatTower
 
     void SwingHammerForward()
     {
+        if (!canShoot)
+        {
+            ResetSwing();
+            return;
+        }
+
         swingProgress += Time.deltaTime / swingDuration;
 
         hammerHolder.rotation = Quaternion.Lerp(startRotation, endRotation, swingProgress);
@@ -92,6 +104,12 @@ public class HammerTower : CombatTower
 
     void SwingHammerBackward()
     {
+        if (!canShoot)
+        {
+            ResetSwing();
+            return;
+        }
+
         swingProgress += Time.deltaTime / swingDuration;
 
         hammerHolder.rotation = Quaternion.Lerp(endRotation, startRotation, swingProgress);
@@ -100,6 +118,14 @@ public class HammerTower : CombatTower
         {
             isSwingingBackward = false;
         }
+    }
+
+    private void ResetSwing()
+    {
+        isSwingingForward = false;
+        isSwingingBackward = false;
+        swingProgress = 0f;
+        hammerHolder.rotation = startRotation;  
     }
 
     private void UpdateSwingDuration()

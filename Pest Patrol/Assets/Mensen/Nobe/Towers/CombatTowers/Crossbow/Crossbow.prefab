@@ -54,7 +54,6 @@ MonoBehaviour:
   typeOfTower: 1
   canShoot: 1
   interactable: 0
-  canvas: {fileID: 2625517315585129048}
   renderTexture: {fileID: 8400000, guid: bfdbfc5c7311ee143918def3f7bd49f4, type: 2}
   baseDamage: 5
   baseReloadSpeed: 1
@@ -64,9 +63,7 @@ MonoBehaviour:
   projectileGO: {fileID: 4083638275970873234, guid: f1078b032f6107d469f4d05b474e52ca,
     type: 3}
   timeToAttackEnemy: 1
-  stunParticles: {fileID: 9079122564067699494, guid: aba317adb61a3ca48a8c17444a6a87ab,
-    type: 3}
-  stunParticleHolder: {fileID: 8551173611214861209}
+  stunParticles: {fileID: 4729314807543122053}
   crossbowPad: {fileID: 7964642595798633768}
   crossbow: {fileID: 6742050679198878751}
 --- !u!65 &8917803774829504285
@@ -275,7 +272,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7089385788191520690}
   m_Father: {fileID: 7748619639575012258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3696152759023143467
@@ -878,12 +876,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2625517315585129048 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3293608079465152753, guid: dd451b523afb900479f9ed07adf4abe8,
-    type: 3}
-  m_PrefabInstance: {fileID: 710030591314508457}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2748571860815412496 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3458318683019888569, guid: dd451b523afb900479f9ed07adf4abe8,
@@ -938,3 +930,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &4350023265384096675
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8551173611214861209}
+    m_Modifications:
+    - target: {fileID: 6790563802442945553, guid: aba317adb61a3ca48a8c17444a6a87ab,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790563802442945553, guid: aba317adb61a3ca48a8c17444a6a87ab,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790563802442945553, guid: aba317adb61a3ca48a8c17444a6a87ab,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790563802442945553, guid: aba317adb61a3ca48a8c17444a6a87ab,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790563802442945553, guid: aba317adb61a3ca48a8c17444a6a87ab,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790563802442945553, guid: aba317adb61a3ca48a8c17444a6a87ab,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790563802442945553, guid: aba317adb61a3ca48a8c17444a6a87ab,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790563802442945553, guid: aba317adb61a3ca48a8c17444a6a87ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790563802442945553, guid: aba317adb61a3ca48a8c17444a6a87ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790563802442945553, guid: aba317adb61a3ca48a8c17444a6a87ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079122564067699494, guid: aba317adb61a3ca48a8c17444a6a87ab,
+        type: 3}
+      propertyPath: m_Name
+      value: StunEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079122564067699494, guid: aba317adb61a3ca48a8c17444a6a87ab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aba317adb61a3ca48a8c17444a6a87ab, type: 3}
+--- !u!1 &4729314807543122053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9079122564067699494, guid: aba317adb61a3ca48a8c17444a6a87ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 4350023265384096675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7089385788191520690 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6790563802442945553, guid: aba317adb61a3ca48a8c17444a6a87ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 4350023265384096675}
+  m_PrefabAsset: {fileID: 0}

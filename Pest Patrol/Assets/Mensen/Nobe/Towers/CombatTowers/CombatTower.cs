@@ -6,10 +6,12 @@ using UnityEngine;
 
 public abstract class CombatTower : Tower
 {
-    //base Stats, these will be multiplied by the towermanager class
     [Header("Attacking Tower Variables")]
     public int baseDamage;
+    private float baseDamageMultiplier;
+
     public float baseReloadSpeed;
+    private float baseReloadSpeedMultiplier;
     public float detectionRange;
     public GameObject currentDetectedEnemyGO;
 
@@ -21,19 +23,39 @@ public abstract class CombatTower : Tower
     private Coroutine stunCoroutine;
 
     public GameObject stunParticles;
-    public Transform stunParticleHolder;
+
+
+    public int maxAllowedDamageIncrease;
+    public int currentDamageincreasePurchased;
+
+    public int maxAllowedReloadSpeed;
+    public int currentReloadSpeedincreasePurchased;
+
+    public void IncreaseDamage(float damageMultiplier)
+    {
+        baseDamageMultiplier += damageMultiplier;
+        baseDamage = (int)(baseDamage * baseDamageMultiplier);
+        currentDamageincreasePurchased++;
+    }
+
+    public void IncreaseReloadSpeed(float reloadSpeedMultiplier)
+    {
+        baseReloadSpeedMultiplier -= reloadSpeedMultiplier;
+        baseReloadSpeed = (int)(baseReloadSpeed * baseReloadSpeedMultiplier);
+        currentReloadSpeedincreasePurchased++;
+    }
     protected virtual IEnumerator StunTower(float timeInSeconds)
     {
         print(gameObject.name + " is stunned for " + timeInSeconds + " seconds");
         canShoot = false;
         currentDetectedEnemyGO = null;
-       var particles = Instantiate(stunParticles, stunParticleHolder.position , Quaternion.identity); 
+        stunParticles.SetActive(true);
 
         yield return new WaitForSeconds(timeInSeconds);
 
         canShoot = true;
         print(gameObject.name + " can shoot again.");
-        Destroy(particles);
+        stunParticles.SetActive(false);
     }
 
     public void StartStun(float timeInSeconds)
