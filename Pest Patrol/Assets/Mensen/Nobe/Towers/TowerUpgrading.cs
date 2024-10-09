@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -23,15 +24,22 @@ public class TowerUpgrading : MonoBehaviour
         towerReloadSpeedText, towerReloadSpeedCostText;
     public float damageMultiplierAddedEveryUpgrade;
     public float reloadSpeedMultiplierAddedEveryUpgrade;
-
+    public UIFoldout uiFoldout;
     public int standardUpgradeCost;
+
+    private void Start()
+    {
+        uiFoldout = GetComponent<UIFoldout>();
+        uiFoldout.interactable = false;
+    }
+
     public void UpdatePanel(Tower tower)
     {
         currentTowerGO = tower;
         string name = tower.name.Replace("(Clone)", "");
         nameText.text = name;
 
-        GetComponent<UIFoldout>().SetState(true);
+        uiFoldout.SetState(true);
         towerPreview.texture = tower.renderTexture;
         switch (tower.typeOfTower)
         {

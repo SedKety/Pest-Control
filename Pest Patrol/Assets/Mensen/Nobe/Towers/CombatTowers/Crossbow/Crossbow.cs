@@ -90,6 +90,7 @@ public class Crossbow : CombatTower
         onReloadTime = true;
         AimAtEnemy();
 
+        audio.Play();
         Projectile arrow = Instantiate(projectileGO, shootPoint.position, shootPoint.rotation).GetComponent<Projectile>();
         arrow.enemyGO = currentDetectedEnemyGO;
         arrow.projectileDamage = baseDamage;

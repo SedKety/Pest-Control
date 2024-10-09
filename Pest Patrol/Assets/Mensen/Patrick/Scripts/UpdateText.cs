@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+
 
 public class UpdateText : MonoBehaviour
 {
@@ -14,10 +16,12 @@ public class UpdateText : MonoBehaviour
     public GameObject[] generatingTowerUpgrades;
     public GameObject[] combatTowerUpgrades;
     public GameObject currentTower;
-
+    public UIFoldout uiFoldout;
     private void Start()
     {
         instance = this;
+        uiFoldout = GetComponent<UIFoldout>();
+        uiFoldout.interactable = false;
     }
 
     void UpdateValues()
@@ -37,7 +41,7 @@ public class UpdateText : MonoBehaviour
     {
         var name = tower.name.Replace("(Clone)", "");
         nameText.text = name;
-        GetComponent<UIFoldout>().SetState(true);
+        uiFoldout.SetState(true);
         skibidi.texture = tower.renderTexture;
         switch (tower.typeOfTower)
         {

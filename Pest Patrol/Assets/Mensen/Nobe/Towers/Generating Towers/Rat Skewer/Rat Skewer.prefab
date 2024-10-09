@@ -50,7 +50,7 @@ MonoBehaviour:
   typeOfTower: 0
   canShoot: 1
   interactable: 0
-  canvas: {fileID: 0}
+  renderTexture: {fileID: 8400000, guid: 0a1ff7323a8281247bbdf6b2c73e22fd, type: 2}
   basePointsGenerated: 10
   timeBetweenPoints: 5
   ratGO: {fileID: 2618585848231566186}

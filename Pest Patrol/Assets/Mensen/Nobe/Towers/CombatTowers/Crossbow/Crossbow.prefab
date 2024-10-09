@@ -63,7 +63,12 @@ MonoBehaviour:
   projectileGO: {fileID: 4083638275970873234, guid: f1078b032f6107d469f4d05b474e52ca,
     type: 3}
   timeToAttackEnemy: 1
+  audio: {fileID: 2897358060856972404}
   stunParticles: {fileID: 4729314807543122053}
+  maxAllowedDamageIncrease: 0
+  currentDamageincreasePurchased: 0
+  maxAllowedReloadSpeed: 0
+  currentReloadSpeedincreasePurchased: 0
   crossbowPad: {fileID: 7964642595798633768}
   crossbow: {fileID: 6742050679198878751}
 --- !u!65 &8917803774829504285
@@ -118,7 +123,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6788c473d3d4a1d478cfc0bf7876b819, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.504
   m_Pitch: 1
   Loop: 0
   Mute: 0

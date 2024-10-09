@@ -2882,6 +2882,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 5.3359985
       objectReference: {fileID: 0}
+    - target: {fileID: 3281329758541081019, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_Name
+      value: LogoText
+      objectReference: {fileID: 0}
     - target: {fileID: 3331199053787603279, guid: ce0b195734d3997488442eee5c740200,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -3062,6 +3067,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -747.7545
       objectReference: {fileID: 0}
+    - target: {fileID: 6488421904603902368, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 6.9081
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488421904603902368, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488421904603902368, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -19.887085
+      objectReference: {fileID: 0}
     - target: {fileID: 6929667805197000075, guid: ce0b195734d3997488442eee5c740200,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -3143,6 +3163,36 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7851984578532055983, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_Name
+      value: Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781700985746603379, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 6.8946
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781700985746603379, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781700985746603379, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -11.8396
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946616957158246790, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 27.8746
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946616957158246790, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -13.937
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3181,7 +3231,7 @@ PrefabInstance:
     - target: {fileID: 1871358587529028548, guid: fcba6bcd28ff181459406d4b6edfb26a,
         type: 3}
       propertyPath: m_IsOn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2119404771355014484, guid: fcba6bcd28ff181459406d4b6edfb26a,
         type: 3}
@@ -3191,7 +3241,7 @@ PrefabInstance:
     - target: {fileID: 2386380268916504744, guid: fcba6bcd28ff181459406d4b6edfb26a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3727167856215472017, guid: fcba6bcd28ff181459406d4b6edfb26a,
         type: 3}
@@ -3306,7 +3356,7 @@ PrefabInstance:
     - target: {fileID: 6438935148823158406, guid: fcba6bcd28ff181459406d4b6edfb26a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6898977785538642292, guid: fcba6bcd28ff181459406d4b6edfb26a,
         type: 3}
@@ -3316,7 +3366,7 @@ PrefabInstance:
     - target: {fileID: 7140246999614557214, guid: fcba6bcd28ff181459406d4b6edfb26a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8044503449368800799, guid: fcba6bcd28ff181459406d4b6edfb26a,
         type: 3}

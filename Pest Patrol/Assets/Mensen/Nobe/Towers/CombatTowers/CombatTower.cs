@@ -22,6 +22,7 @@ public abstract class CombatTower : Tower
     protected bool onReloadTime = false;
     private Coroutine stunCoroutine;
 
+    public AudioSource audio;
     public GameObject stunParticles;
 
 

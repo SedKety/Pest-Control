@@ -79,6 +79,13 @@ public class HammerTower : CombatTower
                 nearbyEnemies[i].GetComponent<Enemy>().OnHit((int)(baseDamage * TowerManager.globalTowerDamageMultiplier), projectileType);
             }
         }
+
+        if (nearbyEnemies.Count > 0)
+        {
+            audio.Play();
+        }
+
+        
     }
 
     void SwingHammerForward()
