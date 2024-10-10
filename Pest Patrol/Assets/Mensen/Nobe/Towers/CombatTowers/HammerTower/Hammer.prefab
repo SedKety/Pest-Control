@@ -393,9 +393,9 @@ MonoBehaviour:
   timeToAttackEnemy: 0
   audio: {fileID: 8291738961766409661}
   stunParticles: {fileID: 4093737214560061595}
-  maxAllowedDamageIncrease: 0
+  maxAllowedDamageIncrease: 5
   currentDamageincreasePurchased: 0
-  maxAllowedReloadSpeed: 0
+  maxAllowedReloadSpeed: 5
   currentReloadSpeedincreasePurchased: 0
   swingAngle: -125
   hammerHolder: {fileID: 7927833663741123688}

@@ -26,10 +26,10 @@ public abstract class CombatTower : Tower
     public GameObject stunParticles;
 
 
-    public int maxAllowedDamageIncrease;
+    public int maxAllowedDamageIncrease = 5;
     public int currentDamageincreasePurchased;
 
-    public int maxAllowedReloadSpeed;
+    public int maxAllowedReloadSpeed = 5;
     public int currentReloadSpeedincreasePurchased;
 
     public void IncreaseDamage(float damageMultiplier)
@@ -42,7 +42,7 @@ public abstract class CombatTower : Tower
     public void IncreaseReloadSpeed(float reloadSpeedMultiplier)
     {
         baseReloadSpeedMultiplier -= reloadSpeedMultiplier;
-        baseReloadSpeed = (int)(baseReloadSpeed * baseReloadSpeedMultiplier);
+        baseReloadSpeed = baseReloadSpeed * baseReloadSpeedMultiplier;
         currentReloadSpeedincreasePurchased++;
     }
     protected virtual IEnumerator StunTower(float timeInSeconds)

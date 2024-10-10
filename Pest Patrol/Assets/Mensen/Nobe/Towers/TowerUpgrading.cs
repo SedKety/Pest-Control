@@ -69,9 +69,19 @@ public class TowerUpgrading : MonoBehaviour
                 towerDamageText.text = combatTower.baseDamage.ToString();
                 towerDamageCostText.text = ((int)(standardUpgradeCost + (combatTower.currentDamageincreasePurchased * 2))).ToString();
             }
-
-            towerReloadSpeedText.text = combatTower.baseReloadSpeed.ToString();
-            towerReloadSpeedCostText.text = ((int)(standardUpgradeCost + (combatTower.currentDamageincreasePurchased * 2))).ToString();
+            else
+            {
+                towerDamageCostText.text = "MAX";
+            }
+            if(combatTower.currentReloadSpeedincreasePurchased <= combatTower.maxAllowedReloadSpeed)
+            {
+                towerReloadSpeedText.text = combatTower.baseReloadSpeed.ToString();
+                towerReloadSpeedCostText.text = ((int)(standardUpgradeCost + (combatTower.currentReloadSpeedincreasePurchased * 2))).ToString();
+            }
+            else
+            {
+                towerReloadSpeedCostText.text = "MAX";
+            }
         }
         else
         {
@@ -101,15 +111,17 @@ public class TowerUpgrading : MonoBehaviour
         {
             combatTower.IncreaseDamage(damageMultiplierAddedEveryUpgrade);
             GameManager.DeletePoints((int)(combatTower.baseDamage * 2 / 3 + (combatTower.currentDamageincreasePurchased * 2)));
+            UpdateCombatPanel();
         }
     }
     public void TryIncreaseTowerReloadSpeed()
     {
+        
         CombatTower combatTower = currentTowerGO as CombatTower;
-        if (GameManager.points < ((int)(combatTower.baseReloadSpeed + (combatTower.currentDamageincreasePurchased * 2)))) { return; }
+        if (GameManager.points < ((int)(combatTower.baseReloadSpeed + (combatTower.currentReloadSpeedincreasePurchased * 2)))) { return; }
         else
         {
-            GameManager.DeletePoints(((int)(combatTower.baseReloadSpeed + (combatTower.currentDamageincreasePurchased * 2))));
+            GameManager.DeletePoints(((int)(combatTower.baseReloadSpeed + (combatTower.currentReloadSpeedincreasePurchased * 2))));
             combatTower.IncreaseReloadSpeed(reloadSpeedMultiplierAddedEveryUpgrade);
             UpdateCombatPanel();
         }

@@ -122,9 +122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UpdateText, Assembly-CSharp
-        m_MethodName: UpgradeSpeed
+      - m_Target: {fileID: 4528726830666720707}
+        m_TargetAssemblyTypeName: TowerUpgrading, Assembly-CSharp
+        m_MethodName: TryIncreaseTowerReloadSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -450,7 +450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7556774282980735823
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1314,6 +1314,7 @@ MonoBehaviour:
   towerReloadSpeedCostText: {fileID: 2199761606436194888}
   damageMultiplierAddedEveryUpgrade: 0
   reloadSpeedMultiplierAddedEveryUpgrade: 0
+  uiFoldout: {fileID: 0}
   standardUpgradeCost: 0
 --- !u!1 &1830982938538104615
 GameObject:
@@ -1519,7 +1520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5022624955600117185
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3635,9 +3636,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UpdateText, Assembly-CSharp
-        m_MethodName: UpgradeDamage
+      - m_Target: {fileID: 4528726830666720707}
+        m_TargetAssemblyTypeName: TowerUpgrading, Assembly-CSharp
+        m_MethodName: TryIncreaseTowerDamage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
