@@ -509,7 +509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9190920082274492801
 RectTransform:
   m_ObjectHideFlags: 0
@@ -552,7 +552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.7529412, b: 0.5176471, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3011,7 +3011,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241fb8ec954c4324fb196f27668cd835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sigma: {fileID: 0}
+  uiObject: {fileID: 2055767899201499045, guid: be55dee51cbfb5e4a826271b309513d1,
+    type: 3}
+  foldout: {fileID: 6099557725446298380, guid: b33eff2bcbcdfc04b9ec8b1e45a8d132, type: 3}
 --- !u!1 &3741356314994738079
 GameObject:
   m_ObjectHideFlags: 0
@@ -3823,8 +3825,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.64746094, y: 0.21483602}
   m_AnchorMax: {x: 0.89300007, y: 0.46618003}
-  m_AnchoredPosition: {x: -8.705788, y: 2.0491982}
-  m_SizeDelta: {x: -7.7794, y: -1.9814}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0.99069977}
+  m_SizeDelta: {x: 33.6224, y: -1.9814}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4208703054009634562
 CanvasRenderer:
@@ -4167,7 +4169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5305700503779098368
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4833,7 +4835,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8212233905663938133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4880,7 +4882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.7529412, b: 0.5176471, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7311,6 +7313,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2396929571238067109}
+        m_TargetAssemblyTypeName: UnityEngine.Rendering.UI.UIFoldout, Unity.RenderPipelines.Core.Runtime
+        m_MethodName: SetState
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &9012639646693315746
 GameObject:
   m_ObjectHideFlags: 0
@@ -7329,7 +7343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1144035458244404274
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7400,14 +7414,14 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 8571512937913784084}
   toggleTransition: 1
   graphic: {fileID: 0}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
   content: {fileID: 5908276149891628169}
   arrowOpened: {fileID: 5196076635706147435}
   arrowClosed: {fileID: 550381218051438326}

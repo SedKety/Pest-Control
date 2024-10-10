@@ -2,18 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 
 public class IsOtherUIActive : MonoBehaviour
 {
-    public GameObject sigma;
-    
+    public GameObject uiObject;
+    public UIFoldout foldout;
     private void Start()
     {
-        Ticker.OnTickAction += OnTick;
+        foldout = gameObject.transform.parent.gameObject.GetComponent<UIFoldout>();
     }
 
-    void OnTick()
+    void Update()
     {
-        gameObject.transform.parent.gameObject.SetActive(!sigma.activeInHierarchy);
+        if (uiObject.activeInHierarchy)
+        {
+            foldout.SetState(!uiObject.activeInHierarchy);
+        }
     }
 }

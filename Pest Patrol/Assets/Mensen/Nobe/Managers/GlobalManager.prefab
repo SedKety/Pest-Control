@@ -90,14 +90,96 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ae930dfb01a8e47806905fd9356c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPoints: []
-  enemies: []
-  points: 0
-  pMultiplier: 1
+  wavePoints: []
+  enemieTest: []
   health: 4
+  startingPoints: 20
+  maxWave: 10
   gameOver:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ResultScreen, Assembly-CSharp
+        m_MethodName: SetWaveRecord
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameWon:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ResultScreen, Assembly-CSharp
+        m_MethodName: UnlockEndlessMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  pointDisplay: {fileID: 0}
+  enemySpawnPos: {fileID: 0}
+  waypointFlag: {fileID: 4551118240400787561, guid: 2d83f67b3fe964c46ba9a043ad0c2d7c,
+    type: 3}
+  endPointFlag: {fileID: 4479677650090684975, guid: a0e116e4a132a184a8dfafcdcaec8766,
+    type: 3}
+  shouldSpawnFlags: 0
 --- !u!1 &6383231393896514936
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,6 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3836756984932705379}
+  - component: {fileID: 8602391450874669534}
   m_Layer: 0
   m_Name: TowerManager
   m_TagString: Untagged
@@ -129,86 +212,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3065651629361406377}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7583241691066366624
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2889398890094740186}
-  - component: {fileID: 6596871475427970572}
-  m_Layer: 0
-  m_Name: WaveManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2889398890094740186
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7583241691066366624}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3065651629361406377}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6596871475427970572
+--- !u!114 &8602391450874669534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7583241691066366624}
+  m_GameObject: {fileID: 6383231393896514936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 330d542c04fece94b9484d8a3028c8ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 5038396a2f5c2c542985c449ebb7cbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wave: 1
-  startingWavePoints: 1
-  wavePointsModifier: 1
-  enemyGroups:
-  - groupName: KaasKnabbellaars
-    wavePointCost: 2
-    enemyGO:
-    - {fileID: 7556650210121848528, guid: da11ce37921fc8b4498252649a2d5201, type: 3}
-    - {fileID: 7556650210121848528, guid: da11ce37921fc8b4498252649a2d5201, type: 3}
-    - {fileID: 7556650210121848528, guid: da11ce37921fc8b4498252649a2d5201, type: 3}
-    timeBetweenEnemy: 0.5
-    timeBetweenGroup: 0.2
-  - groupName: 'Meow '
-    wavePointCost: 7
-    enemyGO:
-    - {fileID: 7556650210121848528, guid: da11ce37921fc8b4498252649a2d5201, type: 3}
-    - {fileID: 7556650210121848528, guid: da11ce37921fc8b4498252649a2d5201, type: 3}
-    timeBetweenEnemy: 0.6
-    timeBetweenGroup: 1
-  - groupName: kat
-    wavePointCost: 1
-    enemyGO:
-    - {fileID: 7088400007765211598, guid: 0acdd4bafd8aeb146afcee6cb6f074a6, type: 3}
-    timeBetweenEnemy: 0
-    timeBetweenGroup: 2.5
-  - groupName: koei
-    wavePointCost: 2
-    enemyGO:
-    - {fileID: 7088400007765211598, guid: 0acdd4bafd8aeb146afcee6cb6f074a6, type: 3}
-    - {fileID: 7088400007765211598, guid: 0acdd4bafd8aeb146afcee6cb6f074a6, type: 3}
-    - {fileID: 7088400007765211598, guid: 0acdd4bafd8aeb146afcee6cb6f074a6, type: 3}
-    timeBetweenEnemy: 2
-    timeBetweenGroup: 2
-  availableGroups: []
-  currentWaveGroups: []
-  enemySpawnPos: {fileID: 0}
 --- !u!1 &7594571619677966724
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +255,6 @@ Transform:
   m_Children:
   - {fileID: 237197862218557851}
   - {fileID: 3788280596021667209}
-  - {fileID: 2889398890094740186}
   - {fileID: 3836756984932705379}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
