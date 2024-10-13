@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
 [System.Serializable]
 public struct UpgradeTexts
 {
@@ -18,8 +20,21 @@ public class TowerStats : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public TMP_Text[] fightingTexts;
     public TMP_Text[] generatingTexts;
     public GameObject panel;
+    public Color normalColor;
+    public Color selectedColor;
+    public Image outline;
+    private Vector3 originalScale;
+    public float scaleFactor;
+
+    private void Start()
+    {
+        originalScale = transform.localScale;
+    }
+
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
+        transform.localScale *= scaleFactor;
+        outline.GetComponent<Image>().color = selectedColor;
         stats.SetActive(true);
         switch (towerType)
         {
@@ -58,12 +73,16 @@ public class TowerStats : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
+        transform.localScale = originalScale;
+        outline.color = normalColor;
         stats.SetActive(false);
         panel.SetActive(false);
     }
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
+        transform.localScale = originalScale;
+        outline.color = normalColor;
         stats.SetActive(false);
     }
 }

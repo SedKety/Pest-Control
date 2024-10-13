@@ -24,22 +24,21 @@ public class CoinFormatter : MonoBehaviour
         }
         previousCoins = currentCoins;
     }
-    public void FormatCoins()
+
+    private void FormatCoins()
     {
+        //TODO: make this format correctly, used to work correctly but now just doesnt. we love bipolar code
         var coins = GameManager.points;
         var decimals = Mathf.Log10(coins);
-        string moneyAsText = currentCoins;
-        print(decimals);
+        var moneyAsText = currentCoins;
         
         if (decimals is >= 3 and <= 6)
         {
             moneyAsText = (coins / 1000).ToString("F") + "K";
-            print(moneyAsText);
         }
         if (decimals >= 6)
         {
             moneyAsText = (coins / 1000000).ToString("F") + "M";
-            print(moneyAsText);
         }
 
         coinText.SetText(moneyAsText);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
     public TMP_Dropdown[] resolutionDropdown;
@@ -12,6 +12,7 @@ public class Settings : MonoBehaviour
     private double currentRefRate;
     public int currentResolutionIndex = 0;
     public string currentRes;
+    public Slider audioSlider;
 
     public void EnterGame()
     {
@@ -80,6 +81,7 @@ public class Settings : MonoBehaviour
     }
     public void SetAudio(float value)
     {
+        audioSlider.value = value;
         AudioListener.volume = value;
         PlayerPrefs.SetFloat("volume", value);
     }

@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class ResultScreen : MonoBehaviour
 {
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
     public void SetWaveRecord()
     {
         GetComponent<TMP_Text>().text = "Wave Record: " + WaveSystem.wave;

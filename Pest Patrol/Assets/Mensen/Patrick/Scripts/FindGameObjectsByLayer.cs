@@ -5,10 +5,19 @@ using UnityEngine;
 
 public class FindGameObjectsByLayer : MonoBehaviour
 {
-    static public GameObject FindGameObjectWithLayer(int layer)
+    public static GameObject FindFirstGameObjectWithLayer(LayerMask layer)
     {
-        var arrayGO = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
-        var go = arrayGO.First(x => x.layer == layer);
+        var arrayGo = FindObjectsOfType<GameObject>(true);
+        var go = arrayGo.First(x => x.layer == layer);
+        return go;
+    }
+
+    public static GameObject[] FindAllGameObjectsWithLayer(LayerMask layer)
+    {
+        var arrayGo = FindObjectsOfType<GameObject>(true);
+        var go = arrayGo.Where(x => x.layer == layer)
+                                    .OrderBy(x => x.name)
+                                    .ToArray();
         return go;
     }
 }
