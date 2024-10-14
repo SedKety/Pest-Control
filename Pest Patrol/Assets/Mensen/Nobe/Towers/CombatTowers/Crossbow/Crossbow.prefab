@@ -55,7 +55,8 @@ MonoBehaviour:
   canShoot: 1
   interactable: 0
   renderTexture: {fileID: 8400000, guid: bfdbfc5c7311ee143918def3f7bd49f4, type: 2}
-  baseDamage: 5
+  currentDamage: 0
+  baseDamages: 5
   baseReloadSpeed: 1
   detectionRange: 5
   currentDetectedEnemyGO: {fileID: 0}
@@ -65,9 +66,9 @@ MonoBehaviour:
   timeToAttackEnemy: 1
   audio: {fileID: 2897358060856972404}
   stunParticles: {fileID: 4729314807543122053}
-  maxAllowedDamageIncrease: 0
+  maxAllowedDamageIncrease: 10
   currentDamageincreasePurchased: 0
-  maxAllowedReloadSpeed: 0
+  maxAllowedReloadSpeed: 7
   currentReloadSpeedincreasePurchased: 0
   crossbowPad: {fileID: 7964642595798633768}
   crossbow: {fileID: 6742050679198878751}

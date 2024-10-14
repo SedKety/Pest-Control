@@ -13,10 +13,10 @@ public class UpgradeTower : MonoBehaviour
 
     public void OnTick()
     {
-        coinTexts[0].text = Mathf.RoundToInt((gameObject.GetComponent<CombatTower>().baseDamage * 2) * 1.2f).ToString();
+        coinTexts[0].text = Mathf.RoundToInt((gameObject.GetComponent<CombatTower>().currentDamage * 2) * 1.2f).ToString();
         coinTexts[1].text = Mathf.RoundToInt((gameObject.GetComponent<CombatTower>().detectionRange * 2) * 1.2f).ToString();
         coinTexts[2].text = Mathf.RoundToInt((gameObject.GetComponent<CombatTower>().baseReloadSpeed + (1 - gameObject.GetComponent<CombatTower>().baseReloadSpeed * 6) + 15 * 1.2f)).ToString();
-        coinTexts[3].text = gameObject.GetComponent<CombatTower>().baseDamage.ToString();
+        coinTexts[3].text = gameObject.GetComponent<CombatTower>().currentDamage.ToString();
         coinTexts[4].text = gameObject.GetComponent<CombatTower>().detectionRange.ToString();
         if (gameObject.GetComponent<CombatTower>().baseReloadSpeed > 0.1f)
         {
@@ -26,10 +26,10 @@ public class UpgradeTower : MonoBehaviour
     }
     public void UpgradeDamage(GameObject tower)
     {
-        int cost = Mathf.RoundToInt((tower.GetComponent<CombatTower>().baseDamage * 2) * 1.2f);
+        int cost = Mathf.RoundToInt((tower.GetComponent<CombatTower>().currentDamage * 2) * 1.2f);
         if (GameManager.points - cost >= 0)
         {
-            tower.GetComponent<CombatTower>().baseDamage += 2;
+            tower.GetComponent<CombatTower>().currentDamage += 2;
             GameManager.DeletePoints(cost);
         }
     }

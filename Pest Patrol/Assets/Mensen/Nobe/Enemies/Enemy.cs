@@ -19,7 +19,7 @@ public abstract class Enemy : MonoBehaviour
     public bool cantMove;
     public float moveSpeed;
     public float minDistance;
-    protected int currentWaypoint = 0;
+    public int currentWaypoint;
 
     //miscelaneous variables
     public int pointsDropped;
@@ -29,8 +29,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Start()
     {
-        var middleMan = health * GameManager.enemyHealthMultiplier;
-        health = (int)middleMan;
+        health = (int)(health * GameManager.enemyHealthMultiplier);
         FaceWaypoint();
     }
     public virtual void Update()

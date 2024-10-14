@@ -8,27 +8,38 @@ public abstract class TankEnemy : Enemy
     public ProjectileType typeToHitShield;
     public override void OnHit(int damage, ProjectileType projectileType)
     {
-        if (projectileType == ProjectileType.sharp && shield <= 0) { return; } 
-        if (damage >= shield)
+        if (shield > 0)
         {
-            int leftOverDamage = damage - shield;
-            shield = 0;
-            OnShieldBreak(); 
-            health -= leftOverDamage; 
-
-            if (health <= 0)
+            if (projectileType != typeToHitShield)
             {
-                isDead = true;
-                Destroy(gameObject);
+                return;
+            }
+            if (damage >= shield)
+            {
+                int leftOverDamage = damage - shield;
+                shield = 0;
+                OnShieldBreak();
+                health -= leftOverDamage;
+            }
+            else
+            {
+                shield -= damage;
             }
         }
         else
         {
-            shield -= damage;
+            health -= damage;
+        }
+        if (health <= 0)
+        {
+            isDead = true;
+            Destroy(gameObject);
         }
 
         print(shield + " " + health);
     }
+
+
 
 
     protected abstract void OnShieldBreak();

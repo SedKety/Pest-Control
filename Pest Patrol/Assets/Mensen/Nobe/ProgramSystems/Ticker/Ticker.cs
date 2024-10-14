@@ -34,7 +34,6 @@ public class Ticker : MonoBehaviour
                 }
             }
         }
-
         void TickEvent()
         {
             OnTickAction?.Invoke();

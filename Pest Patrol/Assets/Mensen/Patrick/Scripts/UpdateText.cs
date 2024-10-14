@@ -26,10 +26,10 @@ public class UpdateText : MonoBehaviour
 
     void UpdateValues()
     {
-        coinTexts[0].text = Mathf.RoundToInt((currentTower.gameObject.GetComponent<CombatTower>().baseDamage * 2) * 1.2f).ToString();
+        coinTexts[0].text = Mathf.RoundToInt((currentTower.gameObject.GetComponent<CombatTower>().currentDamage * 2) * 1.2f).ToString();
         coinTexts[1].text = Mathf.RoundToInt((currentTower.gameObject.GetComponent<CombatTower>().detectionRange * 2) * 1.2f).ToString();
 
-        coinTexts[3].text = currentTower.gameObject.GetComponent<CombatTower>().baseDamage.ToString();
+        coinTexts[3].text = currentTower.gameObject.GetComponent<CombatTower>().currentDamage.ToString();
         coinTexts[4].text = currentTower.gameObject.GetComponent<CombatTower>().detectionRange.ToString();
         if (currentTower.gameObject.GetComponent<CombatTower>().baseReloadSpeed > 0.1f)
         {
@@ -57,10 +57,10 @@ public class UpdateText : MonoBehaviour
         //0 = damage coins & 3 = damage count
         //1 = range coins & 4 = range count
         //2 = speed coins & 5 = speed count
-        coinTexts[0].text = Mathf.RoundToInt((tower.gameObject.GetComponent<CombatTower>().baseDamage * 2) * 1.2f).ToString();
+        coinTexts[0].text = Mathf.RoundToInt((tower.gameObject.GetComponent<CombatTower>().currentDamage * 2) * 1.2f).ToString();
         coinTexts[1].text = Mathf.RoundToInt((tower.gameObject.GetComponent<CombatTower>().detectionRange * 2) * 1.2f).ToString();
         
-        coinTexts[3].text = tower.gameObject.GetComponent<CombatTower>().baseDamage.ToString();
+        coinTexts[3].text = tower.gameObject.GetComponent<CombatTower>().currentDamage.ToString();
         coinTexts[4].text = tower.gameObject.GetComponent<CombatTower>().detectionRange.ToString();
         if (tower.gameObject.GetComponent<CombatTower>().baseReloadSpeed > 0.1f)
         {
@@ -72,9 +72,9 @@ public class UpdateText : MonoBehaviour
 
     public void UpgradeDamage()
     {
-        var cost = Mathf.RoundToInt((currentTower.GetComponent<CombatTower>().baseDamage * 2) * 1.2f);
+        var cost = Mathf.RoundToInt((currentTower.GetComponent<CombatTower>().currentDamage * 2) * 1.2f);
         if (GameManager.points - cost < 0) return;
-        currentTower.GetComponent<CombatTower>().baseDamage += 2;
+        currentTower.GetComponent<CombatTower>().currentDamage += 2;
         GameManager.DeletePoints(cost);
         UpdateValues();
     }

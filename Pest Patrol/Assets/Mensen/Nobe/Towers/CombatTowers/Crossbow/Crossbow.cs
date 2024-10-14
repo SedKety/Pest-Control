@@ -15,6 +15,7 @@ public class Crossbow : CombatTower
 
     protected override void Start()
     {
+        base.Start();
         Ticker.OnTickAction += OnTick;
         originalCrossbowPadRotation = crossbowPad.rotation;
         originalCrossbowRotation = crossbow.rotation;
@@ -93,7 +94,7 @@ public class Crossbow : CombatTower
         audio.Play();
         Projectile arrow = Instantiate(projectileGO, shootPoint.position, shootPoint.rotation).GetComponent<Projectile>();
         arrow.enemyGO = currentDetectedEnemyGO;
-        arrow.projectileDamage = baseDamage;
+        arrow.projectileDamage = currentDamage; 
         StartCoroutine(Reload());
         yield return null;
     }

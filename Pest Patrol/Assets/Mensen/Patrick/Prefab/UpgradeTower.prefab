@@ -587,6 +587,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4765824285718936048, guid: b33eff2bcbcdfc04b9ec8b1e45a8d132,
+        type: 3}
+      propertyPath: generationTimeText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765824285718936048, guid: b33eff2bcbcdfc04b9ec8b1e45a8d132,
+        type: 3}
+      propertyPath: generatedAmountText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765824285718936048, guid: b33eff2bcbcdfc04b9ec8b1e45a8d132,
+        type: 3}
+      propertyPath: generatingTowerPanel
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5091676054689102860, guid: b33eff2bcbcdfc04b9ec8b1e45a8d132,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -723,7 +738,8 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4745502700358625397, guid: b33eff2bcbcdfc04b9ec8b1e45a8d132, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7368500693496595884, guid: b33eff2bcbcdfc04b9ec8b1e45a8d132,
         type: 3}

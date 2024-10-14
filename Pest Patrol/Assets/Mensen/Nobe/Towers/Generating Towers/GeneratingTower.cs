@@ -11,18 +11,6 @@ public abstract class GeneratingTower : Tower
     public float timeBetweenPoints;
     private float timeBetweenPointsMultiplier = 1;
 
-
-    public void IncreasePointsGenerated(float pointMultiplier)
-    {
-        basePointMultiplier += pointMultiplier;
-        basePointsGenerated = (int)(basePointsGenerated * basePointMultiplier);
-    }
-
-    public void IncreaseTimeBetweenPoints(float timeBetweenMultiplier)
-    {
-        timeBetweenPoints -= timeBetweenMultiplier;
-        timeBetweenPoints = (int)(timeBetweenPoints * timeBetweenMultiplier);
-    }
     protected override void Start()
     {
         StartCoroutine(GeneratePoints());
@@ -31,6 +19,7 @@ public abstract class GeneratingTower : Tower
     {
         yield return new WaitForSeconds(timeBetweenPoints);
         GameManager.AddPoints(basePointsGenerated);
+        print(basePointsGenerated);
         StartCoroutine(GeneratePoints());
     }
 

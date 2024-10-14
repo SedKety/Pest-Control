@@ -23,6 +23,7 @@ public class HammerTower : CombatTower
     public ProjectileType projectileType;
     protected override void Start()
     {
+        base.Start();
         Ticker.OnTickAction += OnTick;
         UpdateSwingDuration();
 
@@ -76,7 +77,7 @@ public class HammerTower : CombatTower
         {
             if (nearbyEnemies[i] != null)
             {
-                nearbyEnemies[i].GetComponent<Enemy>().OnHit((int)(baseDamage * TowerManager.globalTowerDamageMultiplier), projectileType);
+                nearbyEnemies[i].GetComponent<Enemy>().OnHit((int)(currentDamage * TowerManager.globalTowerDamageMultiplier), projectileType);
             }
         }
 

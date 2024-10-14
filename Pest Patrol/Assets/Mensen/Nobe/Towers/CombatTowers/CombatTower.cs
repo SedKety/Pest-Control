@@ -7,11 +7,14 @@ using UnityEngine;
 public abstract class CombatTower : Tower
 {
     [Header("Attacking Tower Variables")]
-    public int baseDamage;
-    private float baseDamageMultiplier;
+    public int currentDamage;
+    public int baseDamages;
+    private float baseDamageMultiplier = 1;
 
     public float baseReloadSpeed;
-    private float baseReloadSpeedMultiplier;
+    public float currentReloadSpeed;
+    private float baseReloadSpeedMultiplier = 1;
+
     public float detectionRange;
     public GameObject currentDetectedEnemyGO;
 
@@ -26,23 +29,28 @@ public abstract class CombatTower : Tower
     public GameObject stunParticles;
 
 
-    public int maxAllowedDamageIncrease = 5;
+    public int maxAllowedDamageIncrease;
     public int currentDamageincreasePurchased;
 
-    public int maxAllowedReloadSpeed = 5;
+    public int maxAllowedReloadSpeed;
     public int currentReloadSpeedincreasePurchased;
 
+    protected override void Start()
+    {
+        base.Start();
+        currentDamage = baseDamages;
+    }
     public void IncreaseDamage(float damageMultiplier)
     {
         baseDamageMultiplier += damageMultiplier;
-        baseDamage = (int)(baseDamage * baseDamageMultiplier);
+        currentDamage = (int)(baseDamages * baseDamageMultiplier); 
         currentDamageincreasePurchased++;
     }
 
     public void IncreaseReloadSpeed(float reloadSpeedMultiplier)
     {
         baseReloadSpeedMultiplier -= reloadSpeedMultiplier;
-        baseReloadSpeed = baseReloadSpeed * baseReloadSpeedMultiplier;
+        currentReloadSpeed = baseReloadSpeed * baseReloadSpeedMultiplier;
         currentReloadSpeedincreasePurchased++;
     }
     protected virtual IEnumerator StunTower(float timeInSeconds)

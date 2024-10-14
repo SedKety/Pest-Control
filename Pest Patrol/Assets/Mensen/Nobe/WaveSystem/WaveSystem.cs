@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+
 [System.Serializable]
 public struct WaveGroups
 {
@@ -17,49 +18,64 @@ public struct WaveGroups
     public int minWaveMedium;
     public int minWaveHard;
 }
+
+[System.Serializable]
+public struct Boss
+{
+    public string bossName;
+    public GameObject bossGO;
+    public float bossHealthMultiplier;
+    public float bossSpawnDelay;
+}
+
 public enum GameMode
 {
     Easy,
     Medium,
-    Hard
+    Hard,
 }
+
 public class WaveSystem : MonoBehaviour
 {
     public GameMode mode;
     public static WaveSystem instance;
     public static int wave;
 
-    //WavePoint variables
     private int wavePoints;
     public int startingWavePoints;
     public float easyWavePointMultiplier;
     public float mediumWavePointMultiplier;
     public float hardWavePointMultiplier;
 
-    // Miscellaneous variables
     public float enemyHealthMultiplierIncrease;
 
-    //Wave Enemy Variables
+
     public List<WaveGroups> enemyGroups;
     public List<WaveGroups> availableGroups;
     public List<WaveGroups> currentWaveGroups;
+
+    public List<Boss> bossEnemies;
+    public int bossWaveCount;
+    public bool isBossWave;         
 
     public bool canStartSpawningWaves;
     public Coroutine currentWaveCoroutine;
 
     public bool isWaveSpawning = false;
 
-    public void Awake()
+    void Awake()
     {
         ResetWaveSystem();
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         ResetWaveSystem();
     }
-    public void ResetWaveSystem()
+
+    void ResetWaveSystem()
     {
         instance = this;
         wave = 0;
@@ -70,13 +86,15 @@ public class WaveSystem : MonoBehaviour
         canStartSpawningWaves = false;
         currentWaveCoroutine = null;
     }
-    public void Start()
+
+    void Start()
     {
         mode = (GameMode)PlayerPrefs.GetInt("Difficulty");
         print(mode.ToString());
         Ticker.OnTickAction += OnTick;
     }
-    public void OnTick()
+
+    void OnTick()
     {
         if (GameManager.enemies.Count == 0 && canStartSpawningWaves && !isWaveSpawning)
         {
@@ -97,6 +115,8 @@ public class WaveSystem : MonoBehaviour
         GameManager.enemyHealthMultiplier += enemyHealthMultiplierIncrease;
 
         wave++;
+        isBossWave = wave % bossWaveCount == 0; 
+
         GameManager.instance.OnWaveChange();
         wavePoints = CalculateWavePoints(wave);
 
@@ -117,7 +137,8 @@ public class WaveSystem : MonoBehaviour
 
         return Mathf.RoundToInt(wave * 2f / 3f * multiplier);
     }
-    public IEnumerator GenerateNewWave()
+
+    IEnumerator GenerateNewWave()
     {
         UpdateAvailableGroups();
 
@@ -129,11 +150,16 @@ public class WaveSystem : MonoBehaviour
             UpdateAvailableGroups();
         }
 
+        if (isBossWave)
+        {
+            currentWaveCoroutine = StartCoroutine(SpawnBoss());
+        }
+
         currentWaveCoroutine = StartCoroutine(SpawnEnemyGroups());
         yield return null;
     }
 
-    public WaveGroups SelectGroup()
+    WaveGroups SelectGroup()
     {
         var selectedGroup = availableGroups[Random.Range(0, availableGroups.Count)];
         wavePoints -= selectedGroup.wavePointCost;
@@ -160,7 +186,7 @@ public class WaveSystem : MonoBehaviour
         }
     }
 
-    public IEnumerator SpawnEnemyGroups()
+    IEnumerator SpawnEnemyGroups()
     {
         List<WaveGroups> groups = new List<WaveGroups>();
         foreach (WaveGroups group in currentWaveGroups)
@@ -187,7 +213,19 @@ public class WaveSystem : MonoBehaviour
         isWaveSpawning = false;
     }
 
-    public void OnDestroy()
+    IEnumerator SpawnBoss()
+    {
+        Boss selectedBoss = bossEnemies[Random.Range(0, bossEnemies.Count)];
+
+        yield return new WaitForSeconds(selectedBoss.bossSpawnDelay);
+
+        GameObject boss = Instantiate(selectedBoss.bossGO, GameManager.wayPoints[0].position, GameManager.wayPoints[0].rotation);
+        boss.name += " Boss " + wave;
+
+        GameManager.enemies.Add(boss);
+    }
+
+    void OnDestroy()
     {
         instance = null;
     }

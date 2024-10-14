@@ -43,7 +43,7 @@ public class TowerStats : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                 panel.SetActive(true);
                 var combatTower = tower.GetComponent<CombatTower>();
                 //set damage text
-                fightingTexts[0].text = combatTower.baseDamage.ToString();
+                fightingTexts[0].text = combatTower.currentDamage.ToString();
                 //set range text
                 fightingTexts[1].text = combatTower.detectionRange.ToString();
                 //set speed text
