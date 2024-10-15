@@ -599,8 +599,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4765824285718936048, guid: b33eff2bcbcdfc04b9ec8b1e45a8d132,
         type: 3}
+      propertyPath: standardUpgradeCost
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765824285718936048, guid: b33eff2bcbcdfc04b9ec8b1e45a8d132,
+        type: 3}
       propertyPath: generatingTowerPanel
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765824285718936048, guid: b33eff2bcbcdfc04b9ec8b1e45a8d132,
+        type: 3}
+      propertyPath: damageMultiplierAddedEveryUpgrade
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765824285718936048, guid: b33eff2bcbcdfc04b9ec8b1e45a8d132,
+        type: 3}
+      propertyPath: reloadSpeedMultiplierAddedEveryUpgrade
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5091676054689102860, guid: b33eff2bcbcdfc04b9ec8b1e45a8d132,
         type: 3}
