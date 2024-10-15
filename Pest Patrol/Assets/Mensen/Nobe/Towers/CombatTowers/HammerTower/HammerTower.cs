@@ -23,6 +23,7 @@ public class HammerTower : CombatTower
     public ProjectileType projectileType;
     protected override void Start()
     {
+        currentReloadSpeed = 1;
         base.Start();
         Ticker.OnTickAction += OnTick;
         UpdateSwingDuration();
@@ -96,7 +97,6 @@ public class HammerTower : CombatTower
             ResetSwing();
             return;
         }
-
         swingProgress += Time.deltaTime / swingDuration;
 
         hammerHolder.rotation = Quaternion.Lerp(startRotation, endRotation, swingProgress);

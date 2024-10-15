@@ -79,7 +79,7 @@ public class TowerUpgrading : MonoBehaviour
                 towerReloadSpeedCostText.text = "MAX";
             }
             towerDamageText.text = combatTower.currentDamage.ToString();
-            towerReloadSpeedText.text = combatTower.currentReloadSpeed.ToString();
+            towerReloadSpeedText.text = Math.Round(combatTower.currentReloadSpeed, 2).ToString();
         }
         else
         {
