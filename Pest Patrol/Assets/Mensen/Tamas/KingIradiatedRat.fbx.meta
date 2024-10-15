@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: rig.002|Die
-      takeName: rig.002|Die
+      name: rig.002|rig.002Action (1)
+      takeName: rig.002|rig.002Action
       internalID: -4725780236282586584
       firstFrame: 0
-      lastFrame: 10
+      lastFrame: 49
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

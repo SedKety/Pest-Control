@@ -8,6 +8,7 @@ public class Arrow : Projectile
     {
         base.Start();
         transform.LookAt(enemyGO.transform);
+        Ticker.OnTickAction += OnTick;
     }
     protected override void Update()
     {

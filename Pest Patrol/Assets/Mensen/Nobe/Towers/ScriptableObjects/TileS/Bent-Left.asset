@@ -17,5 +17,5 @@ MonoBehaviour:
   towerToPlaceGO: {fileID: 3754250375362502354, guid: 242c4fc079f9a164a883eb49f6464003,
     type: 3}
   towerSprite: {fileID: 0}
-  towerBuildPointCost: 5
+  towerBuildPointCost: 10
   allowedOverlaps: 2
