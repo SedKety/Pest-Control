@@ -27,14 +27,13 @@ public class EscapeMenu : MonoBehaviour
         uiObjects[2] = FindAnyObjectByType<TowerUpgrading>(FindObjectsInactive.Include).transform.parent.gameObject;
         activeUI = uiObjects.Where(x => x.activeInHierarchy).ToArray();
     }
-
     public void OnSceneUnloaded(Scene scene)
     {
         OnEscape -= SetUIActive;
     }
     public void SetUIActive(bool state)
     {
-        foreach (var ui in activeUI) ui.SetActive(state);
+        foreach (var ui in uiObjects) ui.SetActive(state);
         gameObject.transform.GetChild(0).gameObject.SetActive(!state);
     }
     

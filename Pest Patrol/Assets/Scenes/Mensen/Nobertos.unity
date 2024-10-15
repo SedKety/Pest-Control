@@ -156,6 +156,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2386380268916504744, guid: fcba6bcd28ff181459406d4b6edfb26a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909085176902977343, guid: fcba6bcd28ff181459406d4b6edfb26a,
+        type: 3}
+      propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3727167856215472017, guid: fcba6bcd28ff181459406d4b6edfb26a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -256,10 +266,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6438935148823158406, guid: fcba6bcd28ff181459406d4b6edfb26a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6898977785538642292, guid: fcba6bcd28ff181459406d4b6edfb26a,
         type: 3}
       propertyPath: m_Name
       value: UpgradeTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140246999614557214, guid: fcba6bcd28ff181459406d4b6edfb26a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8690581989314087535, guid: fcba6bcd28ff181459406d4b6edfb26a,
         type: 3}
@@ -1301,7 +1321,7 @@ PrefabInstance:
         type: 3}
       propertyPath: uiObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 2022875893}
+      objectReference: {fileID: 1974339856}
     - target: {fileID: 5459483032979500773, guid: fb0946c25e86d7049a49f35dc101da34,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2035,7 +2055,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1608275744}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2022875893 stripped
+--- !u!1 &1974339856 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6898977785538642292, guid: fcba6bcd28ff181459406d4b6edfb26a,
     type: 3}

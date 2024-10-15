@@ -8,10 +8,6 @@ public class IsOtherUIActive : MonoBehaviour
 {
     public GameObject uiObject;
     public UIFoldout foldout;
-    private void Start()
-    {
-        foldout = gameObject.transform.parent.gameObject.GetComponent<UIFoldout>();
-    }
 
     void Update()
     {

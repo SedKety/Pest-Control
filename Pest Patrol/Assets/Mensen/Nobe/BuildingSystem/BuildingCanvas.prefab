@@ -3021,7 +3021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiObject: {fileID: 2055767899201499045, guid: be55dee51cbfb5e4a826271b309513d1,
     type: 3}
-  foldout: {fileID: 6099557725446298380, guid: b33eff2bcbcdfc04b9ec8b1e45a8d132, type: 3}
+  foldout: {fileID: 2396929571238067109}
 --- !u!1 &3741356314994738079
 GameObject:
   m_ObjectHideFlags: 0
