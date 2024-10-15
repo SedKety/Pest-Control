@@ -497,7 +497,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2368223128081406068}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8632210546169166236}
+        m_TargetAssemblyTypeName: DifficultySelection, Assembly-CSharp
+        m_MethodName: ChooseMap
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &397036968974920044
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,7 +766,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4789906790672841616}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8632210546169166236}
+        m_TargetAssemblyTypeName: DifficultySelection, Assembly-CSharp
+        m_MethodName: ChooseMap
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &653887893779397054
 GameObject:
   m_ObjectHideFlags: 0
@@ -5248,8 +5272,10 @@ MonoBehaviour:
   audioSlider: {fileID: 4596653269332303722}
   inputFields:
   - {fileID: 8404685006143114399}
-  - {fileID: 7175680680072293566}
   - {fileID: 9198168062793878651}
+  - {fileID: 7175680680072293566}
+  selectedScene:
+    m_Handle: 0
 --- !u!1 &4572001690447057182
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class DifficultySelection : MonoBehaviour
 {
+    
     public void SelectDifficulty(int difficulty)
     {
         PlayerPrefs.SetInt("Difficulty", difficulty);
@@ -17,6 +18,11 @@ public class DifficultySelection : MonoBehaviour
         var value = toggle.isOn ? 1 : 0;
         PlayerPrefs.SetInt("EndlessMode", value);
         
+    }
+
+    public void ChooseMap(int sceneIndex)
+    {
+        FindAnyObjectByType<Settings>().selectedScene = sceneIndex;
     }
     public void Start()
     {

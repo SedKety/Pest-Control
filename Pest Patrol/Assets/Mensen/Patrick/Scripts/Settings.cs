@@ -14,11 +14,12 @@ public class Settings : MonoBehaviour
     public string currentRes;
     public Slider audioSlider;
     public TMP_InputField[] inputFields;
+    public int selectedScene;
 
     public void EnterGame()
     {
         print("hi");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(selectedScene);
     }
     private void Start() 
     {
@@ -92,6 +93,7 @@ public class Settings : MonoBehaviour
 
     public void SetFPS(string value)
     {
+        print("set fps to: " + value);
         inputFields[0].text = value;
         if (int.Parse(value) <= 0) Application.targetFrameRate = -1;
         else Application.targetFrameRate = int.Parse(value);
@@ -100,6 +102,7 @@ public class Settings : MonoBehaviour
 
     public void SetSensitivity(string value)
     {
+        print("set camera sensitivity to:" + value);
         inputFields[1].text = value;
         try
         {
@@ -111,6 +114,7 @@ public class Settings : MonoBehaviour
     }
     public void SetMoveSpeed(string value)
     {
+        print("set move speed to: " + value);
         inputFields[2].text = value;
         try
         {
