@@ -19,6 +19,7 @@ public class Crossbow : CombatTower
         Ticker.OnTickAction += OnTick;
         originalCrossbowPadRotation = crossbowPad.rotation;
         originalCrossbowRotation = crossbow.rotation;
+        currentReloadSpeed = baseReloadSpeed;
     }
     #region UpdateLoops
     protected override void Update()

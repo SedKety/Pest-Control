@@ -117,8 +117,7 @@ public abstract class CombatTower : Tower
     protected virtual IEnumerator Reload()
     {
 
-        var middleMan = baseReloadSpeed * TowerManager.globalTowerReloadSpeedMultiplier;
-        yield return new WaitForSeconds(middleMan);
+        yield return new WaitForSeconds(currentReloadSpeed * TowerManager.globalTowerReloadSpeedMultiplier);
         onReloadTime = false;
     }
     protected virtual void AimAtEnemy()

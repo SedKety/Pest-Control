@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public static float pMultiplier = 1;
     public static float enemyHealthMultiplier = 1;
 
+
     public static bool GameHasStarted;
 
     public int health;
@@ -148,5 +149,10 @@ public class GameManager : MonoBehaviour
     public void AddPointsDevTool()
     {
         AddPoints(100);
+    }
+
+    public void TimeScale0()
+    {
+        Time.timeScale = 0;
     }
 }

@@ -51,7 +51,7 @@ MonoBehaviour:
   canShoot: 1
   interactable: 0
   renderTexture: {fileID: 8400000, guid: 0a1ff7323a8281247bbdf6b2c73e22fd, type: 2}
-  basePointsGenerated: 10
+  basePointsGenerated: 1
   timeBetweenPoints: 5
   ratGO: {fileID: 5603699309230487265}
   ratRot: {x: 50, y: 0, z: 0}

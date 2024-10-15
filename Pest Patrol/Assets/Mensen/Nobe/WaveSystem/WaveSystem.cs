@@ -78,6 +78,7 @@ public class WaveSystem : MonoBehaviour
 
     void ResetWaveSystem()
     {
+        Time.timeScale = 1.0f;
         instance = this;
         wave = 0;
         wavePoints = 0;
@@ -85,6 +86,7 @@ public class WaveSystem : MonoBehaviour
         mediumWavePointMultiplier = 1.5f;
         hardWavePointMultiplier = 2f;
         canStartSpawningWaves = false;
+        if (currentWaveCoroutine != null) { StopCoroutine(currentWaveCoroutine); }
         currentWaveCoroutine = null;
     }
 
@@ -202,9 +204,16 @@ public class WaveSystem : MonoBehaviour
         {
             foreach (GameObject enemy in groups[i].enemyGO)
             {
-                GameObject e = Instantiate(enemy, GameManager.instance.enemySpawnPos.position, GameManager.instance.enemySpawnPos.rotation);
-                GameManager.enemies.Add(e);
-                e.name += wave;
+                if(GameManager.instance != null)
+                {
+                    GameObject e = Instantiate(enemy, GameManager.instance.enemySpawnPos.position, GameManager.instance.enemySpawnPos.rotation);
+                    GameManager.enemies.Add(e);
+                    e.name += wave;
+                }
+                else
+                {
+                    StopCoroutine(SpawnEnemyGroups());
+                }
                 yield return new WaitForSeconds(groups[i].timeBetweenEnemy);
             }
             yield return new WaitForSeconds(groups[i].timeBetweenGroup);

@@ -2074,12 +2074,12 @@ PrefabInstance:
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}
       propertyPath: gameWon.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}
       propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}
@@ -2098,6 +2098,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}
+      propertyPath: gameWon.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
+        type: 3}
       propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6
       objectReference: {fileID: 0}
@@ -2110,6 +2115,11 @@ PrefabInstance:
         type: 3}
       propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
+        type: 3}
+      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}
@@ -2128,6 +2138,11 @@ PrefabInstance:
       objectReference: {fileID: 2427084667576157809}
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}
+      propertyPath: gameWon.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 8622751363377057141}
+    - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
+        type: 3}
       propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7438620993578306918}
@@ -2141,6 +2156,11 @@ PrefabInstance:
       propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 2427084667576157809}
+    - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
+        type: 3}
+      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 8622751363377057141}
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}
       propertyPath: gameWon.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -2163,6 +2183,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}
+      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
+        type: 3}
       propertyPath: gameWon.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
@@ -2175,6 +2200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: gameWon.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
+        type: 3}
+      propertyPath: gameWon.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: TimeScale0
       objectReference: {fileID: 0}
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}
@@ -2193,6 +2223,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}
+      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: TimeScale0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
+        type: 3}
       propertyPath: gameWon.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
@@ -2208,6 +2243,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}
+      propertyPath: gameWon.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
+        type: 3}
       propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
@@ -2220,6 +2260,11 @@ PrefabInstance:
         type: 3}
       propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
+        type: 3}
+      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}

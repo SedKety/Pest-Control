@@ -58,6 +58,7 @@ MonoBehaviour:
   currentDamage: 0
   baseDamages: 5
   baseReloadSpeed: 1
+  currentReloadSpeed: 0
   detectionRange: 5
   currentDetectedEnemyGO: {fileID: 0}
   shootPoint: {fileID: 1546755451076507328}
@@ -68,7 +69,7 @@ MonoBehaviour:
   stunParticles: {fileID: 4729314807543122053}
   maxAllowedDamageIncrease: 10
   currentDamageincreasePurchased: 0
-  maxAllowedReloadSpeed: 7
+  maxAllowedReloadSpeed: 5
   currentReloadSpeedincreasePurchased: 0
   crossbowPad: {fileID: 7964642595798633768}
   crossbow: {fileID: 6742050679198878751}
