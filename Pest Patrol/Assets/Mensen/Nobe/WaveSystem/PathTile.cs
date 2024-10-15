@@ -14,11 +14,23 @@ public class PathTile : MonoBehaviour, IPathTileInterface
 
     public void Start()
     {
+        if (!startingPath)
+        {
+            AddWaypoints();
+        }
+        else
+        {
+            Invoke(nameof(AddWaypoints), 0.1f);
+        }
+    }
+
+    private void AddWaypoints()
+    {
         for (int i = 0; i < wayPoints.Length; i++)
         {
             GameManager.wayPoints.Add(wayPoints[i]);
         }
-        for(int i = 0;i < flyingWaypoints.Length; i++)
+        for (int i = 0; i < flyingWaypoints.Length; i++)
         {
             GameManager.flyingWaypoints.Add(flyingWaypoints[i]);
         }

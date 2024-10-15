@@ -51,8 +51,8 @@ public class WaveSystem : MonoBehaviour
 
 
     public List<WaveGroups> enemyGroups;
-    private List<WaveGroups> availableGroups;
-    private List<WaveGroups> currentWaveGroups;
+    public List<WaveGroups> availableGroups;
+    public List<WaveGroups> currentWaveGroups;
 
     public List<Boss> bossEnemies;
     public int bossWaveCount;
@@ -199,7 +199,7 @@ public class WaveSystem : MonoBehaviour
         {
             foreach (GameObject enemy in groups[i].enemyGO)
             {
-                GameObject e = Instantiate(enemy, GameManager.wayPoints[0].position, GameManager.wayPoints[0].rotation);
+                GameObject e = Instantiate(enemy, GameManager.instance.enemySpawnPos.position, GameManager.instance.enemySpawnPos.rotation);
                 GameManager.enemies.Add(e);
                 e.name += wave;
                 yield return new WaitForSeconds(groups[i].timeBetweenEnemy);
@@ -219,7 +219,7 @@ public class WaveSystem : MonoBehaviour
 
         yield return new WaitForSeconds(selectedBoss.bossSpawnDelay);
 
-        GameObject boss = Instantiate(selectedBoss.bossGO, GameManager.wayPoints[0].position, GameManager.wayPoints[0].rotation);
+        GameObject boss = Instantiate(selectedBoss.bossGO, GameManager.instance.enemySpawnPos.position, GameManager.instance.enemySpawnPos.rotation);
         boss.name += " Boss " + wave;
 
         GameManager.enemies.Add(boss);

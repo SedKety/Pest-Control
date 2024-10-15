@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public static List<Transform> wayPoints = new List<Transform>();
     public List<Transform> wavePoints = new List<Transform>();
     public static List<Transform> flyingWaypoints = new List<Transform>();
+    public List<Transform> waypointsToAddAsLast = new List<Transform>();
     public static List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> enemieTest = new List<GameObject>();
     public static long points;
@@ -114,6 +115,11 @@ public class GameManager : MonoBehaviour
         WaveSystem.instance.canStartSpawningWaves = true;
         BuildingSystem.Instance.EnterTowerPhase();
         AddPoints(startingPoints);
+        for (int i = 0; i < waypointsToAddAsLast.Count; i++)
+        {
+            wayPoints.Add(waypointsToAddAsLast[i]);
+        }
+
         if (shouldSpawnFlags)
         {
             SpawnFlags();

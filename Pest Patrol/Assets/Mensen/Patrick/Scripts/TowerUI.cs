@@ -10,12 +10,14 @@ public class TowerUI : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity);
-            if (hit.collider.GetComponent<CombatTower>() != null)
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
-                if (hit.collider.GetComponent<CombatTower>().interactable)
+                if (hit.collider.GetComponent<CombatTower>() != null)
                 {
-                    upgradePanel.UpdatePanel(hit.collider.GetComponent<Tower>());
+                    if (hit.collider.GetComponent<CombatTower>().interactable)
+                    {
+                        upgradePanel.UpdatePanel(hit.collider.GetComponent<Tower>());
+                    }
                 }
             }
         }
