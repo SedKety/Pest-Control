@@ -51,8 +51,8 @@ public class WaveSystem : MonoBehaviour
 
 
     public List<WaveGroups> enemyGroups;
-    public List<WaveGroups> availableGroups;
-    public List<WaveGroups> currentWaveGroups;
+    private List<WaveGroups> availableGroups;
+    private List<WaveGroups> currentWaveGroups;
 
     public List<Boss> bossEnemies;
     public int bossWaveCount;
