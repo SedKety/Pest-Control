@@ -12,8 +12,9 @@ public class Ratter : MonoBehaviour
     private bool hasHit = false;
     public bool isRat;
     public bool isCar;
-
+    public bool isPigeon;
     public float rotationSpeed;
+    public Transform[] transforms;
     private void Start()
     {
         originalRot = transform.rotation;
@@ -27,7 +28,11 @@ public class Ratter : MonoBehaviour
     {
         if (isCar)
         {
-            if (!hasHit) transform.Translate((Vector3.forward * Time.deltaTime) * 15);
+            if (!hasHit)
+            {
+                transform.Translate(Vector3.forward * (Time.deltaTime * 30));
+                if (isPigeon) transform.Rotate(0, Random.Range(-0.1f, 0.1f), 0);
+            }
             else HasHit();
         }
 
@@ -54,10 +59,23 @@ public class Ratter : MonoBehaviour
         if (!gameObject) { return; }
         await Task.Delay(Random.Range(0, 3000));
         if (!gameObject) { return; }
+
+        if (isPigeon)
+        {
+            ChooseTransform();
+            return;
+        }
         transform.position = originalPos;
+        transform.rotation = originalRot;
         Return();
     }
 
+    public void ChooseTransform()
+    {
+        transform.position = transforms[Random.Range(0, transforms.Length)].position;
+        transform.rotation = transforms[Random.Range(0, transforms.Length)].rotation;
+        Return();
+    }
     async void HasHit()
     {
         isRat = true;

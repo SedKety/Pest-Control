@@ -405,9 +405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158b949814fa22d42881000daba873dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIOff:
-    m_PersistentCalls:
-      m_Calls: []
   uiObjects: []
   layer:
     serializedVersion: 2
@@ -712,7 +709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &546661416942285479
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2038,6 +2035,7 @@ MonoBehaviour:
   currentResolutionIndex: 0
   currentRes: 
   audioSlider: {fileID: 2363945416655507370}
+  inputFields: []
 --- !u!1 &2894686588332719119
 GameObject:
   m_ObjectHideFlags: 0
@@ -4161,7 +4159,7 @@ RectTransform:
   m_Father: {fileID: 272981199015075778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -2.5, y: 0}
   m_SizeDelta: {x: 5.0001, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4215,6 +4213,7 @@ GameObject:
   - component: {fileID: 7788680404587916610}
   - component: {fileID: 7377631552547140287}
   - component: {fileID: 6780225391932079534}
+  - component: {fileID: 2340390719587182351}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -4335,6 +4334,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2340390719587182351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5990295496339839924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 7.44, y: -0.82}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6043651795378571111
 GameObject:
   m_ObjectHideFlags: 0
@@ -5381,9 +5395,9 @@ RectTransform:
   - {fileID: 272981199015075778}
   m_Father: {fileID: 546661416942285479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 633.2, y: -104.0118}
   m_SizeDelta: {x: 1266.4, y: 142.0236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4042185383075733150
@@ -5449,6 +5463,7 @@ GameObject:
   - component: {fileID: 3312931783716953380}
   - component: {fileID: 4217919748095812442}
   - component: {fileID: 3922409788683169023}
+  - component: {fileID: 980315324795039322}
   m_Layer: 5
   m_Name: RetryButton
   m_TagString: Untagged
@@ -5569,6 +5584,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &980315324795039322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769579408530968716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 7.44, y: -0.82}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6963252255233036638
 GameObject:
   m_ObjectHideFlags: 0
@@ -5661,7 +5691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1570408389656308889
 RectTransform:
   m_ObjectHideFlags: 0

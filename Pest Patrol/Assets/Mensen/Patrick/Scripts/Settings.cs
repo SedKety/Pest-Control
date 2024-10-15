@@ -13,9 +13,11 @@ public class Settings : MonoBehaviour
     public int currentResolutionIndex = 0;
     public string currentRes;
     public Slider audioSlider;
+    public TMP_InputField[] inputFields;
 
     public void EnterGame()
     {
+        print("hi");
         SceneManager.LoadScene(1);
     }
     private void Start()
@@ -88,6 +90,7 @@ public class Settings : MonoBehaviour
 
     public void SetFPS(string value)
     {
+        inputFields[0].text = value;
         if (int.Parse(value) <= 0) Application.targetFrameRate = -1;
         else Application.targetFrameRate = int.Parse(value);
         PlayerPrefs.SetInt("fps", int.Parse(value));
@@ -95,6 +98,7 @@ public class Settings : MonoBehaviour
 
     public void SetSensitivity(string value)
     {
+        inputFields[1].text = value;
         try
         {
             if (float.Parse(value) <= 0) CameraController.Instance.UpdateMouseSens(1);
@@ -105,6 +109,7 @@ public class Settings : MonoBehaviour
     }
     public void SetMoveSpeed(string value)
     {
+        inputFields[2].text = value;
         try
         {
             if (float.Parse(value) <= 0) CameraController.Instance.moveSpeed = 1;
