@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mensen/Nobertos.unity
     guid: 4625f179932da87459c5bbdc380b86a2
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level 2 (Underground).unity
+    guid: 6f7fbfa7034afba43b78fa386c144e1a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 0d736b8414903de47837bc07588cac04,
       type: 2}

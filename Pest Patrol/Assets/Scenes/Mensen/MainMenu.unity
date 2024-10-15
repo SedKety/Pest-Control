@@ -11948,11 +11948,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3882749396347055727, guid: ce0b195734d3997488442eee5c740200,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4076418474879271349, guid: ce0b195734d3997488442eee5c740200,
         type: 3}
       propertyPath: m_Pivot.x
@@ -12057,31 +12052,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596653268674768884, guid: ce0b195734d3997488442eee5c740200,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596653268674768884, guid: ce0b195734d3997488442eee5c740200,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596653268852812685, guid: ce0b195734d3997488442eee5c740200,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596653268852812685, guid: ce0b195734d3997488442eee5c740200,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596653268852812685, guid: ce0b195734d3997488442eee5c740200,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

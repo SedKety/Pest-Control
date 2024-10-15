@@ -6865,6 +6865,7 @@ MonoBehaviour:
   generatingTexts:
   - {fileID: 8050220421326309532}
   - {fileID: 3985449427753777564}
+  - {fileID: 6774156184472548121}
   panel: {fileID: 8331186151640672780}
   normalColor: {r: 0, g: 0, b: 0, a: 1}
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
