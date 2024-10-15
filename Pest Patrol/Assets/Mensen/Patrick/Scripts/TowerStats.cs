@@ -64,6 +64,8 @@ public class TowerStats : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                 generatingTexts[0].text = generatingTower.basePointsGenerated.ToString();
                 //set speed text
                 generatingTexts[1].text = generatingTower.timeBetweenPoints.ToString();
+                var towerName = generatingTower.name.Replace("(Clone)", "");
+                fightingTexts[4].text = towerName;
                 break;
             }
             default:

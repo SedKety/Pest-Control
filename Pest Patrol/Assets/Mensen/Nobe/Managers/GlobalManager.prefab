@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavePoints: []
+  waypointsToAddAsLast: []
   enemieTest: []
   health: 4
   startingPoints: 20

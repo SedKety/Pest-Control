@@ -2035,7 +2035,10 @@ MonoBehaviour:
   currentResolutionIndex: 0
   currentRes: 
   audioSlider: {fileID: 2363945416655507370}
-  inputFields: []
+  inputFields:
+  - {fileID: 2004412813317284301}
+  - {fileID: 6458959867520520992}
+  - {fileID: 3844623139971812711}
 --- !u!1 &2894686588332719119
 GameObject:
   m_ObjectHideFlags: 0
@@ -5691,7 +5694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1570408389656308889
 RectTransform:
   m_ObjectHideFlags: 0

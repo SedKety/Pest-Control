@@ -62,6 +62,7 @@ public class WaveSystem : MonoBehaviour
     public Coroutine currentWaveCoroutine;
 
     public bool isWaveSpawning = false;
+    private AudioSource waveStartSound;
 
     void Awake()
     {
@@ -89,6 +90,7 @@ public class WaveSystem : MonoBehaviour
 
     void Start()
     {
+        waveStartSound = GetComponent<AudioSource>();
         mode = (GameMode)PlayerPrefs.GetInt("Difficulty");
         print(mode.ToString());
         Ticker.OnTickAction += OnTick;
@@ -105,6 +107,7 @@ public class WaveSystem : MonoBehaviour
     [ContextMenu("StartNewWave")]
     public void StartNewWave()
     {
+        waveStartSound.Play();
         if (isWaveSpawning && currentWaveCoroutine != null)
         {
             StopCoroutine(currentWaveCoroutine);

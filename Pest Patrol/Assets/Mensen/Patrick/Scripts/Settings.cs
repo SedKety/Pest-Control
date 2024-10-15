@@ -20,12 +20,13 @@ public class Settings : MonoBehaviour
         print("hi");
         SceneManager.LoadScene(1);
     }
-    private void Start()
+    private void Start() 
     {
-        SetAudio(PlayerPrefs.GetFloat("volume"));
+        
+        SetAudio(PlayerPrefs.GetFloat("volume", 100));
         SetFPS(PlayerPrefs.GetInt("fps").ToString());
-        SetMoveSpeed(PlayerPrefs.GetFloat("moveSpeed").ToString());
-        SetSensitivity(PlayerPrefs.GetFloat("sens").ToString());
+        SetMoveSpeed(PlayerPrefs.GetFloat("moveSpeed", 10).ToString());
+        SetSensitivity(PlayerPrefs.GetFloat("sens", 3).ToString());
         foreach (var v in resolutionDropdown)
         {
             v.ClearOptions();
@@ -67,7 +68,8 @@ public class Settings : MonoBehaviour
             v.value = currentResolutionIndex;
             v.RefreshShownValue();
         }
-        SetResolution(resolutionList.Count - 1);
+        if (PlayerPrefs.GetInt("resolution") != 0) SetResolution(PlayerPrefs.GetInt("resolution"));
+        else SetResolution(resolutionList.Count - 1);
     }
 
     public void SetResolution(int resolutionIndex)
