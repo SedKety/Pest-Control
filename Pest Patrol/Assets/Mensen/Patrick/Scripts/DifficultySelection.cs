@@ -2,14 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class DifficultySelection : MonoBehaviour
 {
-    
+    private GameObject currentlySelectedDifficulty;
     public void SelectDifficulty(int difficulty)
     {
+        if (currentlySelectedDifficulty != null)
+        {
+            if (currentlySelectedDifficulty != EventSystem.current.currentSelectedGameObject)
+            {
+                currentlySelectedDifficulty.transform.GetChild(0).GetComponent<Image>().color = Color.white;
+            }
+        }
+        currentlySelectedDifficulty = EventSystem.current.currentSelectedGameObject;
+        currentlySelectedDifficulty.transform.GetChild(0).GetComponent<Image>().color = Color.black;
         PlayerPrefs.SetInt("Difficulty", difficulty);
     }
 

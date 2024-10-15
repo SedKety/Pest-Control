@@ -16,7 +16,6 @@ public class Ratter : MonoBehaviour
     public bool isPigeon;
     public float rotationSpeed;
     public Transform[] transforms;
-    public CancellationTokenSource TokenSource = new CancellationTokenSource();
     private void Start()
     {
         SceneManager.sceneUnloaded += OnSceneUnloaded;
@@ -24,7 +23,7 @@ public class Ratter : MonoBehaviour
         originalPos = transform.position;
         if (isCar)
         {
-            Return(TokenSource.Token);
+            StartCoroutine("Return");
         }
     }
     private void Update()
@@ -36,7 +35,7 @@ public class Ratter : MonoBehaviour
                 transform.Translate(Vector3.forward * (Time.deltaTime * 30));
                 if (isPigeon) transform.Rotate(0, Random.Range(-0.1f, 0.1f), 0);
             }
-            else HasHit(TokenSource.Token);
+            else StartCoroutine("HasHit");
         }
 
         if (isRat)
@@ -44,7 +43,7 @@ public class Ratter : MonoBehaviour
             transform.Rotate(0, rotationSpeed * Time.deltaTime , 0);
             if (isCar)
             {
-                StopRotating(TokenSource.Token);
+                StartCoroutine("StopRotating");
             }
         }
     }
@@ -56,70 +55,44 @@ public class Ratter : MonoBehaviour
         }
     }
 
-    async void Return(CancellationToken token)
+    public IEnumerator Return()
     {
-        if (token.IsCancellationRequested)
-        {
-            return;
-        }
-        await Task.Delay(3000);
-        if (gameObject == null) { return; }
-        await Task.Delay(Random.Range(0, 3000));
-        if (gameObject == null) { return; }
+        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(Random.Range(0.01f, 3));
 
         if (isPigeon)
         {
             ChooseTransform();
-            return;
+            StopCoroutine(Return());
         }
         transform.position = originalPos;
         transform.rotation = originalRot;
-        Return(TokenSource.Token);
+        StartCoroutine("Return");
     }
 
     public void ChooseTransform()
     {
         transform.position = transforms[Random.Range(0, transforms.Length)].position;
         transform.rotation = transforms[Random.Range(0, transforms.Length)].rotation;
-        Return(TokenSource.Token);
+        StartCoroutine("Return");
     }
-    async void HasHit(CancellationToken token)
+    public IEnumerator HasHit()
     {
-        if (token.IsCancellationRequested)
-        {
-            return;
-        }
         isRat = true;
-        await Task.Delay(1000);
+        yield return new WaitForSeconds(1);
         hasHit = false;
 
     }
 
-    async void StopRotating(CancellationToken token)
+    public IEnumerator StopRotating(CancellationToken token)
     {
-        if (token.IsCancellationRequested)
-        {
-            return;
-        }
-        await Task.Delay(1000);
+        yield return new WaitForSeconds(1);
         isRat = false;
         transform.rotation = originalRot;
     }
 
     public void OnSceneUnloaded(Scene scene)
     {
-        TokenSource.Cancel();
-        TokenSource.Dispose();
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
-    #region async bs
-    void OnApplicationQuit()
-    {
-        #if UNITY_EDITOR
-            var constructor = SynchronizationContext.Current.GetType().GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new System.Type[] { typeof(int) }, null);
-            var newContext = constructor.Invoke(new object[] { Thread.CurrentThread.ManagedThreadId });
-            SynchronizationContext.SetSynchronizationContext(newContext as SynchronizationContext);
-        #endif
-    }
-    #endregion
 }
