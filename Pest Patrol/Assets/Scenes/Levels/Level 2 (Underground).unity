@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 23c5dfe9b7df5774280e0540deea18b7,
+    type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -258,6 +259,303 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def625a2585ffe844a254989841ec2ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &329900704
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1695645101090844061, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: mouseSens
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695645101090844061, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695645101090844061, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: zoomSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695645101090844061, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: camConfinementSize.x
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695645101090844061, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: camConfinementSize.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695645101090844061, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: zoom_PositionCurve.m_Curve.Array.data[1].time
+      value: 0.9876073
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695645101090844061, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: zoom_PositionCurve.m_Curve.Array.data[1].value
+      value: -4.9136944
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400777836017278514, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400777836017278514, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400777836017278514, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400777836017278514, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400777836017278514, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400777836017278514, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400777836017278514, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400777836017278514, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400777836017278514, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400777836017278514, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430549081528181049, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_Name
+      value: CamController (WorldCenter) (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482651709799975893, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_CameraType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482651709799975893, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482651709799975893, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_RequiresOpaqueTextureOption
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597585573923828042, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8430549081528181049, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 329900708}
+    - targetCorrespondingSourceObject: {fileID: 8430549081528181049, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 329900707}
+  m_SourcePrefab: {fileID: 100100000, guid: 157ecf9fc80c1f541a35b8033e253695, type: 3}
+--- !u!1 &329900705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8430549081528181049, guid: 157ecf9fc80c1f541a35b8033e253695,
+    type: 3}
+  m_PrefabInstance: {fileID: 329900704}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &329900706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1695645101090844061, guid: 157ecf9fc80c1f541a35b8033e253695,
+    type: 3}
+  m_PrefabInstance: {fileID: 329900704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329900705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2ec41aa62733974aae7247790e49e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &329900707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329900705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54293f97670046e47a7fdf07018b185c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradePanel: {fileID: 40867324}
+--- !u!114 &329900708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329900705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 54a760431a92c25499011e5166770f90,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c4cf7794-3b52-49e8-b478-e6e8915380c7
+    m_ActionName: Gameplay/Confirm[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 013444cb-2494-4e40-b16e-31701bcb79f8
+    m_ActionName: Gameplay/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 329900706}
+        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
+        m_MethodName: OnScroll
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 946791c4-bbd9-45e2-b86a-46989ec566c5
+    m_ActionName: Gameplay/Scroll[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 329900706}
+        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
+        m_MethodName: OnRotate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 77645608-1d41-43b3-9899-7f6366a84285
+    m_ActionName: Gameplay/CamRotate[/Keyboard/q,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 329900706}
+        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
+        m_MethodName: OnRotateAltHeld
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 696b1f3e-9f07-436c-b1b7-09ff3bb6c18b
+    m_ActionName: Gameplay/AltRotate[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 329900706}
+        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2e0ce718-0c8b-431c-a012-ac1517a20d6a
+    m_ActionName: Gameplay/CamMove[/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 329900706}
+        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
+        m_MethodName: OnFastMoveHeld
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1536f012-0261-4967-9929-d5d8ddea559c
+    m_ActionName: Gameplay/FastMove (Sprint)[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 329900706}
+        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
+        m_MethodName: OnResetCam
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 82325ac4-ea13-4ef9-8cf9-e2f360a307c0
+    m_ActionName: Gameplay/ResetCam[/Keyboard/space]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &1858402928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -266,6 +564,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 303375177209174888, guid: ec8a080c0b2e37e4894a53b313f5b022,
+        type: 3}
+      propertyPath: m_Name
+      value: Money
+      objectReference: {fileID: 0}
+    - target: {fileID: 1034689071779895839, guid: ec8a080c0b2e37e4894a53b313f5b022,
+        type: 3}
+      propertyPath: m_text
+      value: Money
+      objectReference: {fileID: 0}
+    - target: {fileID: 2427084667576157809, guid: ec8a080c0b2e37e4894a53b313f5b022,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3720067422163753624, guid: ec8a080c0b2e37e4894a53b313f5b022,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3874472969164917575, guid: ec8a080c0b2e37e4894a53b313f5b022,
         type: 3}
       propertyPath: m_Name
@@ -304,7 +622,7 @@ PrefabInstance:
     - target: {fileID: 6688040184435486403, guid: ec8a080c0b2e37e4894a53b313f5b022,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 6688040184435486403, guid: ec8a080c0b2e37e4894a53b313f5b022,
         type: 3}
@@ -314,7 +632,7 @@ PrefabInstance:
     - target: {fileID: 6688040184435486403, guid: ec8a080c0b2e37e4894a53b313f5b022,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 6688040184435486403, guid: ec8a080c0b2e37e4894a53b313f5b022,
         type: 3}
@@ -329,7 +647,7 @@ PrefabInstance:
     - target: {fileID: 6688040184435486403, guid: ec8a080c0b2e37e4894a53b313f5b022,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6688040184435486403, guid: ec8a080c0b2e37e4894a53b313f5b022,
         type: 3}
@@ -337,7 +655,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 377452285585196567, guid: ec8a080c0b2e37e4894a53b313f5b022, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec8a080c0b2e37e4894a53b313f5b022, type: 3}
@@ -359,3 +678,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1858402928}
   - {fileID: 40867323}
+  - {fileID: 329900704}

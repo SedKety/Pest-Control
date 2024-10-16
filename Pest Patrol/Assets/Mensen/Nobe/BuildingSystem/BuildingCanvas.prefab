@@ -3177,7 +3177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6567260872655794849
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3339,7 +3339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &191528750280722264
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4394,7 +4394,7 @@ GameObject:
   - component: {fileID: 5407124839199747139}
   - component: {fileID: 6774156184472548121}
   m_Layer: 5
-  m_Name: Stats
+  m_Name: TowerName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5078,7 +5078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2480593669553507882
 RectTransform:
   m_ObjectHideFlags: 0

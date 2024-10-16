@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 public enum GamePhase
 {
     mapBuildPhase,
@@ -17,7 +18,10 @@ public class GameManager : MonoBehaviour
     public static List<Transform> wayPoints = new List<Transform>();
     public List<Transform> wavePoints = new List<Transform>();
     public static List<Transform> flyingWaypoints = new List<Transform>();
+
+
     public List<Transform> waypointsToAddAsLast = new List<Transform>();
+    public List<Transform> flyingWaypointsToAddAsLast = new List<Transform>();
     public static List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> enemieTest = new List<GameObject>();
     public static long points;
@@ -81,6 +85,11 @@ public class GameManager : MonoBehaviour
             maxWave = 9999999;
         }
     }
+
+    public void SkipWave()
+    {
+        WaveSystem.instance.StartNewWave();
+    }
     public void OnTick()
     {
         tickCount++;
@@ -119,6 +128,10 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < waypointsToAddAsLast.Count; i++)
         {
             wayPoints.Add(waypointsToAddAsLast[i]);
+        }
+        for (int i = 0; i < flyingWaypointsToAddAsLast.Count; i++)
+        {
+            flyingWaypoints.Add(flyingWaypointsToAddAsLast[i]);
         }
 
         if (shouldSpawnFlags)
