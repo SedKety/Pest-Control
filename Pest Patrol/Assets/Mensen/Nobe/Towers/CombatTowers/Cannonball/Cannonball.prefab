@@ -644,8 +644,9 @@ MonoBehaviour:
   interactable: 0
   renderTexture: {fileID: 8400000, guid: 802a49d62188be44bb7d1d32ec1e6cdc, type: 2}
   currentDamage: 0
-  baseDamages: 10
+  baseDamages: 15
   baseReloadSpeed: 2.5
+  currentReloadSpeed: 0
   detectionRange: 8
   currentDetectedEnemyGO: {fileID: 0}
   shootPoint: {fileID: 3265902346251163284}

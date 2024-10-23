@@ -7,18 +7,7 @@ public class ResultScreen : MonoBehaviour
 {
 
     public TMP_Text waveRecordText;
-
-    public void Win()
-    {
-        PauseGame();
-        UnlockEndlessMode();
-    }
-
-    public void Lose()
-    {
-        PauseGame();
-        SetWaveRecord();
-    }
+    
     public void PauseGame()
     {
         Time.timeScale = 0;

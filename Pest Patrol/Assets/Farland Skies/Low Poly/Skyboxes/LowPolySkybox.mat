@@ -45,20 +45,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BottomExponent: 1.53
+    - _BottomExponent: 5
     - _CloudsHeight: 0.224
     - _CloudsRotation: 4
     - _Exponent: 1
-    - _Exposure: 0.73
+    - _Exposure: 0.85
     - _MoonHalo: 0.726
     - _MoonSize: 0.42
     - _StarsExtinction: 4.86
     - _StarsTwinklingSpeed: 4.4
     - _SunHalo: 0.844
     - _SunSize: 0.1
-    - _TopExponent: 1.01
+    - _TopExponent: 1.85
     m_Colors:
-    - _BottomColor: {r: 0.016868481, g: 0, b: 0.47794116, a: 1}
+    - _BottomColor: {r: 0, g: 0, b: 0, a: 1}
     - _CloudsTint: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
     - _MiddleColor: {r: 0, g: 0, b: 0, a: 1}
     - _MoonTint: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}

@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Rendering.UI;
+using UnityEngine.UI;
 
 public class IsOtherUIActive : MonoBehaviour
 {
@@ -13,7 +15,8 @@ public class IsOtherUIActive : MonoBehaviour
     {
         if (uiObject.activeInHierarchy)
         {
-            foldout.SetState(!uiObject.activeInHierarchy);
+            foldout.SetState(!foldout.isOn);
+            
         }
     }
 }

@@ -59,12 +59,7 @@ public class Ratter : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         yield return new WaitForSeconds(Random.Range(0.01f, 3));
-
-        if (isPigeon)
-        {
-            ChooseTransform();
-            StopCoroutine(Return());
-        }
+        
         transform.position = originalPos;
         transform.rotation = originalRot;
         StartCoroutine("Return");
@@ -84,7 +79,7 @@ public class Ratter : MonoBehaviour
 
     }
 
-    public IEnumerator StopRotating(CancellationToken token)
+    public IEnumerator StopRotating()
     {
         yield return new WaitForSeconds(1);
         isRat = false;

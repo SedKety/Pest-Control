@@ -1,7 +1,13 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.Networking;
 
 namespace Lumpn.Discord{
     public class Feedback : MonoBehaviour
@@ -11,11 +17,24 @@ namespace Lumpn.Discord{
         public GameObject text;
         private int face;
         public GameObject feedbackName;
-        public bool hasSent = false;
-
-
+        private bool hasSent = false;
+        private List<string> filterWords = new();
+        public float scaleFactor;
+        private GameObject currentButton;
+        public GameObject sentText;
+        
         public void Review(int i)
         {
+            if (currentButton != null)
+            {
+                if (currentButton != EventSystem.current.currentSelectedGameObject)
+                {
+                    currentButton.transform.localScale /= scaleFactor;
+                }
+            }
+            if (currentButton == EventSystem.current.currentSelectedGameObject) return;
+            currentButton = EventSystem.current.currentSelectedGameObject;
+            currentButton.transform.localScale *= scaleFactor;
             face = i;
         }
         public void Button()
@@ -28,7 +47,7 @@ namespace Lumpn.Discord{
             }
             else
             {
-                text.GetComponent<TMP_InputField>().text = "Je kan maar 1x feedback sturen";
+                text.GetComponent<TMP_InputField>().text = "You can only send feedback once.";
             }
         }
         public IEnumerator SendFeedback()
@@ -36,14 +55,16 @@ namespace Lumpn.Discord{
             if (face == 0) StopCoroutine(SendFeedback());
             hasSent = true;
             StartCoroutine(webhook.Send(text.GetComponent<TMP_InputField>().text));
+            
             yield return new WaitForSeconds(1);
             switch (face)
             {
                 case 1: StartCoroutine(webhook.Send(":smiley:")); break;
                 case 2: StartCoroutine(webhook.Send("<:face:1287754864499359916>")); break;
                 case 3: StartCoroutine(webhook.Send(":sob:")); break;
-                default: Debug.Log("No review selected."); break;
+                default: print("No review selected."); break;
             }
-        }
+            sentText.SetActive(true);
+        } 
     }
 }

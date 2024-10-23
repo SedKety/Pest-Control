@@ -11,6 +11,7 @@ public class DifficultySelection : MonoBehaviour
     public GameObject[] previews;
     private GameObject currentlySelectedDifficulty;
     private GameObject currentlySelectedLevel;
+    public GameObject toggle;
     public void SelectDifficulty(int difficulty)
     {
         if (currentlySelectedDifficulty != null)
@@ -41,17 +42,11 @@ public class DifficultySelection : MonoBehaviour
                 currentlySelectedLevel.transform.GetChild(0).GetComponent<Image>().color = Color.white;
             }
         }
-        currentlySelectedDifficulty = EventSystem.current.currentSelectedGameObject;
-        currentlySelectedDifficulty.transform.GetChild(0).GetComponent<Image>().color = Color.black;
+        currentlySelectedLevel = EventSystem.current.currentSelectedGameObject;
+        currentlySelectedLevel.transform.GetChild(0).GetComponent<Image>().color = Color.black;
         foreach (var preview in previews) preview.GetComponent<Image>().color = Color.clear;
         previews[previews.Length - sceneIndex].GetComponent<Image>().color = Color.black;
         if (sceneIndex == 0) sceneIndex = 1;
         FindAnyObjectByType<Settings>().selectedScene = sceneIndex;
-    }
-    public void Start()
-    {
-        var endlessModeUnlocked = PlayerPrefs.GetInt("UnlockedEndlessMode");
-        var unlocked = endlessModeUnlocked == 1;
-        GetComponentInChildren<Toggle>().interactable = unlocked;
     }
 }
