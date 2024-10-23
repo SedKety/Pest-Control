@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -42,6 +44,37 @@ public class Crossbow : CombatTower
         }
     }
     #endregion
+    protected override void TryDetectEnemy()
+    {
+        if (currentDetectedEnemyGO || !canShoot) { return; }
+        var distance = 0f;
+        GameObject closestFlyingEnemy = GameManager.enemies
+     .Where(enemy => enemy != null &&
+     enemy.GetComponent<FlyingEnemy>() != null && Vector3.Distance(transform.position, enemy.transform.position) <= detectionRange)
+     .OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position))
+     .FirstOrDefault();
+        if (closestFlyingEnemy != null)
+        {
+            if (closestFlyingEnemy.GetComponent<Enemy>().type == typeToTarget || typeToTarget == EnemyType.all)
+            {
+                currentDetectedEnemyGO = closestFlyingEnemy;
+                return;
+            }
+        }
+        foreach (GameObject enemy in GameManager.enemies.Where(enemy => enemy != null))
+        {
+            distance = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distance <= detectionRange)
+            {
+                if (enemy.GetComponent<Enemy>().type == typeToTarget || typeToTarget == EnemyType.all)
+                {
+                    currentDetectedEnemyGO = enemy;
+                    Ticker.OnTickAction += EnemyDistanceCheck;
+                    break;
+                }
+            }
+        }
+    }
 
     protected async void ReturnToOriginalPosition()
     {

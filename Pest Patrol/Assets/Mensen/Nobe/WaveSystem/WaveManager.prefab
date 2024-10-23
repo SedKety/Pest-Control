@@ -53,13 +53,9 @@ MonoBehaviour:
   hardWavePointMultiplier: 0
   enemyHealthMultiplierIncrease: 0.2
   enemyGroups:
-  - groupName: 8 rats
+  - groupName: 4  rats
     wavePointCost: 1
     enemyGO:
-    - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
-    - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
-    - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
-    - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
@@ -69,17 +65,9 @@ MonoBehaviour:
     minWaveEasy: 0
     minWaveMedium: 0
     minWaveHard: 0
-  - groupName: 16 rats
+  - groupName: 8 rats
     wavePointCost: 2
     enemyGO:
-    - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
-    - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
-    - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
-    - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
-    - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
-    - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
-    - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
-    - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}

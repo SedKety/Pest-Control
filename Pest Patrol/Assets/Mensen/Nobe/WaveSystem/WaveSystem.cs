@@ -219,11 +219,10 @@ public class WaveSystem : MonoBehaviour
                 {
                     GameObject e = Instantiate(enemy, GameManager.instance.enemySpawnPos.position, GameManager.instance.enemySpawnPos.rotation);
                     GameManager.enemies.Add(e);
-                    e.name += wave;
+                    //e.name += wave;
                 }
                 else
                 {
-                    print("GameManagerAintHere");
                     break;
                 }
                 yield return new WaitForSeconds(groups[i].timeBetweenEnemy);
