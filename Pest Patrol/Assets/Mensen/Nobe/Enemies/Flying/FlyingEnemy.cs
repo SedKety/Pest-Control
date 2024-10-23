@@ -16,7 +16,7 @@ public class FlyingEnemy : Enemy
         CheckIfAtEnd();
         var step = moveSpeed * Time.deltaTime;
         if (transform == null) { return; }
-        if (GameManager.wayPoints[currentWaypoint])
+        if (GameManager.flyingWaypoints[currentWaypoint])
         {
             transform.position = Vector3.MoveTowards(transform.position, GameManager.flyingWaypoints[currentWaypoint].position, step);
             var distance = Vector3.Distance(transform.position, GameManager.flyingWaypoints[currentWaypoint].position);
@@ -35,7 +35,7 @@ public class FlyingEnemy : Enemy
     public override void FaceWaypoint()
     {
         CheckIfAtEnd();
-        if (isDead || gameObject == null) return;
+        if (isDead || gameObject == null || transform == null || GameManager.flyingWaypoints[currentWaypoint] == null) return;
         float distance = Vector3.Distance(transform.position, GameManager.flyingWaypoints[currentWaypoint].position);
         bool nextWaypointActive = CheckIfNextWaypointExists();
         if (distance < minDistance * 2 & nextWaypointActive)

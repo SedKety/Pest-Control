@@ -51,9 +51,10 @@ MonoBehaviour:
   cantMove: 0
   moveSpeed: 0.5
   minDistance: 0.1
+  currentWaypoint: 0
   pointsDropped: 3
   isDead: 0
-  shield: 20
+  shield: 40
   typeToHitShield: 0
   shell: {fileID: 6996430392897594210}
 --- !u!1001 &4920548214487690682

@@ -45,12 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66becea57b2f5dd4fa7b0961dfdf0a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 20
   damage: 1
   type: 0
   cantMove: 0
   moveSpeed: 1
   minDistance: 0.1
+  currentWaypoint: 0
   pointsDropped: 2
   isDead: 0
   initTimeTillEgg: 5

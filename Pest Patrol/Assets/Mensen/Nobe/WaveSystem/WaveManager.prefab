@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 2
+  waveForDebug: 0
   startingWavePoints: 0
   easyWavePointMultiplier: 0
   mediumWavePointMultiplier: 0
@@ -63,8 +64,8 @@ MonoBehaviour:
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
-    timeBetweenEnemy: 0.5
-    timeBetweenGroup: 0.2
+    timeBetweenEnemy: 1
+    timeBetweenGroup: 1
     minWaveEasy: 0
     minWaveMedium: 0
     minWaveHard: 0
@@ -87,8 +88,8 @@ MonoBehaviour:
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
-    timeBetweenEnemy: 0.5
-    timeBetweenGroup: 0.2
+    timeBetweenEnemy: 1
+    timeBetweenGroup: 1
     minWaveEasy: 0
     minWaveMedium: 0
     minWaveHard: 0
@@ -104,8 +105,8 @@ MonoBehaviour:
     - {fileID: 4658925234946252445, guid: 0e5e77d718f485348b7c607a33e8faae, type: 3}
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
     - {fileID: 4658925234946252445, guid: 0e5e77d718f485348b7c607a33e8faae, type: 3}
-    timeBetweenEnemy: 0.5
-    timeBetweenGroup: 0.2
+    timeBetweenEnemy: 1
+    timeBetweenGroup: 1
     minWaveEasy: 6
     minWaveMedium: 4
     minWaveHard: 2
@@ -121,7 +122,7 @@ MonoBehaviour:
     - {fileID: 6621186948117144720, guid: 17ce5c2ef83399042a614c4f0f059921, type: 3}
     - {fileID: 3518373061841518850, guid: 2989049100c77464f8c90e93be2e3b21, type: 3}
     timeBetweenEnemy: 1
-    timeBetweenGroup: 0.2
+    timeBetweenGroup: 1
     minWaveEasy: 10
     minWaveMedium: 8
     minWaveHard: 6
@@ -137,6 +138,7 @@ MonoBehaviour:
   isBossWave: 0
   canStartSpawningWaves: 0
   isWaveSpawning: 0
+  isIngame: 0
 --- !u!82 &1998635660449617728
 AudioSource:
   m_ObjectHideFlags: 0

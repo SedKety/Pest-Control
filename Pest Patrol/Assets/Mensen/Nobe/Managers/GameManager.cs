@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public static List<Transform> wayPoints = new List<Transform>();
     public List<Transform> wavePoints = new List<Transform>();
     public static List<Transform> flyingWaypoints = new List<Transform>();
+    public List<Transform> flyingWavePoints = new List<Transform>();
 
 
     public List<Transform> waypointsToAddAsLast = new List<Transform>();
@@ -99,6 +101,7 @@ public class GameManager : MonoBehaviour
     {
         wavePoints = wayPoints;
         enemieTest = enemies;
+        flyingWavePoints = flyingWaypoints;
     }
     public static void AddPoints(long addedPoints)
     {
@@ -123,6 +126,7 @@ public class GameManager : MonoBehaviour
     {
         gamePhase = GamePhase.wavePhase;
         WaveSystem.instance.canStartSpawningWaves = true;
+        WaveSystem.instance.isIngame = true;
         BuildingSystem.Instance.EnterTowerPhase();
         AddPoints(startingPoints);
         for (int i = 0; i < waypointsToAddAsLast.Count; i++)
@@ -167,5 +171,10 @@ public class GameManager : MonoBehaviour
     public void TimeScale0()
     {
         Time.timeScale = 0;
+    }
+
+    public void StopWave()
+    {
+        WaveSystem.instance.StopWave();
     }
 }

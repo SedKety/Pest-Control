@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -41,6 +42,8 @@ public class WaveSystem : MonoBehaviour
     public static WaveSystem instance;
     public static int wave;
 
+    public int waveForDebug;
+
     private int wavePoints;
     public int startingWavePoints;
     public float easyWavePointMultiplier;
@@ -56,13 +59,15 @@ public class WaveSystem : MonoBehaviour
 
     public List<Boss> bossEnemies;
     public int bossWaveCount;
-    public bool isBossWave;         
+    public bool isBossWave;
 
     public bool canStartSpawningWaves;
     public Coroutine currentWaveCoroutine;
 
     public bool isWaveSpawning = false;
     private AudioSource waveStartSound;
+
+    public bool isIngame;
 
     void Awake()
     {
@@ -73,6 +78,7 @@ public class WaveSystem : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        StopWave();  // Stop waves when a new scene is loaded
         ResetWaveSystem();
     }
 
@@ -80,12 +86,16 @@ public class WaveSystem : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         instance = this;
-        wave = 0;
-        wavePoints = 0;
-        easyWavePointMultiplier = 1.25f;
+        wave = 0;  
+        wavePoints = startingWavePoints;  
+        easyWavePointMultiplier = 1.25f;  
         mediumWavePointMultiplier = 1.5f;
         hardWavePointMultiplier = 2f;
-        canStartSpawningWaves = false;
+        canStartSpawningWaves = false;  
+        isWaveSpawning = false; 
+        isIngame = false; 
+        currentWaveGroups.Clear();  
+        availableGroups.Clear();
         if (currentWaveCoroutine != null) { StopCoroutine(currentWaveCoroutine); }
         currentWaveCoroutine = null;
     }
@@ -94,12 +104,12 @@ public class WaveSystem : MonoBehaviour
     {
         waveStartSound = GetComponent<AudioSource>();
         mode = (GameMode)PlayerPrefs.GetInt("Difficulty");
-        print(mode.ToString());
         Ticker.OnTickAction += OnTick;
     }
 
     void OnTick()
     {
+        waveForDebug = wave;
         if (GameManager.enemies.Count == 0 && canStartSpawningWaves && !isWaveSpawning)
         {
             StartNewWave();
@@ -112,6 +122,7 @@ public class WaveSystem : MonoBehaviour
         waveStartSound.Play();
         if (isWaveSpawning && currentWaveCoroutine != null)
         {
+            print("Finna kill this wave");
             StopCoroutine(currentWaveCoroutine);
             currentWaveCoroutine = null;
         }
@@ -120,13 +131,14 @@ public class WaveSystem : MonoBehaviour
         GameManager.enemyHealthMultiplier += enemyHealthMultiplierIncrease;
 
         wave++;
-        isBossWave = wave % bossWaveCount == 0; 
+        isBossWave = wave % bossWaveCount == 0;
 
         GameManager.instance.OnWaveChange();
         wavePoints = CalculateWavePoints(wave);
 
         isWaveSpawning = true;
         currentWaveCoroutine = StartCoroutine(GenerateNewWave());
+        isIngame = true;
     }
 
     int CalculateWavePoints(int wave)
@@ -146,7 +158,6 @@ public class WaveSystem : MonoBehaviour
     IEnumerator GenerateNewWave()
     {
         UpdateAvailableGroups();
-
         var maxTries = 10 * wave;
         while (wavePoints > 0 && maxTries >= 0)
         {
@@ -204,7 +215,7 @@ public class WaveSystem : MonoBehaviour
         {
             foreach (GameObject enemy in groups[i].enemyGO)
             {
-                if(GameManager.instance != null)
+                if (GameManager.instance != null)
                 {
                     GameObject e = Instantiate(enemy, GameManager.instance.enemySpawnPos.position, GameManager.instance.enemySpawnPos.rotation);
                     GameManager.enemies.Add(e);
@@ -212,7 +223,8 @@ public class WaveSystem : MonoBehaviour
                 }
                 else
                 {
-                    StopCoroutine(SpawnEnemyGroups());
+                    print("GameManagerAintHere");
+                    break;
                 }
                 yield return new WaitForSeconds(groups[i].timeBetweenEnemy);
             }
@@ -230,15 +242,35 @@ public class WaveSystem : MonoBehaviour
         Boss selectedBoss = bossEnemies[Random.Range(0, bossEnemies.Count)];
 
         yield return new WaitForSeconds(selectedBoss.bossSpawnDelay);
+        try
+        {
+            GameObject boss = Instantiate(selectedBoss.bossGO, GameManager.instance.enemySpawnPos.position, GameManager.instance.enemySpawnPos.rotation);
+            boss.name += " Boss " + wave;
 
-        GameObject boss = Instantiate(selectedBoss.bossGO, GameManager.instance.enemySpawnPos.position, GameManager.instance.enemySpawnPos.rotation);
-        boss.name += " Boss " + wave;
+            GameManager.enemies.Add(boss);
+        }
+        catch
+        {
+            Debug.LogWarning("This shit aint in game no mo");
+        }
 
-        GameManager.enemies.Add(boss);
     }
 
     void OnDestroy()
     {
         instance = null;
+    }
+
+    public void StopWave()
+    {
+        isIngame = false;
+        isWaveSpawning = false; 
+        if (currentWaveCoroutine != null)
+        {
+            StopCoroutine(currentWaveCoroutine);
+            currentWaveCoroutine = null;
+        }
+
+        currentWaveGroups.Clear();  
     }
 }

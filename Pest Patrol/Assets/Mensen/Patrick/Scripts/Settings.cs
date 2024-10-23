@@ -18,7 +18,6 @@ public class Settings : MonoBehaviour
 
     public void EnterGame()
     {
-        print("hi");
         SceneManager.LoadScene(selectedScene);
     }
     private void Start() 
@@ -43,10 +42,6 @@ public class Settings : MonoBehaviour
             if (Mathf.Approximately(refRate, rate))
             {
                 resolutionList.Add(resolutions[i]);
-            }
-            else
-            {
-                Debug.LogWarning("refresh rate not correct");
             }
         }
         var options = new List<string>();
@@ -93,7 +88,6 @@ public class Settings : MonoBehaviour
 
     public void SetFPS(string value)
     {
-        print("set fps to: " + value);
         inputFields[0].text = value;
         if (int.Parse(value) <= 0) Application.targetFrameRate = -1;
         else Application.targetFrameRate = int.Parse(value);
@@ -102,26 +96,24 @@ public class Settings : MonoBehaviour
 
     public void SetSensitivity(string value)
     {
-        print("set camera sensitivity to:" + value);
         inputFields[1].text = value;
         try
         {
             if (float.Parse(value) <= 0) CameraController.Instance.UpdateMouseSens(1);
             else CameraController.Instance.UpdateMouseSens(float.Parse(value));
         }
-        catch { Debug.Log("No camera controller present."); }
+        catch { }
         PlayerPrefs.SetFloat("sens", float.Parse(value));
     }
     public void SetMoveSpeed(string value)
     {
-        print("set move speed to: " + value);
         inputFields[2].text = value;
         try
         {
             if (float.Parse(value) <= 0) CameraController.Instance.moveSpeed = 1;
             else CameraController.Instance.moveSpeed = float.Parse(value);
         }
-        catch { Debug.Log("No camera controller present"); }
+        catch { }
         PlayerPrefs.SetFloat("moveSpeed", float.Parse(value));
     }
 }

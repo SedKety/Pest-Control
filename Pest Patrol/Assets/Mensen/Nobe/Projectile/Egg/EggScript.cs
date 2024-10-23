@@ -20,15 +20,17 @@ public class EggScript : Projectile
     public async Task StunTowers()
     {
         await Task.Delay((int)(explosionDelayInSeconds * 1000));
-
-        var towers = BuildingSystem.Instance.towersGO
-            .Where(tower => Vector3.Distance(tower.transform.position, transform.position) <= hitDistance)
-            .Select(c => c.GetComponent<CombatTower>())
-            .ToList();
-
-        for (int i = 0; i < towers.Count; i++)
+        if(this != null)
         {
-            towers[i].StartStun(stunTime);  
+            var towers = BuildingSystem.Instance.towersGO
+    .Where(tower => Vector3.Distance(tower.transform.position, transform.position) <= hitDistance)
+    .Select(c => c.GetComponent<CombatTower>())
+    .ToList();
+
+            for (int i = 0; i < towers.Count; i++)
+            {
+                towers[i].StartStun(stunTime);
+            }
         }
 
         Instantiate(explosion, transform.position, Quaternion.identity);
