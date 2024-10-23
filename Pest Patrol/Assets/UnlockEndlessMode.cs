@@ -10,7 +10,6 @@ public class UnlockEndlessMode : MonoBehaviour
         toggle = transform.GetChild(0).gameObject;
         var endlessModeUnlocked = PlayerPrefs.GetInt("UnlockedEndlessMode");
         var unlocked = endlessModeUnlocked == 1;
-        print(PlayerPrefs.GetInt("UnlockedEndlessMode"));
         toggle.SetActive(unlocked);
     }
 }

@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6385364675371403224}
-  - component: {fileID: 3702137967947104516}
-  - component: {fileID: 5344891686590478833}
   - component: {fileID: 6521627260086798674}
   m_Layer: 0
   m_Name: Arrow-Projectile
@@ -31,24 +29,78 @@ Transform:
   m_LocalPosition: {x: 431.80637, y: 263.16956, z: -165.86053}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3446119844826497501}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3702137967947104516
+--- !u!114 &6521627260086798674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4083638275970873234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b06f04a0788da45aa60144f979db01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tickLifeTime: 8
+  movementSpeed: 20
+  enemyGO: {fileID: 0}
+  projectileDamage: 0
+  pierceAmount: 1
+  hitEnemy: []
+  hitDistance: 0.2
+  projectileType: 1
+--- !u!1 &6527200167821733100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3446119844826497501}
+  - component: {fileID: 5629639752002295687}
+  - component: {fileID: 3224257736457776065}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3446119844826497501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6527200167821733100}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -1.642}
+  m_LocalScale: {x: 0.2, y: 0.03668, z: 0.2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6385364675371403224}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!33 &5629639752002295687
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4083638275970873234}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5344891686590478833
+  m_GameObject: {fileID: 6527200167821733100}
+  m_Mesh: {fileID: -881844236896109120, guid: 04d1352e9a5bd1144b6bebcc1de56b79, type: 3}
+--- !u!23 &3224257736457776065
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4083638275970873234}
+  m_GameObject: {fileID: 6527200167821733100}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,7 +114,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 8efb7f34115afa24080c27d65190c2b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,23 +136,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6521627260086798674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4083638275970873234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b06f04a0788da45aa60144f979db01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tickLifeTime: 8
-  movementSpeed: 20
-  enemyGO: {fileID: 0}
-  projectileDamage: 0
-  pierceAmount: 1
-  hitEnemy: []
-  hitDistance: 0.2
-  projectileType: 1

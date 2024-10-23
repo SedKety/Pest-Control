@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2399888053232875603}
   - component: {fileID: 3283679113993617247}
   - component: {fileID: 3066588589575405082}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rat Skewer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

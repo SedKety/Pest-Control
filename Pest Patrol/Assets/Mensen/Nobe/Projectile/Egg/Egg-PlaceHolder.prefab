@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.6021, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6945012417943978067}
@@ -54,7 +54,8 @@ MonoBehaviour:
   pierceAmount: 0
   hitEnemy: []
   hitDistance: 5
-  stunTime: 5
+  projectileType: 0
+  stunTime: 2
   explosionDelayInSeconds: 3
   explosion: {fileID: 3867533903961630234, guid: db4fc5ad68576ee4aa749716b7f73e28,
     type: 3}
@@ -137,7 +138,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.25, y: 0.2062475, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8767497367198952282}

@@ -547,6 +547,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cannonball
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 853a33d13b6897044a00e7a8b45001bb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1297066318899855533, guid: 853a33d13b6897044a00e7a8b45001bb,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2034134614749059013}
   - component: {fileID: 798663334796762361}
   - component: {fileID: 491487143835068727}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2047
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -200,6 +200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: lantaarnpaal (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9fa542fc0edacd6478d841adf8cf5211,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1207,6 +1207,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 475718129004578587, guid: fb0946c25e86d7049a49f35dc101da34,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064991345782716970, guid: fb0946c25e86d7049a49f35dc101da34,
+        type: 3}
+      propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2455727308446430100, guid: fb0946c25e86d7049a49f35dc101da34,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1312,6 +1322,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OverworldCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3071528448218358938, guid: fb0946c25e86d7049a49f35dc101da34,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4598430596379656237, guid: fb0946c25e86d7049a49f35dc101da34,
         type: 3}
       propertyPath: uiObjects.Array.data[0]
@@ -1327,6 +1342,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 600993693}
+    - target: {fileID: 6014864455587753902, guid: fb0946c25e86d7049a49f35dc101da34,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1340,6 +1360,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 366048447}
   m_SourcePrefab: {fileID: 100100000, guid: fb0946c25e86d7049a49f35dc101da34, type: 3}
+--- !u!114 &1146294911 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8238768804556373137, guid: fb0946c25e86d7049a49f35dc101da34,
+    type: 3}
+  m_PrefabInstance: {fileID: 1146294910}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab28a9def36010e4a805014eecea61c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1305403688 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8370415184493540918, guid: e94809a0dd526b3429aa8a6402baff67,
@@ -1926,6 +1958,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradePanel: {fileID: 1547545565}
+  enemyPanel: {fileID: 1146294911}
+  triggerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!4 &1752497732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8353201628554515077, guid: e94809a0dd526b3429aa8a6402baff67,
@@ -3103,6 +3139,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 30438273}
   - {fileID: 978659473}
   - {fileID: 954348368}
   - {fileID: 2213829154349624924}
@@ -3114,4 +3151,3 @@ SceneRoots:
   - {fileID: 1464919858}
   - {fileID: 2949541737147248534}
   - {fileID: 411847137}
-  - {fileID: 30438273}

@@ -287,6 +287,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hammer
       objectReference: {fileID: 0}
+    - target: {fileID: 5275177400138622779, guid: 67fc66fcbf480bf42850971bb394ead6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5781262548840660395, guid: 67fc66fcbf480bf42850971bb394ead6,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -387,6 +392,7 @@ MonoBehaviour:
   currentDamage: 0
   baseDamages: 15
   baseReloadSpeed: 2.5
+  currentReloadSpeed: 0
   detectionRange: 1
   currentDetectedEnemyGO: {fileID: 0}
   shootPoint: {fileID: 1690522265004601158}

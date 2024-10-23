@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5012597255972779503}
   - component: {fileID: -1825004988807225543}
-  m_Layer: 0
+  - component: {fileID: 5339528269127073025}
+  m_Layer: 10
   m_Name: IrradiatedRat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +49,9 @@ MonoBehaviour:
   health: 1000
   damage: 999999
   type: 1
+  sprite: {fileID: 21300000, guid: 3f2705f7cca73aa449492dac9e7503b1, type: 3}
+  description: This beast of a rat got a little too close to a glowing green cracker.
+    Make sure to kill it or it will eat all your crackers!
   cantMove: 0
   moveSpeed: 0.5
   minDistance: 0.1
@@ -61,6 +65,27 @@ MonoBehaviour:
   healAmount: 10
   healInterval: 5
   maxRatsSacrificed: 3
+--- !u!65 &5339528269127073025
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034987534313462371}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4699707, y: 1.6343994, z: 7.2612305}
+  m_Center: {x: 0.23498535, y: 1.4986572, z: -2.238037}
 --- !u!1001 &1180322377605782249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,38 +177,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 617246918671724632}
-    - targetCorrespondingSourceObject: {fileID: -7146521406498821007, guid: e367abc86016c074d92e0a640fda9b15,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8638270967801401695}
   m_SourcePrefab: {fileID: 100100000, guid: e367abc86016c074d92e0a640fda9b15, type: 3}
---- !u!1 &915123905424438936 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -7146521406498821007, guid: e367abc86016c074d92e0a640fda9b15,
-    type: 3}
-  m_PrefabInstance: {fileID: 1180322377605782249}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &8638270967801401695
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915123905424438936}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d24a070685a53e34486be55bf4646f32, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &1723719289298386178 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e367abc86016c074d92e0a640fda9b15,

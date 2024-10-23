@@ -14,7 +14,8 @@ public abstract class Enemy : MonoBehaviour
     public int health;
     public int damage;
     public EnemyType type;
-
+    public Sprite sprite;
+    public string description;
     //movement variables
     public bool cantMove;
     public float moveSpeed;

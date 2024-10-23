@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1b55a81092a32104dbf111998ed88456,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5074512353664290214, guid: 1b55a81092a32104dbf111998ed88456,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -80,6 +85,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3898362508037716838}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b55a81092a32104dbf111998ed88456,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6031167270620183486}
   m_SourcePrefab: {fileID: 100100000, guid: 1b55a81092a32104dbf111998ed88456, type: 3}
 --- !u!1 &3518373061841518850 stripped
 GameObject:
@@ -123,9 +132,33 @@ MonoBehaviour:
   health: 25
   damage: 1
   type: 1
+  sprite: {fileID: 21300000, guid: b7ed59e7cf6d34a4eac3ce9f3db86f3d, type: 3}
+  description: This is the most basic type of enemy with low health and medium speed.
+    They are simply here to overwhelm your towers.
   cantMove: 0
   moveSpeed: 1
   minDistance: 0.1
   currentWaypoint: 0
   pointsDropped: 1
   isDead: 0
+--- !u!65 &6031167270620183486
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3518373061841518850}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.55630493, y: 0.73095703, z: 2.4813385}
+  m_Center: {x: 0.021438599, y: 0.3421936, z: -0.5658188}

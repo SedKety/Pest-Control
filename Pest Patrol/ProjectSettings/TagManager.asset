@@ -17,8 +17,8 @@ TagManager:
   - Projectile
   - Spawner
   - Blueprint
-  - 
-  - 
+  - TriggerRaycast
+  - Light
   - 
   - 
   - 
