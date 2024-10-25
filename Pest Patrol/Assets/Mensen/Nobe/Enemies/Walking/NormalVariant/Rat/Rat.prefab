@@ -27,12 +27,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6345009811118283008}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.084, y: 0.32, z: 0.526}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalRotation: {x: -0.8551311, y: 0.00000006469074, z: 0.00000010670911, w: 0.5184118}
+  m_LocalPosition: {x: -0.000840149, y: 0.00044969466, z: -0.0002448621}
+  m_LocalScale: {x: 0.001, y: 0.0010000014, z: 0.001000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4294205351637441464}
+  m_Father: {fileID: 4636232227857029009}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8477265411576518295
 MeshFilter:
@@ -132,12 +132,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9136628163711241596}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.074, y: 0.32, z: 0.526}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalRotation: {x: -0.8551311, y: 0.00000006469074, z: 0.00000010670911, w: 0.5184118}
+  m_LocalPosition: {x: 0.00074005115, y: 0.00044969452, z: -0.0002448625}
+  m_LocalScale: {x: 0.001, y: 0.0010000014, z: 0.001000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4294205351637441464}
+  m_Father: {fileID: 4636232227857029009}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3378337141804598902
 MeshFilter:
@@ -286,11 +286,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1b55a81092a32104dbf111998ed88456,
+    - targetCorrespondingSourceObject: {fileID: -268640528811037758, guid: 1b55a81092a32104dbf111998ed88456,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4020417453935729682}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1b55a81092a32104dbf111998ed88456,
+    - targetCorrespondingSourceObject: {fileID: -268640528811037758, guid: 1b55a81092a32104dbf111998ed88456,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4771537276746676452}
@@ -380,9 +380,9 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.55630493, y: 0.73095703, z: 2.4813385}
   m_Center: {x: 0.021438599, y: 0.3421936, z: -0.5658188}
---- !u!4 &4294205351637441464 stripped
+--- !u!4 &4636232227857029009 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1b55a81092a32104dbf111998ed88456,
+  m_CorrespondingSourceObject: {fileID: -268640528811037758, guid: 1b55a81092a32104dbf111998ed88456,
     type: 3}
   m_PrefabInstance: {fileID: 4328711829666872403}
   m_PrefabAsset: {fileID: 0}
