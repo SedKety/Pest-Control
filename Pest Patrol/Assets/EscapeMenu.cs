@@ -16,15 +16,16 @@ public class EscapeMenu : MonoBehaviour
     public GameObject[] activeUI;
     private void Start()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        OnSceneLoaded();
+        //SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
         OnEscape += SetUIActive;
     }
 
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void OnSceneLoaded()
     {
-        uiObjects[0] = FindAnyObjectByType<BuildingSystem>(FindObjectsInactive.Include).gameObject;
-        uiObjects[2] = FindAnyObjectByType<TowerUpgrading>(FindObjectsInactive.Include).transform.parent.gameObject;
+        //uiObjects[0] = BuildingSystem.Instance.gameObject;
+        //uiObjects[2] = FindAnyObjectByType<TowerUpgrading>(FindObjectsInactive.Include).transform.parent.gameObject;
         activeUI = uiObjects.Where(x => x.activeInHierarchy).ToArray();
     }
     public void OnSceneUnloaded(Scene scene)

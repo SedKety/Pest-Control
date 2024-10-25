@@ -206,7 +206,14 @@ public class BuildingSystem : MonoBehaviour
 
         if (state == BuildState.TowerBuild)
         {
-            UpdateTowerPosition();  
+            if (selectedTowerSO.towerBuildPointCost > GameManager.points)
+            {
+                Destroy(currentBuildingTower.gameObject);
+            }
+            else
+            {
+                UpdateTowerPosition();
+            }
         }
         else if (state == BuildState.TileBuild)
         {
@@ -216,6 +223,7 @@ public class BuildingSystem : MonoBehaviour
                 HandlePlacementInput(currentBuildingTower.position);
             }
         }
+
     }
 
     private void UpdateTowerPosition()

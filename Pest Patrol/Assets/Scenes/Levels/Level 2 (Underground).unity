@@ -162,12 +162,17 @@ PrefabInstance:
     - target: {fileID: 1695645101090844061, guid: 157ecf9fc80c1f541a35b8033e253695,
         type: 3}
       propertyPath: camConfinementSize.x
-      value: 24
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695645101090844061, guid: 157ecf9fc80c1f541a35b8033e253695,
+        type: 3}
+      propertyPath: camConfinementSize.y
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1695645101090844061, guid: 157ecf9fc80c1f541a35b8033e253695,
         type: 3}
       propertyPath: camConfinementSize.z
-      value: 90
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1695645101090844061, guid: 157ecf9fc80c1f541a35b8033e253695,
         type: 3}
@@ -187,12 +192,12 @@ PrefabInstance:
     - target: {fileID: 7400777836017278514, guid: 157ecf9fc80c1f541a35b8033e253695,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 7.84
       objectReference: {fileID: 0}
     - target: {fileID: 7400777836017278514, guid: 157ecf9fc80c1f541a35b8033e253695,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16
+      value: -37.35
       objectReference: {fileID: 0}
     - target: {fileID: 7400777836017278514, guid: 157ecf9fc80c1f541a35b8033e253695,
         type: 3}

@@ -15,12 +15,13 @@ public class HammerTower : CombatTower
     private float swingProgress = 0f;
     private float swingDuration;
 
-    private const float minSwingDuration = 0.1f;
+    private const float minSwingDuration = 1f;
     private const float maxSwingDuration = 5f;
-    private const float baseDuration = 1.0f;
+    private const float baseDuration = 2.5f;
     private const float reloadSpeedSensitivity = 2.0f;
 
     public ProjectileType projectileType;
+
     protected override void Start()
     {
         currentReloadSpeed = 1;
@@ -86,8 +87,6 @@ public class HammerTower : CombatTower
         {
             audio.Play();
         }
-
-        
     }
 
     void SwingHammerForward()
@@ -133,14 +132,15 @@ public class HammerTower : CombatTower
         isSwingingForward = false;
         isSwingingBackward = false;
         swingProgress = 0f;
-        hammerHolder.rotation = startRotation;  
+        hammerHolder.rotation = startRotation;
     }
 
     private void UpdateSwingDuration()
     {
+        // Adjust swing duration to be inversely proportional to baseReloadSpeed
         if (baseReloadSpeed > 0)
         {
-            swingDuration = Mathf.Clamp(baseDuration * (baseReloadSpeed / reloadSpeedSensitivity), minSwingDuration, maxSwingDuration);
+            swingDuration = Mathf.Clamp(baseDuration / (currentReloadSpeed * reloadSpeedSensitivity), minSwingDuration, maxSwingDuration);
         }
         else
         {

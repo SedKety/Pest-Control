@@ -27,6 +27,9 @@ public class TowerUpgrading : MonoBehaviour
     public UIFoldout uiFoldout;
     public int standardUpgradeCost;
 
+    public int damageUpgradeCostMultiplier;
+    public int reloadSpeedUpgradeCostMultiplier;
+
     private void Start()
     {
         uiFoldout = GetComponent<UIFoldout>();
@@ -39,53 +42,53 @@ public class TowerUpgrading : MonoBehaviour
         string name = tower.name.Replace("(Clone)", "");
         nameText.text = name;
 
-        uiFoldout.SetState(true);
+        uiFoldout.SetState(true); 
         towerPreview.texture = tower.renderTexture;
+
         switch (tower.typeOfTower)
         {
-            case TowerType.generating:
-                generatingTowerPanel.gameObject.SetActive(true);
-                UpdateGeneratingPanel();
-                break;
             case TowerType.fighting:
-
                 combatTowerPanel.SetActive(true);
                 UpdateCombatPanel();
                 break;
             default:
-                throw new System.Exception("No valid tower type, if there's a new tower type please add it to the script. I am very bad at programming.");
+                throw new System.Exception("No valid tower type. If there is a new tower type, please add it to the script.");
         }
-
     }
+
     public void UpdateCombatPanel()
     {
         CombatTower combatTower = currentTowerGO as CombatTower;
         if (combatTower != null)
         {
-            if (combatTower.currentDamageincreasePurchased <= combatTower.maxAllowedDamageIncrease)
+            if (combatTower.currentDamageincreasePurchased + 1 <= combatTower.maxAllowedDamageIncrease)
             {
-                towerDamageCostText.text = ((int)(standardUpgradeCost + (combatTower.currentDamageincreasePurchased * 2))).ToString();
+                towerDamageCostText.text = ((int)(standardUpgradeCost + (combatTower.currentDamageincreasePurchased * damageUpgradeCostMultiplier))).ToString();
+                print(combatTower.currentDamageincreasePurchased + " " + combatTower.maxAllowedDamageIncrease);
             }
             else
             {
                 towerDamageCostText.text = "MAX";
             }
-            if(combatTower.currentReloadSpeedincreasePurchased <= combatTower.maxAllowedReloadSpeed)
+
+            if (combatTower.currentReloadSpeedincreasePurchased + 1 <= combatTower.maxAllowedReloadSpeed)
             {
-                towerReloadSpeedCostText.text = ((int)(standardUpgradeCost + (combatTower.currentReloadSpeedincreasePurchased * 2))).ToString();
+                towerReloadSpeedCostText.text = ((int)(standardUpgradeCost + (combatTower.currentReloadSpeedincreasePurchased * reloadSpeedUpgradeCostMultiplier))).ToString();
             }
             else
             {
                 towerReloadSpeedCostText.text = "MAX";
             }
+
             towerDamageText.text = combatTower.currentDamage.ToString();
             towerReloadSpeedText.text = Math.Round(combatTower.currentReloadSpeed, 2).ToString();
         }
         else
         {
-            print("Tower aint combat");
+            Debug.LogError("Current tower is not a combat tower.");
         }
     }
+
     public void UpdateGeneratingPanel()
     {
         GeneratingTower generatingTower = currentTowerGO as GeneratingTower;
@@ -96,32 +99,41 @@ public class TowerUpgrading : MonoBehaviour
         }
         else
         {
-            print("Tower aint generating");
+            Debug.LogError("Current tower is not a generating tower.");
         }
     }
-
 
     public void TryIncreaseTowerDamage()
     {
         CombatTower combatTower = currentTowerGO as CombatTower;
-        if (GameManager.points < (int)(combatTower.currentDamage * 2 / 3 + (combatTower.currentDamageincreasePurchased * 2)) || combatTower.currentDamageincreasePurchased > combatTower.maxAllowedDamageIncrease) { return; }
-        else
+        if (combatTower == null) return;  
+
+        int upgradeCost = (int)(standardUpgradeCost + (combatTower.currentDamageincreasePurchased * damageUpgradeCostMultiplier));
+
+        if (GameManager.points < upgradeCost || combatTower.currentDamageincreasePurchased >= combatTower.maxAllowedDamageIncrease)
         {
-            combatTower.IncreaseDamage(damageMultiplierAddedEveryUpgrade);
-            GameManager.DeletePoints((int)(combatTower.currentDamage * 2 / 3 + (combatTower.currentDamageincreasePurchased * 2)));
-            UpdateCombatPanel();
+            return;  
         }
+
+        combatTower.IncreaseDamage(damageMultiplierAddedEveryUpgrade);
+        GameManager.DeletePoints(upgradeCost);
+        UpdateCombatPanel();  
     }
+
     public void TryIncreaseTowerReloadSpeed()
     {
-        
         CombatTower combatTower = currentTowerGO as CombatTower;
-        if (GameManager.points < ((int)(combatTower.baseReloadSpeed + (combatTower.currentReloadSpeedincreasePurchased * 2))) || combatTower.currentReloadSpeedincreasePurchased > combatTower.maxAllowedReloadSpeed) { return; }
-        else
+        if (combatTower == null) return;  
+
+        int upgradeCost = (int)(standardUpgradeCost + (combatTower.currentReloadSpeedincreasePurchased * reloadSpeedUpgradeCostMultiplier));
+
+        if (GameManager.points < upgradeCost || combatTower.currentReloadSpeedincreasePurchased >= combatTower.maxAllowedReloadSpeed)
         {
-            GameManager.DeletePoints(((int)(combatTower.baseReloadSpeed + (combatTower.currentReloadSpeedincreasePurchased * 2))));
-            combatTower.IncreaseReloadSpeed(reloadSpeedMultiplierAddedEveryUpgrade);
-            UpdateCombatPanel();
+            return;  
         }
+
+        GameManager.DeletePoints(upgradeCost);
+        combatTower.IncreaseReloadSpeed(reloadSpeedMultiplierAddedEveryUpgrade);
+        UpdateCombatPanel(); 
     }
 }

@@ -71,14 +71,22 @@ public class WaveSystem : MonoBehaviour
 
     void Awake()
     {
-        ResetWaveSystem();
-        DontDestroyOnLoad(gameObject);
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        if (instance == null)
+        {
+            instance = this; 
+            ResetWaveSystem();
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        else
+        {
+            Destroy(gameObject );
+        }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        StopWave();  // Stop waves when a new scene is loaded
+        StopWave();  
         ResetWaveSystem();
     }
 

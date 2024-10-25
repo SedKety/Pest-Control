@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
             gameWon.Invoke();
         }
     }
+
     public void Start()
     {
         Time.timeScale = 1;
@@ -82,6 +83,8 @@ public class GameManager : MonoBehaviour
         enemyHealthMultiplier = 1;
         Ticker.OnTickAction += OnTick;
         AddPoints(startingPoints);
+        flyingWavePoints.Clear();
+        flyingWaypoints.Clear();
         if (PlayerPrefs.GetInt("EndlessMode") is 1) //makeshift bool yippee
         {
             maxWave = 9999999;
@@ -162,10 +165,10 @@ public class GameManager : MonoBehaviour
     {
         instance = null;
     }
-
+    [ContextMenu("AddPointsDevTool")]
     public void AddPointsDevTool()
     {
-        AddPoints(100);
+        AddPoints(1000000);
     }
 
     public void TimeScale0()

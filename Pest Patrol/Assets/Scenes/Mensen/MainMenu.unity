@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 912965922}
   - component: {fileID: 912965921}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Audio-MainMneu musziek
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -614,7 +614,8 @@ AudioSource:
   m_GameObject: {fileID: 912965920}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 0713d29156ebdb04aa8b15c7797ada02,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c79c88e3442ca004ab3275755ee7f3e3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1010,6 +1011,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1904010916662328104, guid: 45b15ab2c3e060e4495920784d34ba4d,
         type: 3}
+      propertyPath: enemyGroups.Array.data[3].minWaveEasy
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904010916662328104, guid: 45b15ab2c3e060e4495920784d34ba4d,
+        type: 3}
+      propertyPath: enemyGroups.Array.data[3].minWaveHard
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904010916662328104, guid: 45b15ab2c3e060e4495920784d34ba4d,
+        type: 3}
+      propertyPath: enemyGroups.Array.data[3].minWaveMedium
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904010916662328104, guid: 45b15ab2c3e060e4495920784d34ba4d,
+        type: 3}
       propertyPath: enemyGroups.Array.data[0].timeBetweenEnemy
       value: 2
       objectReference: {fileID: 0}
@@ -1164,6 +1180,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3686121487581960138, guid: ce0b195734d3997488442eee5c740200,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.99609375
+      objectReference: {fileID: 0}
     - target: {fileID: 4076418474879271349, guid: ce0b195734d3997488442eee5c740200,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1292,6 +1313,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: City
       objectReference: {fileID: 0}
+    - target: {fileID: 3685165488250135018, guid: 4bcf3ce8218bfd745ba62b5ea5ed1d5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5829507770625995592, guid: 4bcf3ce8218bfd745ba62b5ea5ed1d5a,
         type: 3}
       propertyPath: transforms.Array.data[0]
@@ -1312,6 +1338,46 @@ PrefabInstance:
       propertyPath: transforms.Array.data[3]
       value: 
       objectReference: {fileID: 1449708434}
+    - target: {fileID: 6612917368896482820, guid: 4bcf3ce8218bfd745ba62b5ea5ed1d5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759837796102465522, guid: 4bcf3ce8218bfd745ba62b5ea5ed1d5a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.91652334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759837796102465522, guid: 4bcf3ce8218bfd745ba62b5ea5ed1d5a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.012696736
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759837796102465522, guid: 4bcf3ce8218bfd745ba62b5ea5ed1d5a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.39973748
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759837796102465522, guid: 4bcf3ce8218bfd745ba62b5ea5ed1d5a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0058135362
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759837796102465522, guid: 4bcf3ce8218bfd745ba62b5ea5ed1d5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759837796102465522, guid: 4bcf3ce8218bfd745ba62b5ea5ed1d5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -47.128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759837796102465522, guid: 4bcf3ce8218bfd745ba62b5ea5ed1d5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.029
+      objectReference: {fileID: 0}
     - target: {fileID: 7567091082580676554, guid: 4bcf3ce8218bfd745ba62b5ea5ed1d5a,
         type: 3}
       propertyPath: m_Color.a
@@ -1381,6 +1447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842304089210633853, guid: 4bcf3ce8218bfd745ba62b5ea5ed1d5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

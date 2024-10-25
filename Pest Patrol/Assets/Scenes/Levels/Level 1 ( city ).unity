@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.010095339, g: 0.010917158, b: 0.011288609, a: 1}
+  m_IndirectSpecularColor: {r: 0.010095339, g: 0.010901454, b: 0.011265982, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1128,7 +1128,7 @@ PrefabInstance:
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}
       propertyPath: maxWave
-      value: 10
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6747539319509750561, guid: 747762ddeabfc6b4fbe9ab96f245e2f0,
         type: 3}
@@ -2335,6 +2335,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradePanel: {fileID: 2073937166}
+  enemyPanel: {fileID: 0}
+  triggerLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1232568469
 MonoBehaviour:
   m_ObjectHideFlags: 0
